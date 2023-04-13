@@ -1,0 +1,129 @@
+.container {
+  position: relative;
+  cursor: pointer;
+  font-size: 13px;
+  color: rgb(212, 210, 219);
+  width: 153px;
+  height: 279px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &:hover {
+    .imageSection {
+      transform-origin: bottom;
+      transform: scale(1.04);
+      .properties {
+        opacity: 0.99;
+      }
+    }
+    .title {
+      color: white;
+    }
+  }
+  .imageSection {
+    transition-duration: 0.3s;
+    position: relative;
+    width: 100%;
+    height: 84%;
+    img {
+      position: absolute;
+    }
+    .logo {
+      height: 100%;
+      width: 100%;
+      border-radius: 8px;
+      top: 0;
+      left: 0;
+    }
+    .ageBadge {
+      bottom: 4px;
+      right: 4px;
+    }
+    .properties {
+      color: white;
+      display: flex;
+      align-items: flex-end;
+      transition: opacity 0.3s ease-in;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      .interactive {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 12px;
+        top: 18px;
+        color: white;
+        z-index: 100;
+        .icon {
+          width: 20px;
+          height: auto;
+          margin-bottom: 5px;
+          &:nth-child(even) {
+            transform: scale(-1, 1);
+          }
+          &:hover {
+            color: rgb(212, 210, 219);
+            &:after {
+              content: attr(data-title);
+              position: absolute;
+              z-index: 100;
+              left: 20%;
+              top: 30%;
+            }
+          }
+        }
+      }
+      .inner {
+        width: 79%;
+        margin: 0 auto 20px auto;
+        display: flex;
+        flex-direction: column;
+        .info {
+          line-height: 16px;
+          margin-top: 12px;
+          div {
+            width: 90%;
+            margin-top: 3px;
+          }
+        }
+        .rating {
+          .valueInteger {
+            font-size: 24px;
+          }
+          .valueFraction {
+            font-size: 20px;
+          }
+        }
+        .chartTitle {
+          color: rgb(163, 159, 176);
+          margin-bottom: 4px;
+        }
+        .barChart {
+          height: 3px;
+          width: 85%;
+          border-radius: 2px;
+          background-color: rgba(126, 121, 143, 0.64);
+          .progress {
+            height: 100%;
+            background-color: #ea003d;
+          }
+        }
+      }
+    }
+  }
+  .title {
+    transition: color 0.2s ease-in-out;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .extra {
+    color: #ea003d;
+  }
+}
