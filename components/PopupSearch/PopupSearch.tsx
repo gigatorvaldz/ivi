@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import css from './PopupSearch.module.scss';
 import Link from 'next/link';
 import { useClickOutside } from '@/hooks/useClickOutside';
@@ -19,6 +19,10 @@ const PopupSearch: React.FC<IPopup> = ({ visible, setVisible }) => {
   useClickOutside(wrapperRef, () => {
     if (!document.getElementsByTagName('input')[0].value) return setEditingInput(false);
   });
+
+  useEffect(() => {
+    visible ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
+  }, [visible, setVisible]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -70,7 +74,11 @@ const PopupSearch: React.FC<IPopup> = ({ visible, setVisible }) => {
             <div className={css.content}>
               <div className={css.searchInput}>
                 <h1>Поиск</h1>
-                <div className={css.inputBody} ref={wrapperRef} onClick={() => setEditingInput(true)}>
+                <div
+                  className={css.inputBody}
+                  ref={wrapperRef}
+                  onClick={() => setEditingInput(true)}
+                >
                   <span
                     className={
                       editingInput

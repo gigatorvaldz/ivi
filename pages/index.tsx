@@ -2,10 +2,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
+import Footer from '@/components/Footer/Footer';
+import Button from '@/UI/Button/Button';
+import { BiPhoneCall } from 'react-icons/bi';
+import FilmCard from '@/components/FilmCard/FilmCard';
+import PopupSearch from '@/components/PopupSearch/PopupSearch';
+import { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const [popup, setPopup] = useState<boolean>(false);
+
   return (
     <>
       <Head>
@@ -15,6 +23,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <PopupSearch visible={popup} setVisible={setPopup} />
+        <Button
+          onClickHandler={() => setPopup(true)}
+          preamble="Поиск"
+          primaryText="Фильмов"
+          icon={<BiPhoneCall />}
+        />
+        <FilmCard />
+        <FilmCard />
+        <FilmCard />
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -103,12 +121,12 @@ export default function Home() {
               Deploy <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
+              Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
             </p>
           </a>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

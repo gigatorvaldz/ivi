@@ -1,0 +1,9 @@
+.stores {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  .storeIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
