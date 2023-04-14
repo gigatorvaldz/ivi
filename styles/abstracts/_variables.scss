@@ -3,19 +3,27 @@
 // -----------------------------------------------------------------------------
 
 // fonts
-$font-serif: Arial, 'Helvetica Neue Light', sans-serif !default;
-$font-sans: Georgia, 'Times New Roman', Times, serif !default;
+$font-serif: Arial, "Helvetica Neue Light", sans-serif !default;
+$font-sans: Georgia, "Times New Roman", Times, serif !default;
 $font-weight-normal: 400;
 $font-weight-semibold: 500;
 $font-weight-bold: 700;
 
 // Colors
-$primary-color-1: #d4f4ff;
-$primary-color-2: #7271aa;
-$primary-color-3: #7271aa;
-$accent-color-1: #334a52;
-$accent-color-2: #e6f4f1;
-$accent-color-3: #e6f4f1;
+// $primary-color-1: #d4f4ff;
+// $primary-color-2: #7271aa;
+// $primary-color-3: #7271aa;
+// $accent-color-1: #334a52;
+// $accent-color-2: #e6f4f1;
+// $accent-color-3: #e6f4f1;
+$primary-color-1: #100e19;
+$primary-color-2: #1f1b2e;
+$primary-color-2-hover: rgb(46, 40, 68);
+$primary-color-2-active: #000;
+
+$accent-color-1: #ea003d;
+$accent-color-1-hover: #ff0f4d;
+$accent-color-1-active: #c10032;
 // Explicitly set colors
 $primary-black: #1b1a17;
 $primary-gray: #555248;
