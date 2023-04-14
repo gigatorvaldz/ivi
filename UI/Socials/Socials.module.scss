@@ -1,7 +1,7 @@
 .community {
   display: flex;
   flex-direction: row;
-  div {
+  .socialItem {
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -17,6 +17,9 @@
     }
     &:hover {
       background-color: #2e2844;
+    }
+    &:active {
+      background-color: black;
     }
     .icon {
       color: white;

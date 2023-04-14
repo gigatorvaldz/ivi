@@ -1,0 +1,48 @@
+.button {
+  outline: none;
+  transition: all 0.2s;
+  background-color: #1f1b2e;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  &:hover {
+    background-color: rgb(46, 40, 68);
+  }
+  &:active {
+    background-color: black;
+  }
+  .primaryText {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .preamble {
+    color: rgb(181, 179, 186);
+    font-size: 10px;
+  }
+}
+.textOnly {
+  padding: 9px 42px;
+}
+.iconOnly {
+  width: 40px;
+  height: 40px;
+}
+.iconWithPrimary {
+  padding: 9px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.allProps {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  div {
+    display: flex;
+    text-align: left;
+    flex-direction: column-reverse;
+  }
+}

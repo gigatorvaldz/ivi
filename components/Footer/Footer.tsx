@@ -3,9 +3,13 @@ import css from './Footer.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import List from '@/UI/List/List';
+import Socials from '@/UI/Socials/Socials';
 import { LINKS } from '@/constants/footer';
 import noAds from '/assets/footer/noAds.svg';
-import Socials from '@/UI/Socials/Socials';
+import Stores from '@/UI/Stores/Stores';
+import Button from '@/UI/Button/Button';
+import { BsTelephone } from 'react-icons/bs';
+import { FiMail } from 'react-icons/fi';
 
 const Footer: React.FC = () => {
   return (
@@ -29,6 +33,23 @@ const Footer: React.FC = () => {
               <span>Мы всегда готовы вам помочь.</span>
               <span>Наши операторы онлайн 24/7</span>
             </div>
+            <div className={css.support}>
+              <Button onClickHandler={() => console.log(1)} primaryText="Написать в чате" />
+              <div className={css.supportButtons}>
+                <Button
+                  onClickHandler={() => console.log(1)}
+                  icon={<FiMail className={css.supportIcon} />}
+                />
+                <Button
+                  onClickHandler={() => console.log(1)}
+                  icon={<BsTelephone className={css.supportIcon} />}
+                />
+              </div>
+              <div className={css.questions}>
+                <Link href="/123">ask.ivi.ru</Link>
+                <span>Ответы на вопросы</span>
+              </div>
+            </div>
           </div>
           <div className={css.column}>
             <div className={css.widget}>
@@ -41,6 +62,7 @@ const Footer: React.FC = () => {
         </div>
         <div className={css.footerBottom}>
           <div className={css.columnWide}>
+            <Stores />
             <div className={css.copyrights}>
               <span>© 2023 OOO «Иви.ру»</span>
               <span>HBO ® and related service marks are the property of Home Box Office, Inc</span>
