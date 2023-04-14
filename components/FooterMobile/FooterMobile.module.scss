@@ -1,0 +1,48 @@
+.footer {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 48px;
+  width: 100%;
+  background-color: $primary-color-2;
+  opacity: 0.88;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .item {
+    position: relative;
+    cursor: pointer;
+    width: 120px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+    .caption {
+      margin-top: 4px;
+      font-size: 10px;
+      line-height: 12px;
+      font-weight: 500;
+    }
+    .glowImage {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: 0;
+        opacity: 0;
+        transition: opacity .2s;
+    }
+    .glowImageActive {
+        opacity: 1;
+    }
+  }
+}
