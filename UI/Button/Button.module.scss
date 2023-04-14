@@ -1,32 +1,32 @@
 .button {
   outline: none;
   transition: all 0.2s;
-  background-color: #1f1b2e;
   height: 40px;
+  border: 0px;
   border-radius: 8px;
   color: white;
-  &:hover {
-    background-color: rgb(46, 40, 68);
-  }
-  &:active {
-    background-color: black;
-  }
+
   .primaryText {
     font-size: 15px;
     font-weight: 500;
   }
+
   .preamble {
     color: rgb(181, 179, 186);
     font-size: 10px;
   }
+
 }
+
 .textOnly {
   padding: 9px 42px;
 }
+
 .iconOnly {
   width: 40px;
   height: 40px;
 }
+
 .iconWithPrimary {
   padding: 9px 15px;
   display: flex;
@@ -34,6 +34,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .allProps {
   display: flex;
   flex-direction: row;
@@ -44,5 +45,29 @@
     display: flex;
     text-align: left;
     flex-direction: column-reverse;
+  }
+}
+
+.primary{
+  background-color: $primary-color-2;
+
+  &:hover {
+    background-color: $primary-color-2-hover;
+  }
+  
+  &:active {
+    background-color: $primary-color-2-active;
+  }
+}
+
+.accent{
+  background-color: $accent-color-1;
+
+  &:hover {
+    background-color: $accent-color-1-hover;
+  }
+  
+  &:active {
+    background-color: $accent-color-1-active;
   }
 }
