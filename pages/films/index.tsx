@@ -1,10 +1,10 @@
-import Meta from '@/components/Meta/Meta';
-import Footer from '@/components/Footer/Footer';
+import Meta from '@/components/Meta';
+import Footer from '@/components/Footer';
 
 import DropDown from '@/UI/DropDown';
 import styles from './filmsPage.module.scss';
 import DropDownMenu from '@/UI/DropDownMenu';
-import List from '@/UI/List/List';
+import List from '@/UI/List';
 import { LINKS } from '@/constants/footer';
 
 const FilmsPage = () => {

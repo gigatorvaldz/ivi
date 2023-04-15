@@ -2,12 +2,12 @@ import React from 'react';
 import css from './Footer.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import List from '@/UI/List/List';
-import Socials from '@/UI/Socials/Socials';
+import List from '@/UI/List';
+import Socials from '@/UI/Socials';
 import { LINKS } from '@/constants/footer';
 import noAds from '/assets/footer/noAds.svg';
-import Stores from '@/UI/Stores/Stores';
-import Button from '@/UI/Button/Button';
+import Stores from '@/UI/Stores';
+import Button from '@/UI/Button';
 import { BsTelephone } from 'react-icons/bs';
 import { FiMail } from 'react-icons/fi';
 

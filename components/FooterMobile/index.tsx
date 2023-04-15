@@ -13,14 +13,14 @@ const FooterMobile: React.FC = () => {
 
   const items = [
     { component: <BiHomeAlt className={css.icon} />, text: 'Мой Иви', path: '/' },
-    { component: <AiOutlineFolder className={css.icon} />, text: 'Каталог', path: '/catalog' },
+    { component: <AiOutlineFolder className={css.icon} />, text: 'Каталог', path: '/films' },
     { component: <BiSearch className={css.icon} />, text: 'Поиск', path: '/search' },
     { component: <MdMonitor className={css.icon} />, text: 'TV+', path: '/tv+' },
     { component: <MdOutlineMoreHoriz className={css.icon} />, text: 'Ещё', path: '/more' },
   ];
 
   return (
-    <footer className={css.footer}>
+    <footer className={css.container}>
       {items.map((e) => (
         <div className={css.item}>
           <Image
