@@ -104,6 +104,9 @@
             &:hover {
               box-shadow: 0 2px 0 #7e798f, inset 0 -18px 0 #7e798f;
             }
+            &:active {
+              box-shadow: 0 2px 0 #6d687c, inset 0 -18px 0 #6d687c;
+            }
           }
         }
       }

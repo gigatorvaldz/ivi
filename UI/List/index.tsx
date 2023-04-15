@@ -11,7 +11,7 @@ const List: React.FC<IList> = ({ items }) => {
   return (
     <ul className={css.list}>
       {items.map((e) => (
-        <li>
+        <li key={e.title}>
           <Link href={e.href}>{e.title}</Link>
         </li>
       ))}

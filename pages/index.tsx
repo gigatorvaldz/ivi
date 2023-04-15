@@ -2,17 +2,21 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
-import Footer from '@/components/Footer/Footer';
-import Button from '@/UI/Button/Button';
+import Footer from '@/components/Footer';
+import Button from '@/UI/Button';
 import { BiPhoneCall } from 'react-icons/bi';
-import FilmCard from '@/components/FilmCard/FilmCard';
-import PopupSearch from '@/components/PopupSearch/PopupSearch';
-import { useState } from 'react';
+import FilmCard from '@/components/FilmCard';
+import PopupSearch from '@/components/PopupSearch';
+import { useEffect, useState } from 'react';
+import { useMediaQueriesMinWidth } from '@/hooks/useMediaQueries';
+import FooterMobile from '@/components/FooterMobile';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const [popup, setPopup] = useState<boolean>(false);
+  const { isLaptop } = useMediaQueriesMinWidth();
+  useEffect(() => {}, [isLaptop]);
 
   return (
     <>
@@ -126,7 +130,7 @@ export default function Home() {
           </a>
         </div>
       </main>
-      <Footer />
+      {isLaptop ? <Footer /> : <FooterMobile />}
     </>
   );
 }
