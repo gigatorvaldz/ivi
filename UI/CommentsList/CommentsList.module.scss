@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  li {
+    position: relative;
+    padding-left: 36px;
+    margin-top: 28px;
+    .itemHeader {
+      display: flex;
+      flex-direction: row;
+      cite {
+        margin-right: 8px;
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      time {
+        white-space: nowrap;
+        font-size: 13px;
+        line-height: 16px;
+      }
+      .likesCounter {
+        margin-left: auto;
+      }
+    }
+    .itemBody {
+      p {
+        margin: 4px 0;
+        padding-right: 82px;
+      }
+      span {
+        line-height: 22px;
+        display: block;
+        margin-top: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}

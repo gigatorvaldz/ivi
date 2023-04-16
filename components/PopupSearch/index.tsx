@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { IoCloseOutline } from 'react-icons/io5';
 import { GiFilmProjector } from 'react-icons/gi';
 import Input from '@/UI/Input';
-import CommentsForm from '../CommentsForm';
 
 interface IPopupSearch {
   visible: boolean;

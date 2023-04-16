@@ -8,6 +8,8 @@ import FilmCard from '@/components/FilmCard';
 import PopupSearch from '@/components/PopupSearch';
 import { useState } from 'react';
 import FooterMobile from '@/components/FooterMobile';
+import PopupComments from '@/components/PopupComments';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <PopupSearch visible={popup} setVisible={setPopup} />
+        <PopupComments visible={popup} setVisible={setPopup} title='Зелёная книга' genre='Фильм' year={2018} />
         <Button
           onClickHandler={() => setPopup(true)}
           preamble="Поиск"
@@ -126,7 +128,7 @@ export default function Home() {
           </a>
         </div>
       </main>
-      <FooterMobile />
+      <Footer />
     </>
   );
 }
