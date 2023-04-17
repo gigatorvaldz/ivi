@@ -1,0 +1,97 @@
+@use 'sass:math';
+
+.container {
+  flex: 1 0 auto;
+  max-width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.carousel {
+  padding: 0.5rem 0;
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.carouselTrack {
+  z-index: 1;
+  display: flex;
+  transition: transform ease-out 0.15s;
+}
+
+.carouselItem {
+  padding-right: 1.2rem;
+  list-style: none;
+}
+
+.toLeftContainer,
+.toRightContainer {
+  position: absolute;
+  background-color: $accent-purple;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  @include onHover() {
+    & .iconArrow {
+      color: #ffffff;
+    }
+  }
+}
+
+.toLeftContainer {
+  z-index: 2;
+  left: 0;
+
+  &.outside {
+    transform: translateX(-100%);
+  }
+}
+
+.toRightContainer {
+  z-index: 2;
+  right: 0;
+
+  &.outside {
+    transform: translateX(100%);
+  }
+}
+
+.iconArrow {
+  width: 3rem;
+  height: 3rem;
+  color: $primary-white;
+
+  @include onHover() {
+    cursor: pointer;
+  }
+}
+
+.noBackground {
+  background-color: unset;
+}
+
+.gelatine {
+  animation: gelatine 0.5s linear;
+}
+
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
