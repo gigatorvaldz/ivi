@@ -9,3 +9,8 @@ export interface Comment {
   date: Date;
   likes?: number;
 }
+
+export interface TabsListItem {
+  title: string;
+  amount?: number;
+}
