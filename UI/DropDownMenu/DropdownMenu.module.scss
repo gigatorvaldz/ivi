@@ -1,6 +1,5 @@
 .dropDown {
   position: relative;
-  z-index: 1;
   width: 100%;
   max-width: 25rem;
 }
@@ -56,7 +55,7 @@
 
 .dropDown__contentWrapper {
   position: absolute;
-  z-index: 2;
+  z-index: 100;
   min-width: 100%;
   padding-top: 0.4rem;
 
