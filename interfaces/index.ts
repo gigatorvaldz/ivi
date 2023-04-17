@@ -14,3 +14,14 @@ export interface TabsListItem {
   title: string;
   amount?: number;
 }
+
+export interface Poster {
+  link?: string;
+  logoSrc: string;
+  ageBadge?: string;
+  rating: number;
+  info: string;
+  duration: string;
+  title?: string;
+  extra?: string;
+}

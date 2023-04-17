@@ -14,8 +14,6 @@ const CommentsList: React.FC = () => {
     { author: 'Сфпыф', text: 'Сфыпы', date: '26 февраля 2009', likes: 3 },
     { author: 'qwrewt', text: 'qweryuio', date: '26 февраля 2009', likes: 0 },
     { text: 'qweryuio', date: '26 февраля 2009', likes: 3 },
-    { author: 'qwrewt', text: 'qweryuio', date: '26 февраля 2009', likes: -3 },
-    { author: 'qwrewt', text: 'qweryuio', date: '26 февраля 2009', likes: 3 },
   ];
 
   return (

@@ -1,19 +1,16 @@
 import React, { useState, useRef } from 'react';
 import css from './PopupSearch.module.scss';
+import { useRouter } from 'next/router';
 import Modal from '../Modal';
 import Link from 'next/link';
 import { IoCloseOutline } from 'react-icons/io5';
 import { GiFilmProjector } from 'react-icons/gi';
 import Input from '@/UI/Input';
 
-interface IPopupSearch {
-  visible: boolean;
-  setVisible(state: boolean): void;
-}
-
-const PopupSearch: React.FC<IPopupSearch> = ({ visible, setVisible }) => {
+const PopupSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const wrapperRef = useRef(null);
+  const router = useRouter();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -57,8 +54,8 @@ const PopupSearch: React.FC<IPopupSearch> = ({ visible, setVisible }) => {
   const searchResult = mockData.filter((e) => e.title.includes(inputValue));
 
   return (
-    <Modal visible={visible} setVisible={setVisible}>
-      <IoCloseOutline className={css.closePopup} onClick={() => setVisible(false)} />
+    <Modal>
+      <IoCloseOutline className={css.closePopup} onClick={() => router.back()} />
       <div className={css.container}>
         <div className={css.content}>
           <div className={css.searchInput}>

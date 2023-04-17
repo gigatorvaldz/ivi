@@ -1,18 +1,21 @@
 import React from 'react';
 import css from './BackArrow.module.scss';
-import {MdOutlineArrowBackIosNew} from 'react-icons/md'
+import { useRouter } from 'next/router';
+import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 
 interface IBackArrow {
-    redirectTo: string;
+  redirectTo: string;
 }
 
-const BackArrow: React.FC<IBackArrow> = ({redirectTo}) => {
-    return (
-        <div className={css.container}>
-            <MdOutlineArrowBackIosNew className={css.icon} />
-            <span>К {redirectTo}у</span>
-        </div>
-    )
-}
+const BackArrow: React.FC<IBackArrow> = ({ redirectTo }) => {
+  const router = useRouter();
+
+  return (
+    <div className={css.container} onClick={() => router.back()}>
+      <MdOutlineArrowBackIosNew className={css.icon} />
+      <span>К {redirectTo}у</span>
+    </div>
+  );
+};
 
 export default BackArrow;

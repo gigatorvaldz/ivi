@@ -5,6 +5,9 @@
     position: relative;
     padding-left: 36px;
     margin-top: 28px;
+    &:first-child {
+      margin: 0;
+    }
     .itemHeader {
       color: #a5a1b2;
       display: flex;

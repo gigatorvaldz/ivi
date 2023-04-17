@@ -1,22 +1,31 @@
 import Meta from '@/components/Meta';
 import Footer from '@/components/Footer';
 
+import { ReactNode } from 'react';
+import { useRouter } from 'next/router';
 import DropDown from '@/UI/DropDown';
 import styles from './filmsPage.module.scss';
 import DropDownMenu from '@/UI/DropDownMenu';
 import List from '@/UI/List';
 import { LINKS } from '@/constants/footer';
-import ImageCarousel from './../../UI/ImageCarousel/index';
-import Button from '@/UI/Button/Button';
+import ImageCarousel from '../../UI/ImageCarousel/index';
+import Button from '@/UI/Button';
+import { NextPage } from 'next';
 
-const FilmsPage = () => {
+interface IFilmsPage {
+  children: ReactNode;
+}
+
+const FilmsPage: NextPage<IFilmsPage> = ({ children }) => {
+  const router = useRouter();
+
   return (
     <>
       <Meta title="films" description="films page" />
-      <h2></h2>
+      {children}
+      <h2 onClick={() => router.push('films/comments')}>Комментарии</h2>
       <div className={styles.container}>
         <DropDown type="hover" options={[123, 456, 789]} />
-
         <DropDownMenu
           type="click"
           title="Страны"
