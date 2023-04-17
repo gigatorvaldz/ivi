@@ -3,11 +3,13 @@ export interface ListItem {
   href: string;
 }
 
-export interface Comment {
+export interface CommentItem {
   author?: string;
   text: string;
-  date: Date;
+  date: string;
   likes?: number;
+  level?: number;
+  children?: CommentItem[];
 }
 
 export interface TabsListItem {

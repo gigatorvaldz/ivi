@@ -22,7 +22,7 @@ const TabsList: React.FC = () => {
     <>
       <ul className={css.container}>
         {mockData.map((e) => (
-          <li>
+          <li key={e.href}>
             <span className={classNames({ [css.active]: currentPath === e.href }, css.title)}>
               {e.title}
             </span>

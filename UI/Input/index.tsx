@@ -4,7 +4,7 @@ import { BiSearch } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
-export type TInputType = 'search' | 'comment';
+export type TInputType = 'search' | 'comment' | 'reply';
 
 interface IInput {
   value: string;
@@ -32,7 +32,11 @@ const Input: React.FC<IInput> = ({ value, setInputValue, handleInput, inputType,
       <span
         className={editingInput ? `${css.placeholder} ${css.editingPlaceholder}` : css.placeholder}
       >
-        {isSearch ? 'Фильмы, персоны, жанры' : 'Написать отзыв'}
+        {isSearch
+          ? 'Фильмы, персоны, жанры'
+          : inputType === 'comment'
+          ? 'Написать отзыв'
+          : 'Ответить на комментарий'}
       </span>
       <input value={value} onChange={handleInput} type="text" />
       {isSearch && (

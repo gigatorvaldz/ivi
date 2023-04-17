@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
 
 interface ILikesCounter {
-  likes: number;
+  likes: number | undefined;
 }
 
 const LikesCounter: React.FC<ILikesCounter> = ({ likes }) => {
@@ -17,8 +17,8 @@ const LikesCounter: React.FC<ILikesCounter> = ({ likes }) => {
       <AiOutlineLike className={css.icon} />
       <span
         className={classNames({
-          [css.positiveLikes]: likes > 0,
-          [css.negativeLikes]: likes < 0,
+          [css.positiveLikes]: likes && likes > 0,
+          [css.negativeLikes]: likes && likes < 0,
         })}
       >
         {likes}
