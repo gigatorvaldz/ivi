@@ -6,6 +6,8 @@ import styles from './filmsPage.module.scss';
 import DropDownMenu from '@/UI/DropDownMenu';
 import List from '@/UI/List/List';
 import { LINKS } from '@/constants/footer';
+import ImageCarousel from './../../UI/ImageCarousel/index';
+import Button from '@/UI/Button/Button';
 
 const FilmsPage = () => {
   return (
@@ -26,6 +28,19 @@ const FilmsPage = () => {
               <List items={LINKS[0]} />
             </div>
           }
+        />
+
+        <ImageCarousel
+          slides={[
+            <Button primaryText="test0" />,
+            <Button primaryText="test1" />,
+            <Button primaryText="test2" />,
+            <Button primaryText="test3" />,
+            <Button primaryText="test4" />,
+            <Button primaryText="test5" />,
+            <Button primaryText="test6" />,
+            <Button primaryText="test7" />,
+          ]}
         />
       </div>
       <Footer />

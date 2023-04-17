@@ -40,7 +40,7 @@ export const Icon: Story = {
 export const AllProps: Story = {
   args: {
     primaryText: 'Lorem ipsum',
-    preamble: "Lorem",
+    preamble: 'Lorem',
     icon: <FiMail />,
   },
 };
