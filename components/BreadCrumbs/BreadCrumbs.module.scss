@@ -1,0 +1,55 @@
+.breadCrumbs {
+  background-color: $primary-white;
+}
+
+.container {
+  padding: 4.5rem 0 5rem 0;
+  display: flex;
+  align-items: center;
+
+  font-family: $font-sans;
+  color: #ffffff;
+  @include font(1.5rem, 130%, 500);
+}
+
+.breadcrumb {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+
+  white-space: nowrap;
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: $accent-lightpurple;
+
+    bottom: -2px;
+    left: 0;
+
+    transition: height ease-out 0.15s;
+  }
+
+  @include onHover() {
+    &::after {
+      height: 120%;
+    }
+  }
+}
+
+.divider {
+  margin: 0 0.5rem;
+  color: $primary-lightgray;
+}
+
+.disabled {
+  color: $primary-lightgray;
+  pointer-events: none;
+
+  &::after {
+    display: none;
+  }
+}

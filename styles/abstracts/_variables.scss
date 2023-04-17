@@ -20,12 +20,14 @@ $accent-color-1-hover: #ff0f4d;
 $accent-color-1-active: #c10032;
 // Explicitly set colors
 $primary-black: #1b1a17;
+$primary-lightgray: rgba(255, 255, 255, 0.56);
 $primary-gray: #555248;
 $primary-red: #d4b098;
 $primary-white: #eae3d4;
 $primary-green: #e6f4f1;
 $accent-green: #66c05d;
 $accent-purple: rgb(49, 43, 69);
+$accent-lightpurple: #7e798f;
 
 //breakpoints
 $break-xs: 320px;
@@ -36,7 +38,7 @@ $break-xl: 1600px;
 
 /// Container's maximum width
 /// @type Length
-$max-width: 1180px !default;
+$max-width: 1240px !default;
 
 //variables for button component
 $button-green: #66c05d;
