@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import css from './Comment.module.scss';
 import Avatar from '../Avatar';
 import { CommentItem } from '@/interfaces';
@@ -8,10 +8,10 @@ import Input from '../Input';
 
 const Comment: React.FC<CommentItem> = ({ author, date, text, likes, children, level = 0 }) => {
   const [showFullComment, setShowFullComment] = useState(false);
-  const [replying, setReplying] = useState(true);
+  const [replying, setReplying] = useState(false);
   const [replyText, setReplyText] = useState('');
   const wrapperRef = useRef(null);
-  const paddingLeft = level * 20;
+  const paddingLeft = level * 36;
   const maxCommentLength = 180;
 
   const toggleComment = (): void => {
@@ -30,6 +30,10 @@ const Comment: React.FC<CommentItem> = ({ author, date, text, likes, children, l
     setReplyText('');
     setReplying(true);
   };
+  
+  useEffect(() => {
+
+  }, [children])
 
   return (
     <div className={css.container} style={{ paddingLeft }}>
@@ -57,12 +61,12 @@ const Comment: React.FC<CommentItem> = ({ author, date, text, likes, children, l
               </>
             )}
             {replying ? (
-              <span onClick={toggleReply}>Ответить</span>
-            ) : (
               <span onClick={toggleReply}>Отмена</span>
+            ) : (
+              <span onClick={toggleReply}>Ответить</span>
             )}
           </div>
-          {!replying && (
+          {replying && (
             <div className={css.replyForm}>
               <Input
                 forwardRef={wrapperRef}
@@ -76,7 +80,7 @@ const Comment: React.FC<CommentItem> = ({ author, date, text, likes, children, l
           )}
         </div>
       </li>
-      {children && children.map((child) => <Comment {...child} level={level + 1} />)}
+      {children && children.map((child) => <Comment {...child} level={1} />)}
     </div>
   );
 };

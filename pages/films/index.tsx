@@ -9,16 +9,26 @@ import { LINKS } from '@/constants/footer';
 import ImageCarousel from './../../UI/ImageCarousel/index';
 import Button from '@/UI/Button';
 import Breadcrumbs from '../../components/BreadCrumbs';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
-const FilmsPage = () => {
+interface IFilmPage {
+  children: React.ReactNode;
+}
+
+const FilmsPage: NextPage<IFilmPage> = ({ children }) => {
+
+  const router = useRouter();
+
   return (
     <>
       <Meta title="films" description="films page" />
-      <h2></h2>
+      {children}
+      <h2 onClick = {() => router.push('/films/comments')}>Комментарии</h2>
       <section className={styles.filmsSection}>
         <div className="wrapper">
           <div className={styles.container}>
-            <Breadcrumbs />
+            {router.pathname !== '/films/comments' && <Breadcrumbs />}
             <DropDown type="hover" options={[123, 456, 789]} />
 
             <DropDownMenu
