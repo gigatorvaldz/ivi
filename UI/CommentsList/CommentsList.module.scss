@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  li {
+    position: relative;
+    padding-left: 36px;
+    margin-top: 28px;
+    &:first-child {
+      margin: 0;
+    }
+    .itemHeader {
+      color: #a5a1b2;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cite {
+        margin-right: 8px;
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      time {
+        white-space: nowrap;
+        font-size: 13px;
+        line-height: 16px;
+      }
+      .likesCounter {
+        margin-left: auto;
+      }
+    }
+    .itemBody {
+      p {
+        margin: 4px 0;
+        padding-right: 82px;
+      }
+      span {
+        line-height: 22px;
+        display: block;
+        margin-top: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.moreComments {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}

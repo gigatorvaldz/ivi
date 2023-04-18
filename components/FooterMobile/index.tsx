@@ -22,7 +22,7 @@ const FooterMobile: React.FC = () => {
   return (
     <footer className={css.container}>
       {items.map((e) => (
-        <div className={css.item}>
+        <div className={css.item} key={e.text}>
           <Image
             width={64}
             height={48}

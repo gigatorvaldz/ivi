@@ -108,7 +108,7 @@
           background-color: rgba(126, 121, 143, 0.64);
           .progress {
             height: 100%;
-            background-color: #ea003d;
+            background-color: $accent-color-1;
           }
         }
       }
@@ -124,6 +124,6 @@
     text-overflow: ellipsis;
   }
   .extra {
-    color: #ea003d;
+    color: $accent-color-1;
   }
 }

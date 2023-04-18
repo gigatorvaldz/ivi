@@ -5,7 +5,7 @@ import Image from 'next/image';
 import List from '@/UI/List';
 import Socials from '@/UI/Socials';
 import { LINKS } from '@/constants/footer';
-import noAds from '/assets/footer/noAds.svg';
+import noAds from 'public/assets/footer/noAds.svg';
 import Stores from '@/UI/Stores';
 import Button from '@/UI/Button';
 import { BsTelephone } from 'react-icons/bs';
