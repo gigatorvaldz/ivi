@@ -51,7 +51,13 @@ const PopupSearch: React.FC = () => {
     },
   ];
 
-  const searchResult = mockData.filter((e) => e.title.includes(inputValue));
+  const searchResult = mockData.filter((e) =>
+    e.title.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
+  const getTitleParts = (str: string): string[] => {
+    return str.split(new RegExp(`(${inputValue})`, 'gi')).slice(1);
+  };
 
   return (
     <Modal>
@@ -79,7 +85,10 @@ const PopupSearch: React.FC = () => {
                     <div className={css.resultsItem}>
                       {e.component}
                       <div className={css.aboutResult}>
-                        <span>{e.title}</span>
+                        <span>
+                          <span className={css.highlitedText}>{getTitleParts(e.title)[0]}</span>
+                          {getTitleParts(e.title)[1]}
+                        </span>
                         <span>{e.year}</span>
                       </div>
                     </div>

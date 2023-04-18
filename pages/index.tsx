@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import React from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import PopupSearch from '@/components/PopupSearch';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,6 +31,7 @@ const Home: NextPage<IHome> = ({children}) => {
       </Head>
       <main className={styles.main}>
         {children}
+        <PopupSearch />
         <Button
           onClickHandler={() => router.push('search')}
           preamble="Поиск"
