@@ -19,7 +19,7 @@ const Button: React.FC<IButton> = ({
   preamble,
   icon,
   styling = 'primary',
-  disabled = false
+  disabled = false,
 }) => {
   return (
     <button

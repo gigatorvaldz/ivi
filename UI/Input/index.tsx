@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import css from './Input.module.scss';
+import classNames from 'classnames';
 import { BiSearch } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useClickOutside } from '@/hooks/useClickOutside';
@@ -12,9 +13,17 @@ interface IInput {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputType: TInputType;
   forwardRef: React.MutableRefObject<null>;
+  lengthError?: boolean;
 }
 
-const Input: React.FC<IInput> = ({ value, setInputValue, handleInput, inputType, forwardRef }) => {
+const Input: React.FC<IInput> = ({
+  value,
+  setInputValue,
+  handleInput,
+  inputType,
+  forwardRef,
+  lengthError,
+}) => {
   const [editingInput, setEditingInput] = useState<boolean>(false);
 
   useClickOutside(forwardRef, () => {
@@ -25,7 +34,13 @@ const Input: React.FC<IInput> = ({ value, setInputValue, handleInput, inputType,
 
   return (
     <div
-      className={isSearch ? css.inputBody : `${css.inputBody} ${css.inputBodyComment}`}
+      className={classNames(
+        {
+          [css.inputBodyComment]: !isSearch,
+          [css.lengthError]: lengthError,
+        },
+        css.inputBody
+      )}
       ref={forwardRef}
       onClick={() => setEditingInput(true)}
     >

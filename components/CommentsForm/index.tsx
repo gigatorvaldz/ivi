@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import css from './CommentsForm.module.scss';
-import Input from '../../UI/Input';
-import Button from '../../UI/Button';
+import Input from '@/UI/Input';
+import Button from '@/UI/Button';
 import Avatar from '@/UI/Avatar';
 
 const CommentsForm: React.FC = () => {
@@ -13,18 +13,33 @@ const CommentsForm: React.FC = () => {
     setInputValue(e.target.value);
   };
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(inputValue);
+  };
+
   return (
-    <form className={css.container}>
-      <Avatar />
-      <Input
-        forwardRef={wrapperRef}
-        value={inputValue}
-        setInputValue={setInputValue}
-        handleInput={handleInput}
-        inputType="comment"
-      />
-      <Button disabled={inputValue.length < 10} primaryText="Отправить" styling="accent" />
-    </form>
+    <>
+      <form className={css.container} onSubmit={onSubmit}>
+        <Avatar />
+        <div className={css.input}>
+          <Input
+            forwardRef={wrapperRef}
+            value={inputValue}
+            setInputValue={setInputValue}
+            handleInput={handleInput}
+            inputType="comment"
+            lengthError={!!inputValue && inputValue.length < 10}
+          />
+          {inputValue && inputValue.length < 10 && (
+            <span className={css.errorCaption}>
+              Минимум 10 символов, вы ввели {inputValue.length}
+            </span>
+          )}
+        </div>
+        <Button disabled={inputValue.length < 10} primaryText="Отправить" styling="accent" />
+      </form>
+    </>
   );
 };
 

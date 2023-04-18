@@ -1,5 +1,8 @@
 .container {
   margin-top: 28px;
+  &:first-child {
+    margin: 0;
+  }
   li {
     position: relative;
     padding-left: 36px;
