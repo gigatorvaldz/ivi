@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import style from './ImageCarousel.module.scss';
+import style from './GaleryCarousel.module.scss';
 
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import classNames from 'classnames';
@@ -12,6 +12,7 @@ type ImageCarouselType = {
   buttonsOutside?: boolean;
   itemsWidthAreEqual?: boolean;
   imagesListedPerSwap?: number;
+  arrowsBottomOffset?: number;
 };
 
 /**
@@ -23,8 +24,9 @@ const ImageCarousel: React.FC<ImageCarouselType> = ({
   slides,
   buttonsBackground = false,
   buttonsOutside = false,
-  itemsWidthAreEqual = false,
-  imagesListedPerSwap = 1,
+  itemsWidthAreEqual = true,
+  imagesListedPerSwap = 6,
+  arrowsBottomOffset,
 }) => {
   const [location, setLocation] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
   const [stepWidth, setStepWidth] = useState(200 * imagesListedPerSwap);
@@ -47,6 +49,7 @@ const ImageCarousel: React.FC<ImageCarouselType> = ({
   return (
     <div className={style.container}>
       <div
+        style={{ paddingBottom: arrowsBottomOffset + 'px' }}
         className={classNames(
           {
             [style.noBackground]: !buttonsBackground,
@@ -88,6 +91,7 @@ const ImageCarousel: React.FC<ImageCarouselType> = ({
         </ul>
       </div>
       <div
+        style={{ paddingBottom: arrowsBottomOffset + 'px' }}
         className={classNames(
           {
             [style.noBackground]: !buttonsBackground,
