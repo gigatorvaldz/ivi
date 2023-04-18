@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
-import st from './DropdownMenu.module.scss';
 import { useToggleDropDown } from '@/hooks/useToggleDropDown';
+import st from './DropdownMenu.module.scss';
+import Portal from '@/components/Portal';
 
 import { BsChevronCompactDown } from 'react-icons/bs';
 
@@ -21,41 +22,41 @@ const DropDownMenu: React.FC<DropDownProps> = ({ title = 'Список', type, c
   );
 
   return (
-    <div
-      ref={dropContent}
-      className={st.dropDown}
-      onMouseEnter={
-        type === 'hover'
-          ? () => {
-              dropDownFocusOn();
-            }
-          : undefined
-      }
-      onMouseLeave={
-        type === 'hover'
-          ? () => {
-              dropDownFocusOff();
-            }
-          : undefined
-      }
-      onClick={
-        type === 'click'
-          ? () => {
-              dropDownToggle();
-            }
-          : undefined
-      }
-    >
-      <div className={st['dropDown__title'] + ' ' + (isOpen ? st.opened : '')}>
-        {title}
-        <BsChevronCompactDown className={st.arrowDown + ' ' + (isOpen ? st.opened : '')} />
-      </div>
-      {isOpen && (
-        <div className={st['dropDown__contentWrapper']} onClick={(e) => e.stopPropagation()}>
-          <div className={st['dropDown__content']}>{children}</div>
+      <div
+        ref={dropContent}
+        className={st.dropDown}
+        onMouseEnter={
+          type === 'hover'
+            ? () => {
+                dropDownFocusOn();
+              }
+            : undefined
+        }
+        onMouseLeave={
+          type === 'hover'
+            ? () => {
+                dropDownFocusOff();
+              }
+            : undefined
+        }
+        onClick={
+          type === 'click'
+            ? () => {
+                dropDownToggle();
+              }
+            : undefined
+        }
+      >
+        <div className={st['dropDown__title'] + ' ' + (isOpen ? st.opened : '')}>
+          {title}
+          <BsChevronCompactDown className={st.arrowDown + ' ' + (isOpen ? st.opened : '')} />
         </div>
-      )}
-    </div>
+        {isOpen && (
+          <div className={st['dropDown__contentWrapper']} onClick={(e) => e.stopPropagation()}>
+            <div className={st['dropDown__content']}>{children}</div>
+          </div>
+        )}
+      </div>
   );
 };
 
