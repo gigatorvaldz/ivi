@@ -35,7 +35,7 @@ export function useCarousel(
 
     setTimeout(() => {
       setInitialStepWidth();
-    }, 200);
+    }, 100);
   }, []);
 
   function toLeft() {

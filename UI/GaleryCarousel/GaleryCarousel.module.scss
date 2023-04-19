@@ -50,7 +50,7 @@
 
 .toLeftContainer {
   z-index: 2;
-  left: 0;
+  left: -1px;
 
   &.outside {
     transform: translateX(-100%);
@@ -59,7 +59,7 @@
 
 .toRightContainer {
   z-index: 2;
-  right: 0;
+  right: -1px;
 
   &.outside {
     transform: translateX(100%);

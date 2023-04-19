@@ -14,12 +14,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // flex-wrap: wrap;
   gap: 1.2rem;
+
+  & div {
+    max-width: 63rem;
+  }
 }
 
 .filterTags {
   display: flex;
   align-items: center;
   gap: 1.2rem;
+}
+
+.genreListsBlock {
+  margin-top: 1.6rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid $primary-lightgray;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }

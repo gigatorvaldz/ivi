@@ -1,4 +1,4 @@
-import FilmCard from '../components/FilmCard/FilmCard';
+import FilmCard from '../components/FilmCard/index';
 
 export const FilmCardArray = [
   <FilmCard />,

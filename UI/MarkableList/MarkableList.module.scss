@@ -1,0 +1,66 @@
+.list {
+  width: 100%;
+
+  display: grid;
+  column-gap: 4rem;
+  row-gap: 1.2rem;
+
+  font-family: $font-sans;
+  color: $primary-lightgray;
+  @include font(1.3rem, 1.6rem, 500);
+}
+
+.columns_1 {
+  grid-template-columns: 1fr;
+}
+
+.columns_2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.columns_3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.columns_4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.columns_5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.mark {
+  opacity: 0;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+
+  transition: all ease-in 0.15s;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all ease-in 0.15s;
+
+  @include onHover() {
+    cursor: pointer;
+    color: white;
+
+    & > .mark {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    pointer-events: none;
+    color: white;
+
+    & > .mark {
+      opacity: 1;
+    }
+  }
+}

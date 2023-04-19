@@ -57,7 +57,6 @@ const FilmsPage: NextPage = () => {
           <GenreTag tag={genre} Icon={icon} key={genre} />
         ))}
         isTitleLink={false}
-        arrowsBottomOffset={0}
       />
       <Galery title="Фильмы-новинки" slides={FilmCardArray} isTitleLink={false} />
       <Galery title="Лучшие фильмы" slides={FilmCardArray} />

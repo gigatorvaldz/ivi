@@ -1,5 +1,5 @@
-iimport Meta from '@/components/Meta/Meta';
-import Footer from '@/components/Footer/Footer';
+import Meta from '@/components/Meta/index';
+import Footer from '@/components/Footer/index';
 
 import styles from './filmsPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
