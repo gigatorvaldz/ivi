@@ -6,6 +6,12 @@
   border-radius: 8px;
   color: white;
 
+  &:disabled {
+    background-color: #53051f !important;
+    color: #59545a !important;
+    cursor: default;
+  }
+
   .primaryText {
     font-size: 15px;
     font-weight: 500;

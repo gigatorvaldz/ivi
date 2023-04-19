@@ -10,6 +10,7 @@ interface IButton {
   preamble?: string;
   icon?: ReactNode;
   styling?: ButtonStylingT;
+  disabled?: boolean;
 }
 
 const Button: React.FC<IButton> = ({
@@ -18,9 +19,11 @@ const Button: React.FC<IButton> = ({
   preamble,
   icon,
   styling = 'primary',
+  disabled = false
 }) => {
   return (
     <button
+      disabled={disabled}
       onClick={onClickHandler}
       className={classNames(
         {

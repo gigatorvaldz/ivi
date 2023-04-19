@@ -1,0 +1,28 @@
+.container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  .icon {
+    transition: color 0.2s;
+    cursor: pointer;
+    &:hover {
+      color: #7e798f;
+    }
+    &:last-child {
+      transform: scale(-1, 1);
+    }
+  }
+  span {
+    min-width: 42px;
+    font-weight: 700;
+    padding: 0 8px;
+    text-align: center;
+  }
+  .positiveLikes {
+    color: #73a32f;
+  }
+  .negativeLikes {
+    color: #ff542e;
+  }
+}

@@ -16,13 +16,16 @@ import { genresIcons, Genres } from '@/constants/genres';
 import { Countries } from '@/constants/countries';
 import { modifyGenreLinks } from '@/helpers/modifyGenreLinks';
 import { ProductionYears } from '@/constants/productionYears';
+import FilterInput from '../../UI/FilterInput';
 
 const FiltersDesktop = () => {
   const genres = modifyGenreLinks(Genres).sort((genre1, genre2) =>
     genre1.title.localeCompare(genre2.title)
   );
   const years = Object.values(ProductionYears).map((year) => ({ title: year }));
-  const countries = Object.values(Countries).map((country) => ({ title: country }));
+  const countries = Object.values(Countries)
+    .sort((country1, country2) => country1.localeCompare(country2))
+    .map((country) => ({ title: country }));
 
   return (
     <div className={styles.container}>
@@ -66,9 +69,11 @@ const FiltersDesktop = () => {
         ))}
       </div>
       <DropDown
-        options={['По количеству оценок', 'По рейтингу', 'По дате выхода', 'По Алфавиту']}
+        options={['По рейтингу', 'По количеству оценок', 'По дате выхода', 'По Алфавиту']}
         type="hover"
       />
+      <FilterInput query={'producer'} />
+      <FilterInput query={'actor'} />
       <ResetFiltersButton />
     </div>
   );

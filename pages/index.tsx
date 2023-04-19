@@ -2,17 +2,23 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
-import Footer from '@/components/Footer/Footer';
-import Button from '@/UI/Button/Button';
+import Button from '@/UI/Button';
 import { BiPhoneCall } from 'react-icons/bi';
-import FilmCard from '@/components/FilmCard/FilmCard';
-import PopupSearch from '@/components/PopupSearch/PopupSearch';
-import { useState } from 'react';
+import FilmCard from '@/components/FilmCard';
+import Footer from '@/components/Footer';
+import React from 'react';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
-  const [popup, setPopup] = useState<boolean>(false);
+interface IHome {
+  children: React.ReactNode;
+}
+
+const Home: NextPage<IHome> = ({children}) => {
+
+  const router = useRouter();
 
   return (
     <>
@@ -23,9 +29,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <PopupSearch visible={popup} setVisible={setPopup} />
+        {children}
         <Button
-          onClickHandler={() => setPopup(true)}
+          onClickHandler={() => router.push('search')}
           preamble="Поиск"
           primaryText="Фильмов"
           icon={<BiPhoneCall />}
@@ -130,3 +136,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

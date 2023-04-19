@@ -1,6 +1,6 @@
 import { FiMail } from 'react-icons/fi';
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../UI/Button/Button';
+import Button from '../UI/Button';
 
 const meta: Meta<typeof Button> = {
   title: 'UI/Button',

@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './Stores.module.scss';
-import Button from '../Button/Button';
+import Button from '../Button';
 import { BsApple, BsGooglePlay } from 'react-icons/bs';
 import { MdOutlineMonitor, MdDevicesOther } from 'react-icons/md';
 
@@ -28,6 +28,7 @@ const Stores: React.FC = () => {
     <div className={css.stores}>
       {storeItems.map((e) => (
         <Button
+          key={e.primaryText}
           onClickHandler={() => console.log(1)}
           icon={e.icon}
           primaryText={e.primaryText}
