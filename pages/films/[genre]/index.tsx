@@ -1,7 +1,9 @@
-import Meta from '@/components/Meta/index';
-import Footer from '@/components/Footer/index';
+import Meta from '@/components/Meta/Meta';
+import Footer from '@/components/Footer/Footer';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
-import styles from './filmsPage.module.scss';
+import styles from './genrePage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
 import DescriptionBlock from '@/components/DescriptionBlock';
 import descriptions from '@/constants/filmsDescriptionText';
@@ -11,10 +13,13 @@ import suggestionTags from '@/constants/suggestionsTags';
 import FiltersDesktop from '@/components/FiltersDesktop/index';
 import Galery from '@/components/Galery';
 import GenreTag from '@/UI/GenreTag';
-import { genresIcons } from '@/constants/genres';
+import { Genres, genresIcons } from '@/constants/genres';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
 
-const FilmsPage = () => {
+const FilmsPage: NextPage = () => {
+  const router = useRouter();
+  const { genre } = router.query;
+
   return (
     <>
       <Meta title="films" description="films page" />
@@ -23,7 +28,10 @@ const FilmsPage = () => {
           <div className={styles.container}>
             <Breadcrumbs />
             <div className={styles.descriptionBlock}>
-              <DescriptionBlock title="Фильмы" content={descriptions.films} />
+              <DescriptionBlock
+                title={Genres[genre as keyof typeof Genres]}
+                content={descriptions[genre as keyof typeof descriptions]}
+              />
             </div>
             <div className={styles.suggestionsTags}>
               <ImageCarousel
@@ -49,7 +57,6 @@ const FilmsPage = () => {
           <GenreTag tag={genre} Icon={icon} key={genre} />
         ))}
         isTitleLink={false}
-        arrowsBottomOffset={0}
       />
       <Galery title="Фильмы-новинки" slides={FilmCardArray} isTitleLink={false} />
       <Galery title="Лучшие фильмы" slides={FilmCardArray} />

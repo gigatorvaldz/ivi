@@ -1,0 +1,106 @@
+.form {
+  position: relative;
+  display: inline-block;
+  max-width: 26rem;
+
+  & * {
+    @include onHover() {
+      cursor: pointer;
+    }
+  }
+
+  &.active * {
+    @include onHover() {
+      cursor: text;
+    }
+  }
+}
+
+.searchBar {
+  width: 100%;
+
+  background-color: $input-white;
+  flex: 0 1 20%;
+  min-width: 15rem;
+
+  padding: 1.8rem 4rem 0.2rem 1.2rem;
+  border-radius: 0.8rem;
+
+  font-family: $font-sans;
+  @include font(1.3rem, 2rem, 600);
+  color: $primary-black;
+
+  &:focus {
+    outline: none;
+
+    & ~ .placeholder {
+      top: 0.2rem;
+      transform: translateY(0%);
+      @include font(1.3rem, 2rem, 700);
+    }
+  }
+}
+
+.label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder {
+  position: absolute;
+
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-family: $font-sans;
+  @include font(1.5rem, 2rem, 700);
+  color: rgba($color: #555248, $alpha: 0.56);
+
+  transition: all ease-out 0.25s;
+
+  &.inputFilled {
+    top: 0.2rem;
+    transform: translateY(0%);
+    @include font(1.3rem, 2rem, 700);
+  }
+}
+
+.iconContainer {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: rgba($color: #555248, $alpha: 0.56);
+  width: 4rem;
+  height: 100%;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  &.active {
+    @include onHover() {
+      cursor: pointer !important;
+
+      & .icon {
+        color: $primary-black;
+      }
+    }
+  }
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  transition: all ease-out 0.15s;
+
+  cursor: pointer !important;
+
+  pointer-events: none;
+  user-select: none;
+}

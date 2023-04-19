@@ -1,0 +1,46 @@
+.container {
+  width: 15.3rem;
+  padding: 2.4rem 0.8rem;
+  border-radius: 0.8rem;
+  background-color: $primary-color-2;
+
+  font-family: $font-sans;
+  color: white;
+  @include font(1.5rem, 2rem, 500);
+  white-space: nowrap;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+
+  transition: all ease-in 0.2s;
+
+  @include onHover() {
+    cursor: pointer;
+    color: $accent-color-1;
+  }
+
+  &.small {
+    width: 10.8rem;
+    padding: 1.6rem 0.8rem;
+
+    @include font(1.3rem, 1.6rem, 500);
+  }
+}
+
+.icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.tag {
+  text-transform: capitalize;
+}
+
+.outlined {
+  background-color: unset;
+  outline: 1px solid $primary-lightgray;
+  outline-offset: -1px;
+}

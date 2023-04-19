@@ -1,6 +1,6 @@
 export interface ListItem {
   title: string;
-  href: string;
+  href?: string;
 }
 
 export interface CommentItem {

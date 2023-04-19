@@ -1,0 +1,43 @@
+.description {
+  font-family: $font-sans;
+
+  .descriptionTitle {
+    @include font(4rem, 160%, 700);
+    color: white;
+  }
+
+  p {
+    @include font(1.5rem, 2.2rem, 400);
+    color: $primary-lightgray;
+
+    &:not(:first-of-type) {
+      margin-top: 0.8rem;
+    }
+  }
+
+  .toggleDesciption {
+    display: inline-block;
+    margin-top: 0.8rem;
+    @include font(1.5rem, 2.2rem, 500);
+    color: rgba($color: #ffffff, $alpha: 0.88);
+
+    transition: color ease-out 0.15s;
+
+    @include onHover() {
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}
+
+.descriptionContent.hidden {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+
+  & > :not(:first-child) {
+    display: none;
+  }
+}

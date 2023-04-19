@@ -1,0 +1,22 @@
+.resetFilters {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+
+  font-family: $font-sans;
+  color: white;
+  @include font(1.5rem, 2rem, 400);
+
+  transition: all ease-in 0.15s;
+
+  @include onHover() {
+    cursor: pointer;
+    color: $accent-color-1;
+  }
+
+  .resetIcon {
+    transform: translateY(1px);
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
