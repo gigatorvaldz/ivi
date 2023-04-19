@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  height: 90%;
+  z-index: 100;
+}
+.tooltipBody {
+  position: relative;
+  z-index: 101;
+  .tooltip {
+    bottom: 35px;
+    left: -5px;
+    pointer-events: none;
+    padding: 7px;
+    border-radius: 8px;
+    text-align: center;
+    position: absolute;
+    background-color: $primary-color-2;
+    &::after {
+      border: 5px solid transparent;
+      border-top-color: $primary-color-2;
+      position: absolute;
+      top: 30px;
+      left: 10px;
+      content: '';
+    }
+    span {
+      white-space: nowrap;
+      font-size: 13px;
+    }
+  }
+}

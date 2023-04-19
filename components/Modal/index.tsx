@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import css from './Modal.module.scss';
 
 interface IModal {
@@ -6,6 +6,13 @@ interface IModal {
 }
 
 const Modal: React.FC<IModal> = ({ children }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
     <div className={css.background}>
       <div className={css.overlay}>

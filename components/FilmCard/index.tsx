@@ -2,11 +2,9 @@ import React from 'react';
 import css from './FilmCard.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaRegBookmark } from 'react-icons/fa';
-import { IoMdColorWand } from 'react-icons/io';
-import { AiOutlineStar, AiOutlineStop } from 'react-icons/ai';
 import poster from 'public/assets/filmCard/poster.png';
 import ageBadge from 'public/assets/filmCard/age16.svg';
+import FilmCardButtons from '@/UI/FilmCardTooltips';
 
 const FilmCard: React.FC = () => {
   return (
@@ -16,12 +14,7 @@ const FilmCard: React.FC = () => {
           <Image className={css.logo} src={poster} alt="poster" fill />
           <Image className={css.ageBadge} src={ageBadge} alt="ageBadge" width={24} height={16} />
           <div className={css.properties}>
-            <div className={css.interactive}>
-              <FaRegBookmark className={css.icon} />
-              <IoMdColorWand className={css.icon} />
-              <AiOutlineStar className={css.icon} />
-              <AiOutlineStop className={css.icon} />
-            </div>
+            <FilmCardButtons />
             <div className={css.inner}>
               <div className={css.rating}>
                 <span className={css.valueInteger}>9,</span>
