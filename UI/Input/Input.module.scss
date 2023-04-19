@@ -10,14 +10,13 @@
   .placeholder {
     pointer-events: none;
     color: rgb(165, 161, 178);
-    transition: all 0.08s ease-in;
+    transition: all 0.08s ease-in-out;
     position: absolute;
     left: 12px;
     top: 10px;
   }
   .editingPlaceholder {
-    font-size: 14px;
-    top: 0;
+    transform: translate3d(-8px, -8px, 0) scale(0.86666667) perspective(1px);
   }
   input {
     border-radius: 8px;
@@ -54,5 +53,15 @@
   }
 }
 .inputBodyComment {
-  width: 72.26% !important;
+  width: 100% !important; //додумать
+}
+.lengthError {
+  background-color: #fff3f0 !important;
+  .placeholder {
+    color: #ff8469;
+  }
+  input {
+    color: #ff542e;
+    background-color: #fff3f0 !important;
+  }
 }

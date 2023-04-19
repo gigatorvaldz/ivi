@@ -105,6 +105,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       .resultsItem {
+        padding-right: 16px;
         cursor: pointer;
         display: flex;
         flex-direction: row;
@@ -127,6 +128,10 @@
           margin-left: 12px;
           display: flex;
           flex-direction: column;
+          .highlitedText {
+            font-weight: 700;
+            color: white;
+          }
           span {
             margin-top: 4px;
             font-size: 13px;
