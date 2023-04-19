@@ -1,0 +1,28 @@
+.container {
+    cursor: pointer;
+    opacity: 0.72;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 32px;
+    padding: 16px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    transition: all .3s;
+    &:hover {
+        opacity: 1;
+        .icon {
+            transform: scale(1.2);
+        }
+    }
+    .icon {
+        transition: all .3s;
+        height: 25px;
+        width: auto;
+    }
+}

@@ -5,19 +5,8 @@ import Image from 'next/image';
 import { FaRegBookmark } from 'react-icons/fa';
 import { IoMdColorWand } from 'react-icons/io';
 import { AiOutlineStar, AiOutlineStop } from 'react-icons/ai';
-import poster from '/assets/filmCard/poster.png';
-import ageBadge from '/assets/filmCard/age16.svg';
-
-interface IFilmCard {
-  link: string;
-  logoSrc: string;
-  ageBadge: string;
-  rating: number;
-  info: string;
-  duration: string;
-  title: string;
-  extra: string;
-}
+import poster from 'public/assets/filmCard/poster.png';
+import ageBadge from 'public/assets/filmCard/age16.svg';
 
 const FilmCard: React.FC = () => {
   return (

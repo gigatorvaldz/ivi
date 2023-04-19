@@ -1,4 +1,4 @@
-import Meta from '@/components/Meta/Meta';
+iimport Meta from '@/components/Meta/Meta';
 import Footer from '@/components/Footer/Footer';
 
 import styles from './filmsPage.module.scss';

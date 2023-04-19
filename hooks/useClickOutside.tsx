@@ -5,8 +5,8 @@ export function useClickOutside<T extends HTMLElement = HTMLElement> (
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 ): void {
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (ref.current && !ref.current.contains(event.target)) setOpen(false);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as T)) setOpen(false);
     };
     document.addEventListener('click', handleClickOutside);
     return () => {
