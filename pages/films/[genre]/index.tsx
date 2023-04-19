@@ -1,5 +1,6 @@
 import Meta from '@/components/Meta/Meta';
 import Footer from '@/components/Footer/Footer';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import styles from './genrePage.module.scss';
@@ -15,7 +16,7 @@ import GenreTag from '@/UI/GenreTag';
 import { Genres, genresIcons } from '@/constants/genres';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
 
-const FilmsPage = () => {
+const FilmsPage: NextPage = () => {
   const router = useRouter();
   const { genre } = router.query;
 
