@@ -7,6 +7,7 @@
   font-family: $font-sans;
   color: white;
   @include font(1.5rem, 2rem, 500);
+  white-space: nowrap;
 
   display: flex;
   flex-direction: column;
@@ -19,6 +20,13 @@
   @include onHover() {
     cursor: pointer;
     color: $accent-color-1;
+  }
+
+  &.small {
+    width: 10.8rem;
+    padding: 1.6rem 0.8rem;
+
+    @include font(1.3rem, 1.6rem, 500);
   }
 }
 
@@ -35,5 +43,4 @@
   background-color: unset;
   outline: 1px solid $primary-lightgray;
   outline-offset: -1px;
-
 }

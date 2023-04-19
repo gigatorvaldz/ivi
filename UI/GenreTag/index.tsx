@@ -10,15 +10,19 @@ import { Genres } from '../../constants/genres';
 type GenreTagProps = {
   tag: string;
   Icon: IconType;
-  outlined?: boolean
+  outlined?: boolean;
+  size?: 'small' | 'large';
 };
 
-const GenreTag: React.FC<GenreTagProps> = ({ tag, Icon, outlined }) => {
+const GenreTag: React.FC<GenreTagProps> = ({ tag, Icon, outlined, size = 'large' }) => {
   const router = useRouter();
 
   return (
     <div
-      className={classNames({[styles.outlined]: outlined}, styles.container)  }
+      className={classNames(
+        { [styles.outlined]: outlined, [styles.small]: size === 'small' },
+        styles.container
+      )}
       onClick={() => router.push(`/films/${getEnumKeyByEnumValue(Genres, tag)}`)}
     >
       <Icon className={styles.icon} />

@@ -5,7 +5,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import classNames from 'classnames';
 import { useCarousel } from '../../hooks/useCarousel';
 
-type ImageCarouselType = {
+type GaleryCarouselType = {
   slides: React.ReactNode[];
   step?: number;
   buttonsBackground?: boolean;
@@ -20,7 +20,7 @@ type ImageCarouselType = {
  *
  */
 
-const ImageCarousel: React.FC<ImageCarouselType> = ({
+const GaleryCarousel: React.FC<GaleryCarouselType> = ({
   slides,
   buttonsBackground = false,
   buttonsOutside = false,
@@ -121,4 +121,4 @@ const ImageCarousel: React.FC<ImageCarouselType> = ({
   );
 };
 
-export default ImageCarousel;
+export default GaleryCarousel;
