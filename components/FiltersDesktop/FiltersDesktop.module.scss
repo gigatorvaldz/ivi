@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  background-color: $primary-color-2;
+  padding: 1.6rem;
+  border-radius: 0.6rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.filtersByBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.filterTags {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}

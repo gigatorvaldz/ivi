@@ -1,0 +1,41 @@
+@use 'sass:color';
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+
+  background-color: $accent-purple;
+  padding: 0.6rem 1.6rem;
+  border-radius: 100rem;
+
+  transition: all ease-in-out 0.3s;
+
+  @include onHover() {
+    background-color: color.scale($accent-purple, $lightness: 20%);
+  }
+}
+
+.tag {
+  white-space: nowrap;
+  color: rgb(181, 179, 186);
+  font-family: $font-sans;
+  @include font(1.5rem, 2rem, 500);
+}
+
+.icon {
+  color: white;
+  width: 2rem;
+  height: 2rem;
+}
+
+.outlined {
+  background-color: unset;
+  outline: 1px solid $primary-lightgray;
+  outline-offset: -1px;
+
+  & .tag {
+    color: white;
+  }
+}

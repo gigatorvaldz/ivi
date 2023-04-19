@@ -6,14 +6,6 @@ import { Routes } from '@/constants/routes';
 import style from './BreadCrumbs.module.scss';
 import classNames from 'classnames';
 
-const convertBreadcrumb = (href: keyof typeof Routes): string => {
-  return Routes[href]
-    .replace(/-/g, ' ')
-    .replace(/oe/g, 'ö')
-    .replace(/ae/g, 'ä')
-    .replace(/ue/g, 'ü');
-};
-
 type PathType = {
   breadcrumb: string;
   href: string;
@@ -22,6 +14,14 @@ type PathType = {
 const Breadcrumbs = () => {
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState<null | PathType[]>(null);
+
+  const convertBreadcrumb = (href: keyof typeof Routes): string => {
+    let pageTitle = Routes[href];
+
+    return !pageTitle
+      ? 'not found'
+      : Routes[href].replace(/-/g, ' ').replace(/oe/g, 'ö').replace(/ae/g, 'ä').replace(/ue/g, 'ü');
+  };
 
   useEffect(() => {
     if (router) {
