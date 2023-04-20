@@ -1,0 +1,39 @@
+.menu {
+    display: flex;
+    height: 100%;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .list {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        & .item {
+            box-sizing: border-box;
+            height: max-content;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.48);
+            line-height: 20px;
+            font-weight: 500;
+            font-style: normal;
+            transition: 0.3s ease-in-out;
+            height: 100%;
+
+            &:hover {
+                color: #fff;
+            }
+
+            & > * {
+                padding-left: 15px;
+                @include font(1.5rem, 130%, 600);
+            }
+        }
+    }
+}
