@@ -77,3 +77,16 @@
     background-color: $accent-color-1-active;
   }
 }
+
+.lighter {
+  background-color: $lighter-color-1;
+  width: max-content;
+
+  &:hover {
+    background-color: $lighter-color-1-hover;
+  }
+
+  &:active {
+    background-color: $lighter-color-1-active;
+  }
+}
