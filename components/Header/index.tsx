@@ -93,6 +93,7 @@ const Header: React.FC = () => {
         }}
         className={css.content}
       >
+        <div className={css.borderBottom}></div>
         <div className={css.inner}>
           <HeaderNavbar items={NavbarItems} setCurrentDropDown={setCurrentDropDown} />
           <div className={css.controls}>

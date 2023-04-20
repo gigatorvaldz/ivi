@@ -28,37 +28,37 @@ const controlsItems: Array<ListItem> = [
 const ProfileDropDownContent: React.FC = () => {
   return (
     <div className={css.container}>
-      <div className={css.actions}>
-        <ActionCard
-          icon={<BsCollectionPlay size={22} />}
-          label="Покупки"
-          href="/profile/purchases"
-        />
-        <ActionCard
-          icon={<BsBookmark size={22} />}
-          label="Смотреть позже"
-          href="/profile/purchases"
-        />
-        <ActionCard
-          icon={<BsClockHistory size={22} />}
-          label="История просмотров"
-          href="/profile/purchases"
-        />
-        <ActionCard
-          icon={<IoDiamondOutline size={22} />}
-          label="Подписки"
-          description="Подключить"
-          active
-          href="/profile/purchases"
-        />
-        <ActionCard icon={<BsAward size={22} />} label="Покупки" href="/profile/purchases" />
-        <ActionCard icon={<TbDeviceTvOld size={22} />} label="Покупки" href="/profile/purchases" />
-        <ActionCard icon={<BsCreditCard size={22} />} label="Покупки" href="/profile/purchases" />
-      </div>
-      <div className={css.controls}>
-        <Button primaryText="Войти или зарегистрироваться" styling="accent" />
-        <List items={controlsItems} />
-      </div>
+        <div className={css.actions}>
+          <ActionCard
+            icon={<BsCollectionPlay size={22} />}
+            label="Покупки"
+            href="/profile/purchases"
+          />
+          <ActionCard
+            icon={<BsBookmark size={22} />}
+            label="Смотреть позже"
+            href="/profile/purchases"
+          />
+          <ActionCard
+            icon={<BsClockHistory size={22} />}
+            label="История просмотров"
+            href="/profile/purchases"
+          />
+          <ActionCard
+            icon={<IoDiamondOutline size={22} />}
+            label="Подписки"
+            description="Подключить"
+            active
+            href="/profile/purchases"
+          />
+          <ActionCard icon={<BsAward size={22} />} label="Покупки" href="/profile/purchases" />
+          <ActionCard icon={<TbDeviceTvOld size={22} />} label="Покупки" href="/profile/purchases" />
+          <ActionCard icon={<BsCreditCard size={22} />} label="Покупки" href="/profile/purchases" />
+        </div>
+        <div className={css.controls}>
+          <Button primaryText="Войти или зарегистрироваться" styling="accent" />
+          <List items={controlsItems} />
+        </div>
     </div>
   );
 };

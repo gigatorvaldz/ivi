@@ -1,5 +1,7 @@
 .container {
     display: flex;
+    min-height: 296px;
+
     .actions {
         width: 70%;
         display: grid;
