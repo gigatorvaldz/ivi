@@ -48,7 +48,7 @@ const Header: React.FC = () => {
         </div>
       ),
       dropdown: undefined,
-      href: '/',
+      href: '/search',
       name: 'searchbutton',
     },
     {
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
         </div>
       ),
       dropdown: <NotificationDropDownContent />,
-      href: '/',
+      href: '/profile/pull_notifications',
       name: 'notificationbutton',
     },
     {
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
         </div>
       ),
       dropdown: <ProfileDropDownContent />,
-      href: '/',
+      href: '/profile',
       name: 'profilebutton',
     },
   ];
