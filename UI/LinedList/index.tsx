@@ -22,7 +22,7 @@ const LinedList: React.FC<IList> = ({ items }) => {
       <ul className={css.list}>
         {items.map((e) => (
           <li onMouseEnter={() => setSelectedItem(items.indexOf(e))} key={e.title}>
-            <Link href={e.href}>{e.title}</Link>
+            <Link href={e.href || '/'}>{e.title}</Link>
           </li>
         ))}
       </ul>
