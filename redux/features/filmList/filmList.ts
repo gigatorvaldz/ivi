@@ -14,6 +14,7 @@ const initialState: FilmListState = {
   films: [],
   sortedFilms: [],
   activeTags: [],
+  
 
   searchQuery: '',
 };

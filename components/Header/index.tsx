@@ -74,49 +74,53 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <div
-      ref={dropContent}
-      className={classNames(
-        {
-          [css.dropped]: currentDropDown,
-        },
-        css.container
-      )}
-    >
-      <div
-        onMouseLeave={() => {
-          dropDownFocusOff();
-          setCurrentDropDown(undefined);
-        }}
-        onMouseEnter={() => {
-          dropDownFocusOn();
-        }}
-        className={css.content}
-      >
-        <div className={css.borderBottom}></div>
-        <div className={css.inner}>
-          <HeaderNavbar items={NavbarItems} setCurrentDropDown={setCurrentDropDown} />
-          <div className={css.controls}>
-            <HeaderControls items={ControlsItems} setCurrentDropDown={setCurrentDropDown} />
+    <header className={css.header}>
+      <div className="wrapper">
+        <div
+          ref={dropContent}
+          className={classNames(
+            {
+              [css.dropped]: currentDropDown,
+            },
+            css.container
+          )}
+        >
+          <div
+            onMouseLeave={() => {
+              dropDownFocusOff();
+              setCurrentDropDown(undefined);
+            }}
+            onMouseEnter={() => {
+              dropDownFocusOn();
+            }}
+            className={css.content}
+          >
+            <div className={css.borderBottom}></div>
+            <div className={css.inner}>
+              <HeaderNavbar items={NavbarItems} setCurrentDropDown={setCurrentDropDown} />
+              <div className={css.controls}>
+                <HeaderControls items={ControlsItems} setCurrentDropDown={setCurrentDropDown} />
+              </div>
+            </div>
+
+            <div>
+              <AnimatePresence>
+                {isOpen && currentDropDown && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.1 }}
+                  >
+                    <HeaderDropDown>{currentDropDown}</HeaderDropDown>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-
-        <div>
-          <AnimatePresence>
-            {isOpen && currentDropDown && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.1 }}
-              >
-                <HeaderDropDown>{currentDropDown}</HeaderDropDown>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

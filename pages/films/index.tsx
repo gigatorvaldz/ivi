@@ -13,11 +13,13 @@ import Galery from '@/components/Galery';
 import GenreTag from '@/UI/GenreTag';
 import { genresIcons } from '@/constants/genres';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
+import Header from '@/components/Header/index';
 
 const FilmsPage = () => {
   return (
     <>
       <Meta title="films" description="films page" />
+      <Header />
       <section className={styles.aboutSection}>
         <div className="wrapper">
           <div className={styles.container}>

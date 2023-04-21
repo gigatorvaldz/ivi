@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.iconMark {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.iconDonwload {
+  width: 2rem;
+  height: 2rem;
+}

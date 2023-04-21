@@ -39,4 +39,4 @@ export interface HeaderControlsItem {
   dropdown: React.ReactNode;
   href: string;
   name: string;
-};
+}

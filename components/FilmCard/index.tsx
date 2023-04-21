@@ -8,7 +8,7 @@ import FilmCardButtons from '@/UI/FilmCardTooltips';
 
 const FilmCard: React.FC = () => {
   return (
-    <Link href="/666">
+    <Link href="/watch/greenbook">
       <div className={css.container}>
         <div className={css.imageSection}>
           <Image className={css.logo} src={poster} alt="poster" fill />

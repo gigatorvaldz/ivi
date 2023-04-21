@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-left: 36px;
+}
+.container .input {
+  width: 100%;
+}
+.container .input .errorCaption {
+  display: block;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 4px;
+  color: #ff542e;
+}
