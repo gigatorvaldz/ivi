@@ -1,0 +1,60 @@
+.breadcrumbs {
+  background-color: $primary-color-1;
+
+  .container {
+    padding: 2rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.playerSection {
+  flex: 0 1 55%;
+}
+
+.aboutFilmSection {
+  flex: 0 1 40%;
+}
+
+.title,
+.subtitle {
+  font-family: $font-sans;
+  color: white;
+  @include font(5.6rem, 5.6rem, 700);
+  text-align: center;
+}
+
+.paramsList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.param {
+  position: relative;
+  font-family: $font-sans;
+  color: $primary-lightgray;
+  @include font(1.5rem, 1.5rem, 400);
+
+  span::before {
+    position: absolute;
+    left: -6.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    content: '';
+    background-color: $primary-lightgray;
+
+    width: 2px;
+    height: 2px;
+    border-radius: 100rem;
+  }
+}
+
+.medallionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}

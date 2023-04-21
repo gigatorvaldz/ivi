@@ -1,5 +1,5 @@
-import Meta from '@/components/Meta/Meta';
-import Footer from '@/components/Footer/Footer';
+import Meta from '@/components/Meta/index';
+import Footer from '@/components/Footer/index';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 

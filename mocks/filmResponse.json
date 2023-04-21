@@ -1,0 +1,225 @@
+{
+  "id": 4,
+  "name": "Очень крутой фильм",
+  "poster": "http://source.com/0",
+  "mpaaRating": "18+",
+  "rating": 2.2,
+  "ratingsNumber": 1223,
+  "year": 2023,
+  "duration": "01:45",
+  "description": "Реально крутой фильм",
+  "directors": [
+    {
+      "id": 1,
+      "name": "Роб Шнайдер",
+      "photo": "https://i.ibb.co/xhpjcPy/image.png",
+      "FilmDirectors": {
+        "id": 4,
+        "filmId": 4,
+        "personId": 1
+      }
+    }
+  ],
+  "actors": [
+    {
+      "id": 2,
+      "name": "Адам Сендлер",
+      "photo": "https://i.ibb.co/xhpjcPy/image.png",
+      "FilmActors": {
+        "id": 13,
+        "filmId": 4,
+        "personId": 2
+      }
+    },
+    {
+      "id": 3,
+      "name": "Билл Найи",
+      "photo": "http://source.com/3",
+      "FilmActors": {
+        "id": 14,
+        "filmId": 4,
+        "personId": 3
+      }
+    },
+    {
+      "id": 4,
+      "name": "Билл Скарсгард",
+      "photo": "http://source.com/4",
+      "FilmActors": {
+        "id": 15,
+        "filmId": 4,
+        "personId": 4
+      }
+    },
+    {
+      "id": 5,
+      "name": "Пенелопа Круз",
+      "photo": "http://source.com/5",
+      "FilmActors": {
+        "id": 16,
+        "filmId": 4,
+        "personId": 5
+      }
+    }
+  ],
+  "writers": [
+    {
+      "id": 6,
+      "name": "Лев Толстой",
+      "photo": "http://source.com/6",
+      "FilmWriters": {
+        "id": 4,
+        "filmId": 4,
+        "personId": 6
+      }
+    }
+  ],
+  "producers": [
+    {
+      "id": 7,
+      "name": "Чарли Ванштейн",
+      "photo": "http://source.com/7",
+      "FilmProducers": {
+        "id": 7,
+        "filmId": 4,
+        "personId": 7
+      }
+    },
+    {
+      "id": 8,
+      "name": "Александр Роднянский",
+      "photo": "http://source.com/8",
+      "FilmProducers": {
+        "id": 8,
+        "filmId": 4,
+        "personId": 8
+      }
+    }
+  ],
+  "cinematography": [
+    {
+      "id": 11,
+      "name": "Лоик Реми",
+      "photo": "http://source.com/9",
+      "FilmCinematography": {
+        "id": 4,
+        "filmId": 4,
+        "personId": 11
+      }
+    }
+  ],
+  "musicians": [
+    {
+      "id": 12,
+      "name": "50 Cent",
+      "photo": "http://source.com/10",
+      "FilmMusicians": {
+        "id": 4,
+        "filmId": 4,
+        "personId": 12
+      }
+    }
+  ],
+  "designers": [
+    {
+      "id": 9,
+      "name": "Михаил Понтожа",
+      "photo": "http://source.com/11",
+      "FilmDesigners": {
+        "id": 7,
+        "filmId": 4,
+        "personId": 9
+      }
+    },
+    {
+      "id": 10,
+      "name": "Курбан Бердыев",
+      "photo": "http://source.com/12",
+      "FilmDesigners": {
+        "id": 8,
+        "filmId": 4,
+        "personId": 10
+      }
+    }
+  ],
+  "editors": [
+    {
+      "id": 11,
+      "name": "Лоик Реми",
+      "photo": "http://source.com/9",
+      "FilmEditors": {
+        "id": 8,
+        "filmId": 4,
+        "personId": 11
+      }
+    },
+    {
+      "id": 13,
+      "name": "Татьяна Кальдерон",
+      "photo": "http://source.com/13",
+      "FilmEditors": {
+        "id": 7,
+        "filmId": 4,
+        "personId": 13
+      }
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "Комедия",
+      "englishName": "comedy",
+      "FilmGenres": {
+        "id": 7,
+        "filmId": 4,
+        "genreId": 1
+      }
+    },
+    {
+      "id": 2,
+      "name": "Фантастика",
+      "englishName": "fantasy",
+      "FilmGenres": {
+        "id": 8,
+        "filmId": 4,
+        "genreId": 2
+      }
+    }
+  ],
+  "awards": [
+    {
+      "id": 1,
+      "name": "Оскар",
+      "year": 2023,
+      "FilmAwards": {
+        "id": 2,
+        "awardId": 1,
+        "nominationId": 1,
+        "filmId": 4
+      }
+    }
+  ],
+  "countries": [
+    {
+      "id": 1,
+      "name": "США",
+      "englishName": "us",
+      "FilmCountries": {
+        "id": 7,
+        "filmId": 4,
+        "countryId": 1
+      }
+    },
+    {
+      "id": 2,
+      "name": "Россия",
+      "englishName": "ru",
+      "FilmCountries": {
+        "id": 8,
+        "filmId": 4,
+        "countryId": 2
+      }
+    }
+  ],
+  "reviews": []
+}

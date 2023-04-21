@@ -1,0 +1,16 @@
+.list li {
+  color: rgba(255, 255, 255, 0.48);
+  margin-top: 8px;
+}
+.list li:first-child {
+  margin: 0;
+}
+.list li a {
+  transition: color 0.2s;
+}
+.list li a:hover {
+  color: white;
+}
+.list li a:active {
+  color: rgb(185, 184, 187);
+}

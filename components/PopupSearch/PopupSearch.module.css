@@ -1,0 +1,142 @@
+.closePopup {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 40px;
+  height: auto;
+  color: #a5a1b2;
+  transform-origin: bottom;
+  transition: all 0.2s;
+}
+.closePopup:hover {
+  transform: scale(1.1);
+}
+
+.container {
+  background-color: none;
+  max-width: 1279px;
+  margin: 0 auto;
+}
+.container .content {
+  margin: 0 auto;
+  width: 67.4%;
+}
+.container .content .searchInput h1 {
+  margin: 60px 0 40px 0;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 900;
+}
+.container .content .searchInput .inputBody {
+  position: relative;
+  background-color: #d9d7e0;
+  color: #1f1b2e;
+  width: 100%;
+  height: 40px;
+  line-height: 20px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+.container .content .searchInput .inputBody .placeholder {
+  pointer-events: none;
+  color: rgb(165, 161, 178);
+  transition: all 0.08s ease-in;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+}
+.container .content .searchInput .inputBody .editingPlaceholder {
+  font-size: 14px;
+  top: 0;
+}
+.container .content .searchInput .inputBody input {
+  border-radius: 8px;
+  outline: none;
+  background-color: #d9d7e0;
+  color: #1f1b2e;
+  width: 100%;
+  height: 40px;
+  padding: 18px 40px 2px 12px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.container .content .searchInput .inputBody input:focus {
+  cursor: auto;
+}
+.container .content .searchInput .inputBody .inputIcon {
+  cursor: pointer;
+  pointer-events: none;
+  width: 20px;
+  height: auto;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: rgb(165, 161, 178);
+}
+.container .content .searchInput .inputBody .closeIcon {
+  pointer-events: all;
+  transition: color 0.2s;
+}
+.container .content .searchInput .inputBody .closeIcon:hover {
+  color: black;
+}
+.container .content .searchBlock {
+  margin-top: 30px;
+}
+.container .content .searchBlock div {
+  margin-bottom: 25px;
+}
+.container .content .searchBlock div .link {
+  transition: all 0.2s;
+  line-height: 22px;
+  font-weight: 500;
+  box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+}
+.container .content .searchBlock div .link:hover {
+  box-shadow: 0 2px 0 #7e798f, inset 0 -18px 0 #7e798f;
+}
+.container .content .searchBlock div .link:active {
+  box-shadow: 0 2px 0 #6d687c, inset 0 -18px 0 #6d687c;
+}
+.container .content .resultsBlock {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.container .content .resultsBlock .resultsItem {
+  padding-right: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+}
+.container .content .resultsBlock .resultsItem:hover .aboutResult span:first-child {
+  color: rgb(230, 0, 60);
+}
+.container .content .resultsBlock .resultsItem .resultsIcon {
+  width: 25px;
+  height: auto;
+  color: rgb(230, 0, 60);
+}
+.container .content .resultsBlock .resultsItem .aboutResult {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.container .content .resultsBlock .resultsItem .aboutResult .highlitedText {
+  font-weight: 700;
+  color: white;
+}
+.container .content .resultsBlock .resultsItem .aboutResult span {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 16px;
+  color: rgb(165, 161, 178);
+  transition: color 0.2s;
+}
+.container .content .resultsBlock .resultsItem .aboutResult span:first-child {
+  padding-top: 5px;
+}
