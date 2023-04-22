@@ -13,29 +13,27 @@ import classNames from 'classnames';
 const HeaderMobile: React.FC = () => {
   return (
     <header className={css.header}>
-      <div className="wrapper">
-        <div className={css.container}>
-          <div className={css.inner}>
-            <Link className={css.logo} href={'/'}>
-              <Image src={headerLogo} alt="header logo" />
+      <div className={css.container}>
+        <div className={css.inner}>
+          <Link className={css.logo} href={'/'}>
+            <Image src={headerLogo} alt="header logo" />
+          </Link>
+          <div className={css.controls}>
+            <Link href="/">
+              <Button primaryText="Смотреть 30 дней бесплатно" styling="accent" />
             </Link>
-            <div className={css.controls}>
-              <Link href="/">
-                <Button primaryText="Смотреть 30 дней бесплатно" styling="accent" />
-              </Link>
-              <Link
-                href="/profile/pull_notifications"
-                className={classNames(css.notification, css.tablet)}
-              >
-                <IoMdNotificationsOutline strokeWidth={18} size={20} />
-              </Link>
-              <Link href="/profile" className={classNames(css.profile, css.tablet)}>
-                <RxPerson size={24} />
-              </Link>
-            </div>
+            <Link
+              href="/profile/pull_notifications"
+              className={classNames(css.notification, css.tablet)}
+            >
+              <IoMdNotificationsOutline strokeWidth={18} size={20} />
+            </Link>
+            <Link href="/profile" className={classNames(css.profile, css.tablet)}>
+              <RxPerson size={24} />
+            </Link>
           </div>
-          <div className={css.borderBottom}></div>
         </div>
+        <div className={css.borderBottom}></div>
       </div>
     </header>
   );

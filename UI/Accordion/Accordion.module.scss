@@ -1,0 +1,28 @@
+.container {
+    .controls {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .label {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            height: 20px;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        & > *:not(:first-child) {
+            margin-left: 10px;
+        }
+    }
+
+
+}
+
+.opened {
+    transform: rotate(180deg);
+}
