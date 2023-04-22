@@ -61,8 +61,8 @@ const PopupSearch: React.FC = () => {
 
   return (
     <Modal>
-      <IoCloseOutline className={css.closePopup} onClick={() => router.back()} />
       <div className={css.container}>
+        <IoCloseOutline className={css.closePopup} onClick={() => router.back()} />
         <div className={css.content}>
           <div className={css.searchInput}>
             <h1>Поиск</h1>

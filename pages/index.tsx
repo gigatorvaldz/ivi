@@ -2,14 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
-import Button from '@/UI/Button';
-import { BiPhoneCall } from 'react-icons/bi';
 import FilmCard from '@/components/FilmCard';
 import Footer from '@/components/Footer';
 import React from 'react';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import PopupSearch from '@/components/PopupSearch';
+import Banner from '@/components/Banner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,8 +16,6 @@ interface IHome {
 
 const Home: NextPage<IHome> = ({children}) => {
 
-  const router = useRouter();
-
   return (
     <>
       <Head>
@@ -29,15 +24,9 @@ const Home: NextPage<IHome> = ({children}) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main>
         {children}
-        <PopupSearch />
-        <Button
-          onClickHandler={() => router.push('search')}
-          preamble="Поиск"
-          primaryText="Фильмов"
-          icon={<BiPhoneCall />}
-        />
+        <Banner />
         <FilmCard />
         <FilmCard />
         <FilmCard />
