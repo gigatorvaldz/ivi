@@ -12,14 +12,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    img {
-      width: auto;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 26px;
-      margin-right: 16px;
-      pointer-events: none;
-    }
     .leftSlide {
       border-radius: 26px;
       width: 35%;
@@ -50,6 +42,16 @@
         height: 100%;
         display: flex;
         flex-direction: row;
+        transform: translateX(-2464px);
+        img {
+          width: auto;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 26px;
+          margin-right: 16px;
+          pointer-events: none;
+          backface-visibility: hidden;
+        }
       }
     }
     .rightSlide {
@@ -88,18 +90,18 @@
 
 @keyframes next {
   0% {
-    transform: none;
+    transform: translateX(-1232px);
   }
   100% {
-    transform: translateX(-1232px);
+    transform: translateX(-2464px);
   }
 }
 
 @keyframes prev {
   0% {
-    transform: none;
+    transform: translateX(-3696px);
   }
   100% {
-    transform: translateX(1232px);
+    transform: translateX(-2464px);
   }
 }

@@ -7,6 +7,8 @@ import Footer from '@/components/Footer';
 import React from 'react';
 import { NextPage } from 'next';
 import Banner from '@/components/Banner';
+import photo from '/assets/banner/test.png';
+import photo1 from '/assets/banner/test2.png';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,8 +16,7 @@ interface IHome {
   children: React.ReactNode;
 }
 
-const Home: NextPage<IHome> = ({children}) => {
-
+const Home: NextPage<IHome> = ({ children }) => {
   return (
     <>
       <Head>
@@ -26,7 +27,20 @@ const Home: NextPage<IHome> = ({children}) => {
       </Head>
       <main>
         {children}
-        <Banner />
+        <Banner
+          slides={[
+            <Image src={photo1} alt="0" />,
+            <Image src={photo} alt="1" />,
+            <Image src={photo1} alt="2" />,
+            <Image src={photo} alt="3" />,
+            <Image src={photo1} alt="4" />,
+            <Image src={photo} alt="5" />,
+            <Image src={photo} alt="6" />,
+            <Image src={photo1} alt="7" />,
+            <Image src={photo} alt="8" />,
+            <Image src={photo1} alt="9" />,
+          ]}
+        />
         <FilmCard />
         <FilmCard />
         <FilmCard />
@@ -126,6 +140,6 @@ const Home: NextPage<IHome> = ({children}) => {
       <Footer />
     </>
   );
-}
+};
 
 export default Home;
