@@ -40,3 +40,20 @@
         font-size: 13px;
     }
 }
+
+.mobile {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    min-height: auto;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #1f1b2e;
+    font-weight: 600;
+
+    & > *:not(:first-child) {
+        margin-left: 10px;
+    }
+}
