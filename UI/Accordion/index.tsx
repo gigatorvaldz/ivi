@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import css from './AccordionI.module.scss';
+import css from './Accordion.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
 import { BsChevronCompactDown } from 'react-icons/bs';
