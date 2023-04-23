@@ -1,0 +1,62 @@
+.container {
+    margin-top: 20px;
+    .title {
+        color: hsla(0, 0%, 100%, 0.72);
+        padding-bottom: 20px;
+        font-size: 15px;
+        font-weight: 400;
+        transition: 0.3s ease-in-out;
+        display: inline-block;
+
+        &:hover {
+            color: hsla(0, 0%, 100%, 1);
+        }
+    }
+
+    .links {
+        display: flex;
+        h3 {
+            color: #fff;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 20px;
+            margin-bottom: 20px;
+        }
+
+        ul li a {
+            color: hsla(0, 0%, 100%, 0.72);
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 25px;
+
+            &:hover {
+                color: hsla(0, 0%, 100%, 1);
+            }
+        }
+
+        .genres {
+            width: 30%;
+        }
+
+        .secondary {
+            display: flex;
+            width: 70%;
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                & > *:not(:first-child){
+                    margin-top: 20px;
+                }
+            }
+
+            .widget {
+                width: 100%;
+            }
+        }
+    }
+}
