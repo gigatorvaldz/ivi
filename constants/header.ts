@@ -1,3 +1,6 @@
+import { TVSmallCardI } from "@/UI/TVCard";
+import img from '@/assets/header/TVSmallCard.jpg';
+
 export const Film = {
     genres:
         [
@@ -151,6 +154,28 @@ export const TV = [
     { title: "Документальное", href: "/tvplus/documentalnoe" }
 ]
 
+export const federalChannels: Array<TVSmallCardI> = [
+    { src: img, href: '/1' },
+    { src: img, href: '/2' },
+    { src: img, href: '/3' },
+    { src: img, href: '/4' },
+    { src: img, href: '/5' },
+    { src: img, href: '/6' },
+    { src: img, href: '/7' },
+    { src: img, href: '/8' },
+    { src: img, href: '/9' },
+];
 
+export const entertainmentChannels: Array<TVSmallCardI> = [
+    { src: img, href: '/1' },
+    { src: img, href: '/2' },
+    { src: img, href: '/3' },
+    { src: img, href: '/4' },
+    { src: img, href: '/5' },
+    { src: img, href: '/6' },
+    { src: img, href: '/7' },
+    { src: img, href: '/8' },
+    { src: img, href: '/9' },
+];
 
 

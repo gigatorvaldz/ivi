@@ -2,8 +2,7 @@ import React from 'react';
 import css from "./TVDropDownSlider.module.scss"
 
 import ImageCarousel from '@/UI/ImageCarousel';
-import TVSmallCard, { TVSmallCardI } from '@/UI/TVSmallCard';
-import { buttonsBackgroundOn } from '../../../../../stories/Carousel.stories';
+import TVSmallCard, { TVSmallCardI } from '@/UI/TVCard';
 
 export interface TVDropDownSliderI {
   items: Array<TVSmallCardI>;
