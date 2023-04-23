@@ -1,0 +1,70 @@
+.container {
+  background-color: rgba($color: $primary-lightgray, $alpha: 0.16);
+
+  padding: 1rem;
+  border-radius: 1.2rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+
+  @include onHover() {
+    cursor: pointer
+  }
+}
+
+.ratingPlate {
+  background-color: #73a32f;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 1rem;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  font-family: $font-sans;
+  color: white;
+  @include font(2.4rem, 2.8rem, 700);
+}
+
+.ratingDescription {
+  flex: 1 0 auto;
+
+  font-family: $font-sans;
+
+  .caption {
+    color: white;
+    @include font(1.5rem, 2rem, 500);
+  }
+
+  .subtitle {
+    color: $primary-lightgray;
+    @include font(1.5rem, 2rem, 400);
+  }
+
+  .ratingCount {
+    color: $primary-lightgray;
+    @include font(1.3rem, 1.6rem, 400);
+  }
+}
+
+.rateButton {
+  background-color: transparent;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.6rem;
+  border: 1px solid $primary-lightgray;
+
+  font-family: $font-sans;
+  color: white;
+  @include font(1.3rem, 1.6rem, 500);
+
+  transition: all ease-out 0.2s;
+
+  @include onHover() {
+    border-color: white;
+  }
+}

@@ -7,12 +7,13 @@
   "ratingsNumber": 1223,
   "year": 2023,
   "duration": "01:45",
-  "description": "Реально крутой фильм",
+  "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae, eaque, laudantium rem sit incidunt dolorum placeat inventore qui minus facilis sed voluptatibus, cupiditate vitae voluptas officiis tempore voluptatem consectetur eius fugit aperiam itaque delectus magni. Optio pariatur alias veniam aspernatur, tempora et nemo provident doloribus quidem. Dolorum hic quaerat sequi quos iste, sed nemo nisi provident odio harum rerum ullam necessitatibus aliquid non in doloribus voluptatum quo eum fugit quis aperiam. Autem dolor laudantium totam tempora quas cumque ipsam cum laborum delectus. Delectus commodi illo, sapiente nobis iure adipisci corporis nisi molestiae perferendis omnis, veritatis deleniti vel, impedit itaque!",
   "directors": [
     {
       "id": 1,
       "name": "Роб Шнайдер",
-      "photo": "https://i.ibb.co/xhpjcPy/image.png",
+      "photo": "http://source.com/1",
+      "films": ["1", "2", "3"],
       "FilmDirectors": {
         "id": 4,
         "filmId": 4,
@@ -25,6 +26,7 @@
       "id": 2,
       "name": "Адам Сендлер",
       "photo": "https://i.ibb.co/xhpjcPy/image.png",
+      "films": ["1", "2", "3"],
       "FilmActors": {
         "id": 13,
         "filmId": 4,
@@ -35,6 +37,7 @@
       "id": 3,
       "name": "Билл Найи",
       "photo": "http://source.com/3",
+      "films": ["1", "2", "3"],
       "FilmActors": {
         "id": 14,
         "filmId": 4,
@@ -45,6 +48,7 @@
       "id": 4,
       "name": "Билл Скарсгард",
       "photo": "http://source.com/4",
+      "films": ["1", "2", "3"],
       "FilmActors": {
         "id": 15,
         "filmId": 4,
@@ -55,6 +59,7 @@
       "id": 5,
       "name": "Пенелопа Круз",
       "photo": "http://source.com/5",
+      "films": ["1", "2", "3"],
       "FilmActors": {
         "id": 16,
         "filmId": 4,
@@ -67,6 +72,7 @@
       "id": 6,
       "name": "Лев Толстой",
       "photo": "http://source.com/6",
+      "films": ["1", "2", "3"],
       "FilmWriters": {
         "id": 4,
         "filmId": 4,
@@ -79,6 +85,7 @@
       "id": 7,
       "name": "Чарли Ванштейн",
       "photo": "http://source.com/7",
+      "films": ["1", "2", "3"],
       "FilmProducers": {
         "id": 7,
         "filmId": 4,
@@ -89,6 +96,7 @@
       "id": 8,
       "name": "Александр Роднянский",
       "photo": "http://source.com/8",
+      "films": ["1", "2", "3"],
       "FilmProducers": {
         "id": 8,
         "filmId": 4,
@@ -101,6 +109,7 @@
       "id": 11,
       "name": "Лоик Реми",
       "photo": "http://source.com/9",
+      "films": ["1", "2", "3"],
       "FilmCinematography": {
         "id": 4,
         "filmId": 4,
@@ -113,6 +122,7 @@
       "id": 12,
       "name": "50 Cent",
       "photo": "http://source.com/10",
+      "films": ["1", "2", "3"],
       "FilmMusicians": {
         "id": 4,
         "filmId": 4,
@@ -125,6 +135,7 @@
       "id": 9,
       "name": "Михаил Понтожа",
       "photo": "http://source.com/11",
+      "films": ["1", "2", "3"],
       "FilmDesigners": {
         "id": 7,
         "filmId": 4,
@@ -135,6 +146,7 @@
       "id": 10,
       "name": "Курбан Бердыев",
       "photo": "http://source.com/12",
+      "films": ["1", "2", "3"],
       "FilmDesigners": {
         "id": 8,
         "filmId": 4,
@@ -147,6 +159,7 @@
       "id": 11,
       "name": "Лоик Реми",
       "photo": "http://source.com/9",
+      "films": ["1", "2", "3"],
       "FilmEditors": {
         "id": 8,
         "filmId": 4,
@@ -157,6 +170,7 @@
       "id": 13,
       "name": "Татьяна Кальдерон",
       "photo": "http://source.com/13",
+      "films": ["1", "2", "3"],
       "FilmEditors": {
         "id": 7,
         "filmId": 4,
@@ -221,5 +235,62 @@
       }
     }
   ],
-  "reviews": []
+  "reviews": [
+    {
+      "id": 1,
+      "title": "UserName",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": 15,
+      "filmId": 5,
+      "userId": 5
+    },
+    {
+      "id": 2,
+      "title": "UserName1",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": 135,
+      "filmId": 5,
+      "userId": 5
+    },
+    {
+      "id": 3,
+      "title": "UserName2",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": 25,
+      "filmId": 5,
+      "userId": 5
+    },
+    {
+      "id": 4,
+      "title": "UserName3",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": 0,
+      "filmId": 5,
+      "userId": 5
+    },
+    {
+      "id": 5,
+      "title": "UserName4",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": -5,
+      "filmId": 5,
+      "userId": 5
+    },
+    {
+      "id": 6,
+      "title": "UserName5",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": 2,
+      "filmId": 5,
+      "userId": 5
+    },
+    {
+      "id": 7,
+      "title": "UserName6",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
+      "rating": 5,
+      "filmId": 5,
+      "userId": 5
+    }
+  ]
 }

@@ -19,13 +19,13 @@ const Breadcrumbs = () => {
     let pageTitle = Routes[href];
 
     return !pageTitle
-      ? 'not found'
+      ? href[0].toUpperCase() + href.slice(1)
       : Routes[href].replace(/-/g, ' ').replace(/oe/g, 'ö').replace(/ae/g, 'ä').replace(/ue/g, 'ü');
   };
 
   useEffect(() => {
     if (router) {
-      const linkPath = router.asPath.split('/');
+      const linkPath = router.asPath.split('/').map((link) => (link === 'watch' ? 'films' : link));
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {

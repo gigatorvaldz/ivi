@@ -20,3 +20,14 @@
   width: 2rem;
   height: 2rem;
 }
+
+.player {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-bottom: 56.25%;
+}
+
+.poster {
+  object-fit: cover;
+}

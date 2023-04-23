@@ -1,5 +1,5 @@
-import { Genres } from '@/constants/genres';
 import { ListItem } from '@/interfaces';
+import { Genres } from '@/constants/genres';
 
 type GenreLinks = ListItem[];
 

@@ -6,6 +6,23 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
+
+& * {
+  @extend %transition;
+
+}
+
+  @include onHover() {
+    cursor: pointer;
+
+    .button {
+      background-color: rgba($color: $primary-lightgray, $alpha: 0.5);
+    }
+
+    .caption {
+      color: white;
+    }
+  }
 }
 
 .button {

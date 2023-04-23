@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import styles from './Galery.module.scss';
 import GaleryCarousel from '@/UI/GaleryCarousel';
 import Link from 'next/link';
 import { Routes } from '@/constants/routes';
 import getEnumKeyByEnumValue from '../../helpers/getEnumKeyByValue';
 
+import styles from './Galery.module.scss';
 import classNames from 'classnames';
 import { BsChevronCompactRight } from 'react-icons/bs';
 
