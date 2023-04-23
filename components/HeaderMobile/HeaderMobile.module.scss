@@ -1,0 +1,89 @@
+.header {
+    background-color: $primary-color-1;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    max-width: $max-width;
+    padding: 0 36px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    background: transparent;
+    position: sticky;
+    z-index: 100;
+
+    .borderBottom {
+        background-color: rgba(255, 255, 255, 0.16);
+        width: 100%;
+        position: absolute;
+        z-index: 4;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+    }
+
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 72px;
+        font-size: 16px;
+        font-weight: 600;
+        color: $text-color-1;
+        transition: 0.15s ease-in-out;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & > *:not(:first-child) {
+                margin-left: 20px;
+                cursor: pointer;
+            }
+
+            .notification {
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+
+            .profile {
+                border-radius: 8px;
+                border: 2px solid $text-color-1;
+                transition: 0.3s ease-in-out;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 45px;
+                height: 45px;
+
+                &:hover {
+                    -webkit-box-shadow: 0px 5px 10px 2px rgba(255, 255, 255, 0.2);
+                    -moz-box-shadow: 0px 5px 10px 2px rgba(255, 255, 255, 0.2);
+                    box-shadow: 0px 5px 10px 2px rgba(255, 255, 255, 0.2);
+
+                    border: 2px solid #fff;
+                    color: #fff;
+                }
+            }
+
+            @include maxQ(small) {
+                .tablet {
+                    display: none;
+                }
+            }
+        }
+    }
+}

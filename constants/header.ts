@@ -94,8 +94,9 @@ export const Series = {
     ],
     line: [
         { title: "Новинки", href: '/new/series-new' },
-        { title: "Подборки", href: '/collections' },
         { title: "Иви.Рейтинг", href: '/series/all?ivi_rating_10_gte=7&sort=ivi&rating_part=main&rating_model=ready' },
+        { title: "Сериалы в HD", href: '/collections/series-hd' },
+        { title: "Бесплатные сериалы", href: '/collections/tvshow-free?sort=new' },
     ]
 }
 
@@ -139,8 +140,7 @@ export const Animation = {
     ],
     line: [
         { title: "Новинки", href: '/new/animation-new' },
-        { title: "Подборки", href: '/collections' },
-        { title: "Иви.Рейтинг", href: '/animation/all?ivi_rating_10_gte=7&sort=ivi&rating_part=main&rating_model=ready' },
+        { title: "Мультики в HD", href: '/collections/cartoons-hd' },
     ]
 }
 
