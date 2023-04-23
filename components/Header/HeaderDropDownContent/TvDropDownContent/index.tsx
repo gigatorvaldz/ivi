@@ -1,43 +1,10 @@
 import React from 'react';
 import css from './TvDropDownContent.module.scss';
-import { TV } from '@/constants/header';
+import { TV, federalChannels, entertainmentChannels } from '@/constants/header';
 import List from '@/UI/List';
 import Button from '@/UI/Button';
 import SubscriptionDropDownContent from '../SubscriptionDropDownContent';
 import TVDropDownSlider from './TVDropDownSlider';
-
-import img from '@/assets/header/TVSmallCard.jpg';
-import { TVSmallCardI } from '@/UI/TVSmallCard';
-
-const federalChannels: Array<TVSmallCardI> = [
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-];
-
-const entertainmentChannels = [
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-  { src: img, href: '/' },
-];
 
 const TvDropDownContent: React.FC = () => {
   return (
