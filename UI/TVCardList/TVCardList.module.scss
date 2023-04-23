@@ -1,0 +1,36 @@
+.container {
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -15px;
+
+        li {
+            width: 16%;
+            padding: 15px 15px 0 15px;
+
+            & > * {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+
+    .title {
+        color: #fff;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+@include maxQ("tablet-s") {
+    .container {
+        .list {
+            li {
+                width: 25%;
+            }
+        }
+    }
+}
