@@ -6,7 +6,7 @@
     color: white;
   }
 
-  p {
+  .paragraph {
     @include font(1.5rem, 2.2rem, 400);
     color: $primary-lightgray;
 

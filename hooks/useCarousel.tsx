@@ -28,19 +28,17 @@ export function useCarousel(
         setStepWidth(itemWidth * imagesListedPerSwap);
       }
 
-      let carouselWidth = carouselRef.current!.clientWidth;
+      let carouselWidth = carouselRef.current!.offsetWidth;
       let right = carouselTrackRef.current!.scrollWidth - carouselWidth;
       setLocation((prevState) => ({ ...prevState, right }));
     }
 
-    setTimeout(() => {
-      setInitialStepWidth();
-    }, 100);
+    setInitialStepWidth();
   }, []);
 
   function toLeft() {
     let left = location.left - stepWidth;
-    let carouselWidth = carouselRef.current!.clientWidth;
+    let carouselWidth = carouselRef.current!.offsetWidth;
     let right = carouselTrackRef.current!.scrollWidth - carouselWidth - left;
     if (location.left < stepWidth) {
       carouselTrackRef.current!.style.transform = `translateX(${0}px)`;
@@ -53,7 +51,7 @@ export function useCarousel(
 
   function toRight() {
     let left = location.left + stepWidth;
-    let carouselWidth = carouselRef.current!.clientWidth;
+    let carouselWidth = carouselRef.current!.offsetWidth;
     let right = carouselTrackRef.current!.scrollWidth - carouselWidth - left;
 
     if (location.right < stepWidth) {

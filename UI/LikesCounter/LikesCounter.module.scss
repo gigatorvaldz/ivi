@@ -3,25 +3,36 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+
   .icon {
+    color: $primary-lightgray;
+    width: 1.6rem;
+    height: 1.6rem;
     transition: color 0.2s;
     cursor: pointer;
+
     &:hover {
       color: #7e798f;
     }
+
     &:last-child {
       transform: scale(-1, 1);
     }
   }
+
   span {
     min-width: 42px;
     font-weight: 700;
     padding: 0 8px;
     text-align: center;
+
+    @include font(1.5rem, 2rem, 700);
   }
+
   .positiveLikes {
     color: #73a32f;
   }
+
   .negativeLikes {
     color: #ff542e;
   }

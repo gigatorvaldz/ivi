@@ -1,0 +1,46 @@
+.container {
+  max-width: max-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  @include onHover() {
+    cursor: pointer;
+    .name,
+    .surname {
+      color: white;
+    }
+  }
+}
+
+.avatarContainer {
+  position: relative;
+  width: 8.8rem;
+  height: 8.8rem;
+  object-fit: cover;
+
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+
+.name,
+.surname {
+  font-family: $font-sans;
+  color: rgba($color: white, $alpha: 0.85);
+  @include font(1.3rem, 1.6rem, 500);
+
+  @extend %transition;
+}
+
+.role {
+  font-family: $font-sans;
+  color: $primary-lightgray;
+  @include font(1.3rem, 1.6rem, 400);
+}

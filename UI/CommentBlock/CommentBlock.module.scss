@@ -1,0 +1,53 @@
+@use 'sass:color';
+
+.container {
+  background-color: $primary-color-2;
+  height: 16rem;
+  max-width: 28.6rem;
+  padding: 2rem;
+  border-radius: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  font-family: $font-sans;
+
+  @extend %transition;
+
+  @include onHover() {
+    cursor: pointer;
+    background-color: color.scale($primary-color-2, $lightness: 5%);
+  }
+}
+
+.infoBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author {
+  color: $primary-lightgray;
+  @include font(1.3rem, 1.6rem, 700);
+}
+
+.comment {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+
+  color: white;
+  @include font(1.5rem, 2.2rem, 400);
+}
+
+.date {
+  flex: 1 0 auto;
+
+  color: $primary-lightgray;
+  @include font(1.3rem, 1.6rem, 400);
+}

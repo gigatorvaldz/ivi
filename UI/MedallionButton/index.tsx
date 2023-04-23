@@ -1,5 +1,7 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styles from './MedallionButton.module.scss';
+import Link from 'next/link';
 
 type MedallionButtonProps = {
   text?: string | number;
@@ -8,8 +10,13 @@ type MedallionButtonProps = {
 };
 
 const MedallionButton: React.FC<MedallionButtonProps> = ({ text, src, caption }) => {
+  const router = useRouter();
+
   return (
-    <div className={styles.container}>
+    <Link
+      className={styles.container}
+      href='/'
+    >
       <div className={styles.button}>
         <div className={styles.content}>
           {text && <p className={styles.text}>{text}</p>}
@@ -17,7 +24,7 @@ const MedallionButton: React.FC<MedallionButtonProps> = ({ text, src, caption })
         </div>
       </div>
       <p className={styles.caption}>{caption}</p>
-    </div>
+    </Link>
   );
 };
 
