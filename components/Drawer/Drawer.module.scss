@@ -67,3 +67,21 @@
 .accordion {
     margin-top: 15px;
 }
+
+@include maxQ("tablet-s") {
+    .container {
+        .inner {
+            .subscription {
+                flex-direction: column;
+
+                & > * {
+                    width: 100%;
+                }
+
+                & > *:not(:first-child) {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

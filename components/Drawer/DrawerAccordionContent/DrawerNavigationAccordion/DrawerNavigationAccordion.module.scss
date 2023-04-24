@@ -49,13 +49,56 @@
                 flex-direction: column;
                 width: 100%;
 
-                & > *:not(:first-child){
+                & > *:not(:first-child) {
                     margin-top: 20px;
                 }
             }
 
             .widget {
                 width: 100%;
+            }
+        }
+    }
+}
+
+@include maxQ("tablet-s") {
+    .container {
+        .links {
+            .genres {
+                width: 100%;
+            }
+            .secondary {
+                flex-direction: column;
+                margin-right: 20px;
+                width: 100%;
+
+                & > *:first-child {
+                    padding-bottom: 20px;
+                    border-bottom: $border-primary;
+                }
+
+                & > *:last-child {
+                    padding-top: 20px;
+                }
+            }
+        }
+    }
+}
+
+@include maxQ("tablet-ps") {
+    .container {
+        .links {
+            flex-direction: column;
+
+            .genres {
+                padding-bottom: 20px;
+                border-bottom: $border-primary;
+            }
+
+            .secondary {
+                .info {
+                    margin-top: 20px;
+                }
             }
         }
     }
