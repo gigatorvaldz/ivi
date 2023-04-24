@@ -25,11 +25,11 @@ const BannerSlide: React.FC<IBannerSlide> = ({
     <Link href={href} className={css.slideContainer}>
       <div className={css.slideContent}>
         <div className={css.slideInfo}>
-          <Image src={title} className={css.title} alt="title" />
+          <Image src={title} className={css.title} loading='eager' alt="title" />
           <p style={{color: `${textColor}`}}>{info}</p>
           <Button styling="accent" primaryText={buttonText} />
         </div>
-        <Image src={backgroundImage} className={css.backgroundImage} alt="backgroundImage" />
+        <Image src={backgroundImage} className={css.backgroundImage} loading='eager' alt="backgroundImage" />
       </div>
     </Link>
   );

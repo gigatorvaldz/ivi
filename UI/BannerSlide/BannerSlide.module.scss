@@ -10,6 +10,20 @@
     position: relative;
     display: flex;
     align-items: flex-end;
+    .slideInfo {
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 46rem;
+      .title {
+        height: auto;
+        margin-bottom: 2rem;
+      }
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 2.4rem;
+      }
+    }
   }
   .backgroundImage {
     position: absolute;
@@ -21,18 +35,14 @@
     pointer-events: none;
     z-index: 0;
   }
-  .slideInfo {
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    max-width: 46rem;
-    .title {
-      height: auto;
-      margin-bottom: 2rem;
-    }
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 2.4rem;
-    }
+  .fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    border-radius: 2.6rem;
   }
 }

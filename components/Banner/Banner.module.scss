@@ -1,7 +1,7 @@
 .container {
-  // background-color: $primary-color-1;
-  margin-top: 24px;
-  height: 524px;
+  background-color: $primary-color-1;
+  padding-top: 24px;
+  height: 548px;
   width: auto;
   position: relative;
   display: flex;
@@ -64,7 +64,7 @@
         right: auto;
         position: absolute;
         left: 16px;
-        top: 50%;
+        top: 45%;
         transition: transform 0.4s, opacity 0.4s;
         font-size: 32px;
         height: 32px;

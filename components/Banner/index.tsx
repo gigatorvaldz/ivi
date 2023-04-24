@@ -3,14 +3,14 @@ import css from './Banner.module.scss';
 import classNames from 'classnames';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-export interface Slide {
+interface Slide {
   component: React.ReactNode;
 }
 
 const Banner: React.FC<{ slides: React.ReactElement<Slide>[] }> = ({ slides }) => {
   const [isAnimating, setIsAnimating] = useState<string>('');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [touchPosition, setTouchPosition] = useState<number>(0);
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -20,6 +20,7 @@ const Banner: React.FC<{ slides: React.ReactElement<Slide>[] }> = ({ slides }) =
   }, [currentIndex]);
 
   const handlePrevSlide = (): void => {
+    if (isAnimating) return;
     setTimeout(() => {
       setCurrentIndex(currentIndex === 0 ? slides.length - 1 : currentIndex - 1);
       setIsAnimating('prev');
@@ -27,6 +28,7 @@ const Banner: React.FC<{ slides: React.ReactElement<Slide>[] }> = ({ slides }) =
   };
 
   const handleNextSlide = (): void => {
+    if (isAnimating) return;
     setTimeout(() => {
       setCurrentIndex(currentIndex === slides.length - 1 ? 0 : currentIndex + 1);
       setIsAnimating('next');
@@ -46,20 +48,20 @@ const Banner: React.FC<{ slides: React.ReactElement<Slide>[] }> = ({ slides }) =
     if (touchPosition === null) return;
 
     const currentPosition = e.touches[0].clientX;
-    const direction = touchPosition - currentPosition;
+    const direction = currentPosition - touchPosition;
 
-    if (direction > 1000) handlePrevSlide();
-    if (direction < -1000) handleNextSlide();
+    if (direction > 10) handlePrevSlide();
+    if (direction < -10) handleNextSlide();
 
-    setTouchPosition(0);
+    setTouchPosition(null);
   };
-  
+
   const renderSlides = (): React.ReactNode => {
     const prevIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
     const nextIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
     const afterNextIndex = nextIndex === slides.length - 1 ? 0 : nextIndex + 1;
     const lastNeedIndex = afterNextIndex === slides.length - 1 ? 0 : afterNextIndex + 1;
-    
+
     return [prevIndex, currentIndex, nextIndex, afterNextIndex, lastNeedIndex].map((index) => {
       return React.cloneElement(slides[index]);
     });
