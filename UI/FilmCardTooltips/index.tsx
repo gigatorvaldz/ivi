@@ -15,8 +15,8 @@ const FilmCardButtons = () => {
 
   return (
     <div className={css.interactive}>
-      {items.map((e) => (
-        <Tooltip text={e.text}>{e.component}</Tooltip>
+      {items.map((e, index) => (
+        <Tooltip key={index} text={e.text}>{e.component}</Tooltip>
       ))}
     </div>
   );

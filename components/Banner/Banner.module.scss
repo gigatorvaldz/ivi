@@ -1,5 +1,4 @@
 .container {
-  background-color: $primary-color-1;
   padding-top: 24px;
   height: 548px;
   width: auto;
@@ -34,6 +33,7 @@
       }
     }
     .mainSlide {
+      pointer-events: none;
       height: 100%;
       margin-left: auto;
       margin-right: auto;
@@ -74,11 +74,11 @@
 }
 
 .nextSlide {
-    animation: next 0.6s ease-in-out;
+    animation: next 0.5s ease-in-out;
 }
 
 .prevSlide {
-    animation: prev 0.6s ease-in-out;
+    animation: prev 0.5s ease-in-out;
 }
 
 @keyframes next {

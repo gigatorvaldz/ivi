@@ -48,10 +48,10 @@ const Banner: React.FC<{ slides: React.ReactElement<Slide>[] }> = ({ slides }) =
     if (touchPosition === null) return;
 
     const currentPosition = e.touches[0].clientX;
-    const direction = currentPosition - touchPosition;
+    const direction = touchPosition - currentPosition;
 
-    if (direction > 10) handlePrevSlide();
-    if (direction < -10) handleNextSlide();
+    if (direction > 10) handleNextSlide();
+    if (direction < -10) handlePrevSlide();
 
     setTouchPosition(null);
   };

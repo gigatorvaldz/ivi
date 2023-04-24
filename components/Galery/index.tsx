@@ -7,12 +7,14 @@ import getEnumKeyByEnumValue from '../../helpers/getEnumKeyByValue';
 
 import classNames from 'classnames';
 import { BsChevronCompactRight } from 'react-icons/bs';
+import { StaticImageData } from 'next/image';
 
 type GaleryProps = {
   title: string;
   slides: React.ReactNode[];
   isTitleLink?: boolean;
   arrowsBottomOffset?: number;
+  titleImage?: StaticImageData;
 };
 
 const Galery: React.FC<GaleryProps> = ({
@@ -20,6 +22,7 @@ const Galery: React.FC<GaleryProps> = ({
   slides,
   isTitleLink = true,
   arrowsBottomOffset = 0,
+  titleImage
 }) => {
   return (
     <section className={styles.galerySection}>
