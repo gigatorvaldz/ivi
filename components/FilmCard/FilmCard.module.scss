@@ -7,7 +7,7 @@
   height: 279px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   &:hover {
     .imageSection {
       transform-origin: bottom;
@@ -95,6 +95,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 10px;
   }
   .extra {
     color: $accent-color-1;

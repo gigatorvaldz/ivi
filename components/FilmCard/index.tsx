@@ -31,13 +31,8 @@ const FilmCard: React.FC = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div className={css.title}>
-            <span>Зеленая книга</span>
-          </div>
-          <div className={css.extra}>
-            <span>Подписка</span>
-          </div>
+        <div className={css.title}>
+          <span>Зеленая книга</span>
         </div>
       </div>
     </Link>

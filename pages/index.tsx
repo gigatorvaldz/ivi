@@ -7,8 +7,8 @@ import Footer from '@/components/Footer';
 import React from 'react';
 import { NextPage } from 'next';
 import Banner from '@/components/Banner';
-import photo from '/assets/banner/test.png';
-import photo1 from '/assets/banner/test2.png';
+import { bannerSlides } from '@/constants/bannerSlides';
+import BannerSlide from '@/UI/BannerSlide';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,18 +28,16 @@ const Home: NextPage<IHome> = ({ children }) => {
       <main>
         {children}
         <Banner
-          slides={[
-            <Image src={photo1} alt="0" />,
-            <Image src={photo} alt="1" />,
-            <Image src={photo1} alt="2" />,
-            <Image src={photo} alt="3" />,
-            <Image src={photo1} alt="4" />,
-            <Image src={photo} alt="5" />,
-            <Image src={photo} alt="6" />,
-            <Image src={photo1} alt="7" />,
-            <Image src={photo} alt="8" />,
-            <Image src={photo1} alt="9" />,
-          ]}
+          slides={bannerSlides.map((e) => (
+            <BannerSlide
+              backgroundImage={e.backgroundImage}
+              title={e.title}
+              info={e.info}
+              buttonText={e.buttonText}
+              href={e.href}
+              textColor={e.textColor}
+            />
+          ))}
         />
         <FilmCard />
         <FilmCard />

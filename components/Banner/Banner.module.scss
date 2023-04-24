@@ -40,18 +40,11 @@
       width: 1216px;
       .carouselContainer {
         height: 100%;
+        width: 6160px;
         display: flex;
         flex-direction: row;
+        position: relative;
         transform: translateX(-2464px);
-        img {
-          width: auto;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 26px;
-          margin-right: 16px;
-          pointer-events: none;
-          backface-visibility: hidden;
-        }
       }
     }
     .rightSlide {
@@ -81,11 +74,11 @@
 }
 
 .nextSlide {
-    animation: next 0.8s ease-in-out;
+    animation: next 0.6s ease-in-out;
 }
 
 .prevSlide {
-    animation: prev 0.8s ease-in-out;
+    animation: prev 0.6s ease-in-out;
 }
 
 @keyframes next {
