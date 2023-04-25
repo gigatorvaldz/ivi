@@ -1,0 +1,85 @@
+.galerySection {
+  background-color: $primary-color-1;
+
+  & .container {
+    max-width: max-content;
+    padding: 2.4rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: max-content;
+  font-family: $font-sans;
+  white-space: nowrap;
+  color: white;
+  @include font(2.4rem, 2.8rem, 700);
+
+  transition: all ease-in 0.15s;
+
+  .link {
+    transition: all ease-in 0.15s;
+    border-bottom: 1px solid $primary-lightgray;
+
+    @include onHover() {
+      color: $accent-color-1;
+      border-color: $accent-color-1;
+    }
+  }
+}
+
+.trailerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+
+  @include onHover() {
+    cursor: pointer;
+
+    .filmPoster {
+      transform: scale(1.05);
+    }
+
+    .trailerDescription {
+      color: white;
+    }
+  }
+}
+
+.filmPoster {
+  position: relative;
+  max-width: 28rem;
+  min-height: 16rem;
+
+  @extend %transition;
+}
+
+.poster {
+  object-fit: cover;
+}
+
+.descriptionBlock {
+  font-family: $font-sans;
+
+  .trailerDescription {
+    color: rgba(255, 255, 255, 0.85);
+    @include font(1.5rem, 1.5rem, 500);
+
+    @extend %transition;
+  }
+
+  .trailerDuration {
+    margin-top: 0.5rem;
+    color: $primary-lightgray;
+    @include font(1.3rem, 1.6rem, 400);
+  }
+}

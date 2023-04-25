@@ -1,0 +1,15 @@
+.container {
+  width: max-content;
+
+  display: inline-block;
+  background-color: rgba($color: $primary-lightgray, $alpha: 0.16);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem;
+  text-align: center;
+}
+
+.badgeName {
+  font-family: $font-sans;
+  color: white;
+  @include font(1.3rem, 1.6rem, 500);
+}

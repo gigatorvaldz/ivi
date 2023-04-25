@@ -1,0 +1,87 @@
+.container {
+    -webkit-overflow-scrolling: touch;
+    background-color: #100e19;
+    bottom: 0;
+    // display: none;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    scroll-behavior: smooth;
+    top: 0;
+    z-index: 10;
+    color: #fff;
+    font-size: 25px;
+
+    .inner {
+        padding: 36px;
+        padding-bottom: calc(72px + env(safe-area-inset-bottom));
+        padding-top: calc(72px + env(safe-area-inset-top));
+        max-width: $max-width;
+        margin: 0 auto;
+
+        .navigation-list {
+            & > a:not(:first-child) {
+                h3 {
+                    margin-top: 20px;
+                }
+            }
+
+            & > *:not(a) {
+                margin-top: 20px;
+            }
+
+            & > a {
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    opacity: 0.72;
+                }
+            }
+        }
+
+        .navigation-group {
+            padding: 32px 0;
+            border-bottom: $border-primary;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .subscription {
+            display: flex;
+            justify-content: space-between;
+
+            & > * {
+                width: calc(50% - 12px);
+            }
+        }
+    }
+}
+
+.accordion {
+    margin-top: 15px;
+}
+
+@include maxQ("tablet-s") {
+    .container {
+        .inner {
+            .subscription {
+                flex-direction: column;
+
+                & > * {
+                    width: 100%;
+                }
+
+                & > *:not(:first-child) {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

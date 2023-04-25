@@ -27,3 +27,16 @@ export interface Poster {
   title?: string;
   extra?: string;
 }
+
+export type HeaderItem = {
+  title: string;
+  dropdown: React.ReactNode;
+  href: string;
+};
+
+export interface HeaderControlsItem {
+  title: React.ReactNode;
+  dropdown: React.ReactNode;
+  href: string;
+  name: string;
+}

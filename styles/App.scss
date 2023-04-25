@@ -16,3 +16,7 @@ body {
     font-family: "Inter", sans-serif;
     background-color: $primary-color-1;
 }
+
+.drawer-opened{
+    overflow: hidden;
+}

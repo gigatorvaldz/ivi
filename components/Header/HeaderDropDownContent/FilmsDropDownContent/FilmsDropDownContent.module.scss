@@ -1,0 +1,73 @@
+.container {
+    width: 100%;
+    min-height: 330px;
+    display: flex;
+    justify-content: space-between;
+    @include font(1.5rem, 130%, $font-weight-semibold);
+
+    h3 {
+        color: #fff;
+        margin-bottom: 15px;
+        @include font(1.5rem, 130%, 600);
+    }
+
+    .content {
+        display: flex;
+        max-width: 600px;
+        width: 100%;
+
+        .items {
+            display: flex;
+            align-items: flex-start;
+
+            .genres {
+                display: flex;
+                flex-direction: column;
+
+                .lists {
+                    display: flex;
+                }
+            }
+        }
+
+        .linklist {
+            margin-left: 50px;
+        }
+
+        .others {
+            align-self: start;
+            margin-right: 70px;
+
+            & > *:not(:first-child) {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .subscription {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .subcarousel {
+            background-color: #312b45;
+            overflow: hidden;
+            border-radius: 2rem;
+            height: 264px;
+            width: 244px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            -webkit-box-shadow: 0px 5px 23px 2px rgba(49, 43, 69, 0.2) inset;
+            -moz-box-shadow: 0px 5px 23px 2px rgba(49, 43, 69, 0.2) inset;
+            box-shadow: 0px 5px 23px 2px rgba(49, 43, 69, 0.2) inset;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.subscriptionWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

@@ -1,0 +1,39 @@
+.container {
+    .controls {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: .2s ease-in-out;
+
+        &:hover {
+            opacity: 0.72;
+        }
+
+        &:active{
+            color: $text-color-1;
+        }
+
+        .label {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            height: 20px;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        & > *:not(:first-child) {
+            margin-left: 10px;
+        }
+    }
+
+    .children {
+        overflow: hidden;
+    }
+}
+
+.opened {
+    transform: rotate(180deg);
+}

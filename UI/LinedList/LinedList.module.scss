@@ -1,0 +1,30 @@
+.list {
+    color: $text-color-1;
+    margin-left: 15px;
+    li {
+        font-size: 15px;
+        height: 20px;
+        transition: 0.2s ease-in-out;
+        margin-bottom: 5px;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.line {
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.16);
+
+    .selector {
+        width: 1px;
+        background-color: #fff;
+        height: 20px;
+        transition: 0.2s ease-in-out;
+    }
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+}

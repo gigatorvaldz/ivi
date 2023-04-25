@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import css from './Button.module.scss';
 import classNames from 'classnames';
 
-export type ButtonStylingT = 'primary' | 'accent';
+export type ButtonStylingT = 'primary' | 'accent' | 'lighter';
 
 interface IButton {
   onClickHandler?: () => void;

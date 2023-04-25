@@ -1,0 +1,71 @@
+.container {
+  max-width: min-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+
+& * {
+  @extend %transition;
+
+}
+
+  @include onHover() {
+    cursor: pointer;
+
+    .button {
+      background-color: rgba($color: $primary-lightgray, $alpha: 0.5);
+    }
+
+    .caption {
+      color: white;
+    }
+  }
+}
+
+.button {
+  background-color: rgba($color: $primary-lightgray, $alpha: 0.16);
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 1.5rem;
+}
+
+.content {
+  background-color: rgba(115, 163, 47);
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 1rem;
+
+  .text {
+    font-family: $font-sans;
+    color: white;
+    @include font(1.5rem, 2rem, 500);
+    text-align: center;
+  }
+}
+
+.img {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.caption {
+  font-family: $font-sans;
+  color: $primary-lightgray;
+  @include font(1.3rem, 1.6rem, 400);
+  text-align: center;
+}

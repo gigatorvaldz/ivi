@@ -1,0 +1,44 @@
+.container {
+  padding: 1.6rem 0 3.2rem 0;
+  margin: 3.2rem 0 0.8rem 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.6rem;
+
+  font-family: $font-sans;
+  color: rgba(255, 255, 255, 0.56);
+  @include font(1.5rem, 2.2rem, 400);
+
+  border: 1px solid rgba($color: $primary-lightgray, $alpha: 0.16);
+  border-left: none;
+  border-right: none;
+}
+
+.qualityAndSoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  span {
+    color: rgba(255, 255, 255, 0.78);
+  }
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.language {
+  color: white;
+}
+
+.qualities {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

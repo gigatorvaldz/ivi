@@ -21,6 +21,10 @@
   transition: transform ease-out 0.35s;
 }
 
+.carouselItem {
+  flex: 1 0 auto;
+}
+
 .carouselItem:not(:last-of-type) {
   padding-right: 2.4rem;
   list-style: none;
