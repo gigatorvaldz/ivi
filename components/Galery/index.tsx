@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Galery.module.scss';
 import GaleryCarousel from '@/UI/GaleryCarousel';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Routes } from '@/constants/routes';
 import getEnumKeyByEnumValue from '../../helpers/getEnumKeyByValue';
 

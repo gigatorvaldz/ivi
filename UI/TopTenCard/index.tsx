@@ -1,7 +1,6 @@
 import React from 'react';
 import css from './TopTenCard.module.scss';
-import { StaticImageData } from 'next/image';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 interface ITopTenCard {

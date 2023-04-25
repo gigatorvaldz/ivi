@@ -11,7 +11,7 @@ const FilmCard: React.FC = () => {
     <Link href="/666">
       <div className={css.container}>
         <div className={css.imageSection}>
-          <Image className={css.logo} src={poster} alt="poster" fill />
+          <Image className={css.logo} src={poster} alt="poster" />
           <Image className={css.ageBadge} src={ageBadge} alt="ageBadge" width={24} height={16} />
           <div className={css.properties}>
             <FilmCardButtons />

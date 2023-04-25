@@ -12,6 +12,7 @@ import Galery from '@/components/Galery';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
 import { topTenCards } from '@/constants/topTenCards';
 import TopTenCard from '@/UI/TopTenCard';
+import titleBadge from '/assets/topTen/titleBadge.svg'
 
 interface IHome {
   children: React.ReactNode;
@@ -42,7 +43,8 @@ const Home: NextPage<IHome> = ({ children }) => {
         </section>
         <Galery title="Рекомендую посмотреть" slides={FilmCardArray} />
         <Galery
-          title="Топ 10 за неделю"
+          titleImage={titleBadge}
+          title="за неделю"
           slides={topTenCards.map((e, index) => (
             <TopTenCard
               key={index}
