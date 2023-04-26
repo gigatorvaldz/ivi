@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    align-items: center;
+
+    .mainimage{
+        flex-grow: 1;
+    }
+
+    .secondary {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-left: 20px;
+
+        .info {
+            flex-grow: 1;
+
+            h2 {
+                font-size: 15px;
+                line-height: 22px;
+                font-weight: 500;
+                font-style: normal;
+                color: #fff;
+            }
+
+            p {
+                font-size: 13px;
+                line-height: 16px;
+                font-weight: 500;
+                font-style: normal;
+                color: $text-color-1;
+            }
+        }
+    }
+}
+
+@include maxQ("tablet-ps") {
+    .container {
+        .secondary {
+            flex-direction: column;
+        }
+
+        .button {
+            margin-top: 20px;
+            & > * {
+                width: 100%;
+            }
+        }
+    }
+}
