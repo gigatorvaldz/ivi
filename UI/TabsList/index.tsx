@@ -3,6 +3,7 @@ import css from './TabsList.module.scss';
 import { TabsListItem } from '@/interfaces';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
+
 interface ITabsList {
   items: TabsListItem[];
 }

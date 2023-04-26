@@ -1,6 +1,5 @@
 .container {
-  padding-top: 24px;
-  height: 548px;
+  height: 524px;
   width: auto;
   position: relative;
   display: flex;
@@ -33,7 +32,6 @@
       }
     }
     .mainSlide {
-      pointer-events: none;
       height: 100%;
       margin-left: auto;
       margin-right: auto;

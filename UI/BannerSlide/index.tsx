@@ -27,7 +27,9 @@ const BannerSlide: React.FC<IBannerSlide> = ({
         <div className={css.slideInfo}>
           <Image src={title} className={css.title} loading='eager' alt="title" />
           <p style={{color: `${textColor}`}}>{info}</p>
-          <Button styling="accent" primaryText={buttonText} />
+          <div className={css.buttonBlock}>
+            <Button styling="accent" primaryText={buttonText} />
+          </div>
         </div>
         <Image src={backgroundImage} className={css.backgroundImage} loading='eager' alt="backgroundImage" />
       </div>

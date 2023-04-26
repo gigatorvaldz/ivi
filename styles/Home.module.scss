@@ -1,9 +1,6 @@
 .main {
   min-height: 100vh;
-  .buttons {
-    margin-top: 2.4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .description {
+    padding: 2.4rem 0;
   }
 }

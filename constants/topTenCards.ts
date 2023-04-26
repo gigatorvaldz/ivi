@@ -30,14 +30,14 @@ import position0 from '/assets/topTen/position0.svg';
 import poster10 from '/assets/topTen/poster10.png';
 
 export const topTenCards = [
-    {title: title1, position: position1, poster: poster1, href: '/124'},
-    {title: title2, position: position2, poster: poster2, href: '/124'},
-    {title: title3, position: position3, poster: poster3, href: '/124'},
-    {title: title4, position: position4, poster: poster4, href: '/124'},
-    {title: title5, position: position5, poster: poster5, href: '/124'},
-    {title: title6, position: position6, poster: poster6, href: '/124'},
-    {title: title7, position: position7, poster: poster7, href: '/124'},
-    {title: title8, position: position8, poster: poster8, href: '/124'},
-    {title: title9, position: position9, poster: poster9, href: '/124'},
-    {title: title10, position: position0, poster: poster10, href: '/124'},
-]
+  { title: title1, position: [position1], poster: poster1, href: '/124' },
+  { title: title2, position: [position2], poster: poster2, href: '/124' },
+  { title: title3, position: [position3], poster: poster3, href: '/124' },
+  { title: title4, position: [position4], poster: poster4, href: '/124' },
+  { title: title5, position: [position5], poster: poster5, href: '/124' },
+  { title: title6, position: [position6], poster: poster6, href: '/124' },
+  { title: title7, position: [position7], poster: poster7, href: '/124' },
+  { title: title8, position: [position8], poster: poster8, href: '/124' },
+  { title: title9, position: [position9], poster: poster9, href: '/124' },
+  { title: title10, position: [position1, position0], poster: poster10, href: '/124' },
+];

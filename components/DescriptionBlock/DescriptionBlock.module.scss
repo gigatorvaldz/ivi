@@ -6,6 +6,12 @@
     color: white;
   }
 
+  .descriptionSubTitle {
+    @include font(2rem, 120%, 700);
+    color: white;
+    width: 75%;
+  }
+
   .paragraph {
     @include font(1.5rem, 2.2rem, 400);
     color: $primary-lightgray;
@@ -13,6 +19,11 @@
     &:not(:first-of-type) {
       margin-top: 0.8rem;
     }
+  }
+
+  .mainPageParagraph {
+    margin-top: 1.2rem;
+    width: 75%;
   }
 
   .toggleDesciption {

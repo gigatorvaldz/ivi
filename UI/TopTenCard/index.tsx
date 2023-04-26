@@ -4,7 +4,7 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 interface ITopTenCard {
-  position: StaticImageData;
+  position: StaticImageData[];
   title: StaticImageData;
   poster: StaticImageData;
   href: string;
@@ -19,7 +19,11 @@ const TopTenCard: React.FC<ITopTenCard> = ({ position, title, poster, href }) =>
           <Image src={poster} className={css.poster} alt="poster" />
           <div className={css.info}>
             <Image src={title} alt="title" />
-            <Image src={position} className={css.position} alt="position" />
+            <div>
+              {position.map((e, index) => (
+                <Image key={index} src={e} className={css.position} alt="position" />
+              ))}
+            </div>
           </div>
         </div>
       </Link>
