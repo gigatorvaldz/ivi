@@ -16,6 +16,8 @@ import { description } from '@/constants/mainPageDescriptionBlock';
 import TeaserList from '@/UI/TeaserList';
 import lightning from '/assets/mainPage/lightning.svg';
 import gift from '/assets/mainPage/gift.svg';
+import { collections } from '@/constants/collections';
+import CollectionItem from '@/UI/CollectionItem';
 
 interface IHome {
   children: React.ReactNode;
@@ -51,6 +53,18 @@ const Home: NextPage<IHome> = ({ children }) => {
             />
           </div>
         </section>
+        <Galery 
+          isTitleLink={false}
+          title='Подборки'
+          slides={collections.map((e, index) => (
+            <CollectionItem 
+              key={index}
+              title={e.title}
+              image={e.image}
+              href={e.href}
+            />
+          ))}
+        />
         <Galery
           titleImage={titleBadge}
           title="за неделю"

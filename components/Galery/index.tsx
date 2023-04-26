@@ -23,22 +23,25 @@ const Galery: React.FC<GaleryProps> = ({
   slides,
   isTitleLink = true,
   arrowsBottomOffset = 0,
-  titleImage
+  titleImage,
 }) => {
   return (
     <section className={styles.galerySection}>
       <div className="wrapper">
         <div className={styles.container}>
-          {!isTitleLink && <h2 className={styles.heading}>{title}</h2>}
-          {isTitleLink && (
-            <Link
-              href={`/${getEnumKeyByEnumValue(Routes, title)}`}
-              className={classNames(styles.heading, styles.link)}
-            >
-              {title}
-              <BsChevronCompactRight className={styles.iconArrow} />
-            </Link>
-          )}
+          <div className={styles.titleSection}>
+            {titleImage && <Image src={titleImage} alt='titleImage' />}
+            {!isTitleLink && <h2 className={styles.heading}>{title}</h2>}
+            {isTitleLink && (
+              <Link
+                href={`/${getEnumKeyByEnumValue(Routes, title)}`}
+                className={classNames(styles.heading, styles.link)}
+              >
+                {title}
+                <BsChevronCompactRight className={styles.iconArrow} />
+              </Link>
+            )}
+          </div>
           <GaleryCarousel
             buttonsOutside
             itemsWidthAreEqual

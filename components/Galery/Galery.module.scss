@@ -10,7 +10,13 @@
     gap: 2rem;
   }
 }
+.titleSection {
+  display: flex;
 
+  img {
+    margin-right: .8rem;
+  }
+}
 .heading {
   display: flex;
   justify-content: space-between;
