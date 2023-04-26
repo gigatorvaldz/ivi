@@ -1,0 +1,27 @@
+.container {
+  width: 28.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.2rem;
+  cursor: pointer;
+  &:hover {
+    img {
+      transform: scale(1.03);
+    }
+    span {
+      color: white;
+    }
+  }
+  img {
+    border-radius: 0.8rem;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s;
+  }
+  span {
+    color: #d9d7e0;
+    transition: color 0.4s;
+    @include font(1.5rem, 125%, 500);
+  }
+}
