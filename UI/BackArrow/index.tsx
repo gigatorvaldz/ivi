@@ -13,7 +13,7 @@ const BackArrow: React.FC<IBackArrow> = ({ redirectTo }) => {
   return (
     <div className={css.container} onClick={() => router.back()}>
       <MdOutlineArrowBackIosNew className={css.icon} />
-      <span>К {redirectTo}у</span>
+      <span>{redirectTo}</span>
     </div>
   );
 };
