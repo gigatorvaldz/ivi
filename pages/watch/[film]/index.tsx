@@ -1,5 +1,5 @@
 import { NextPage, GetServerSideProps } from 'next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header/index';
 import Footer from '@/components/Footer/index';
 import Meta from '@/components/Meta';
@@ -22,6 +22,7 @@ import styles from './filmPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
 import Player from '@/components/Player';
 import { Film } from '@/interfaces/Film';
+import PopupComments from '@/components/PopupComments';
 
 type FilmPageProps = {
   film: Film;
@@ -29,6 +30,14 @@ type FilmPageProps = {
 
 const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
   const { name: firstCountry, englishName: firstCountryEng } = film.countries[0];
+  const [visibleComments, setVisibleComments] = useState<boolean>(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.asPath.split('?').slice(-1).join('') === 'comments') setVisibleComments(true);
+    else setVisibleComments(false);
+  }, [router])
 
   return (
     <>
@@ -119,7 +128,7 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
           </div>
         </div>
       </section>
-
+      <PopupComments visibleComments={visibleComments} title="Зелёная книга" genre="Фильм" year={2018} /> 
       <Footer />
     </>
   );
@@ -127,6 +136,7 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
 
 import fsPromises from 'fs/promises';
 import path from 'path';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
   // const { id } = context.params;
