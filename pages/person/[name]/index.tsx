@@ -11,6 +11,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ActionFilmCardI } from '@/UI/ActionFilmCard';
 import ActionFilmCardList from '@/components/ActionFilmCardList';
+import Link from 'next/link';
 
 const film = {
   id: 4,
@@ -73,7 +74,7 @@ const PersonPage: NextPage<PersonPageI> = () => {
             <h2 className={css.title}>Адам Сэндлер</h2>
             <ul className={css.anchorlinklist}>
               <li className={css.anchorlink}>
-                <a href="#filmography">18 фильмов</a>
+                <Link passHref replace href="#filmography">18 фильмов</Link>
               </li>
             </ul>
           </div>

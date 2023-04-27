@@ -1,6 +1,5 @@
 import React from 'react';
 import st from './HeaderDropDown.module.scss';
-import { AnimatePresence, motion } from 'framer-motion';
 
 interface DropDownProps {
   children?: React.ReactNode;
