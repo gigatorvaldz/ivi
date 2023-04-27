@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import GaleryCarousel from '@/UI/GaleryCarousel';
-import Link from 'next/link';
 import { Film } from '@/interfaces/Film';
 import CommentBlock from '../../UI/CommentBlock';
+import { useRouter } from 'next/router';
 
 import styles from './CommentsGalery.module.scss';
 import classNames from 'classnames';
@@ -14,13 +14,18 @@ type CommentsGaleryProps = {
 };
 
 const CommentsGalery: React.FC<CommentsGaleryProps> = ({ film, arrowsBottomOffset = 0 }) => {
+  const router = useRouter();
+
   return (
     <section className={styles.galerySection}>
       <div className="wrapper">
         <div className={styles.container}>
-          <Link href={`/}`} className={classNames(styles.heading, styles.link)}>
+          <span
+            onClick={() => router.push('/watch/greenbook?comments', undefined, { shallow: true })}
+            className={classNames(styles.heading, styles.link)}
+          >
             Комментарии <span className={styles.commentsCount}>{film.reviews.length}</span>
-          </Link>
+          </span>
           <p className={styles.filmTitle}>О фильме «{film.name}»</p>
 
           <GaleryCarousel

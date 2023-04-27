@@ -6,16 +6,18 @@ import CommentsList from '@/UI/CommentsList/CommentsList';
 import BackArrow from '@/UI/BackArrow';
 import TabsList from '@/UI/TabsList';
 import AsidePoster from '@/UI/AsidePoster';
+import { useRouter } from 'next/router';
 
 interface IPopupComments {
   title: string;
   genre: string;
   year: number;
+  visibleComments: boolean;
 }
 
-const PopupComments: React.FC<IPopupComments> = ({ title, genre, year }) => {
+const PopupComments: React.FC<IPopupComments> = ({ title, genre, year, visibleComments }) => {
   return (
-    <Modal>
+    <Modal visible={visibleComments}>
       <div className={css.container}>
         <BackArrow redirectTo="фильм" />
         <div className={css.inner}>

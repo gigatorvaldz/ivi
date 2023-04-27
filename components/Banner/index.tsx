@@ -14,7 +14,8 @@ const Banner: React.FC<{ slides: React.ReactElement<Slide>[] }> = ({ slides }) =
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      handleNextSlide();
+      setCurrentIndex(currentIndex === slides.length - 1 ? 0 : currentIndex + 1);
+      setIsAnimating('next');
     }, 12000);
     return () => clearInterval(intervalId);
   }, [currentIndex]);

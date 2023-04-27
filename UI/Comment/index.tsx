@@ -85,7 +85,7 @@ const Comment: React.FC<CommentItem> = ({ author, date, text, likes, children, l
           )}
         </div>
       </li>
-      {children && children.map((child) => <Comment {...child} level={1} />)}
+      {children && children.map((child, index) => <Comment key={index} {...child} level={1} />)}
     </div>
   );
 };

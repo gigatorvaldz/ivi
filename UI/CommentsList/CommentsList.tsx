@@ -67,8 +67,9 @@ const CommentsList: React.FC = () => {
   return (
     <>
       <ul className={css.container}>
-        {slicedComments.map((e) => (
+        {slicedComments.map((e, index) => (
           <Comment
+            key={index}
             text={e.text}
             author={e.author}
             date={e.date}
