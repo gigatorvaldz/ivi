@@ -242,7 +242,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": 15,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     },
     {
       "id": 2,
@@ -250,7 +251,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": 135,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     },
     {
       "id": 3,
@@ -258,7 +260,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": 25,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     },
     {
       "id": 4,
@@ -266,7 +269,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": 0,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     },
     {
       "id": 5,
@@ -274,7 +278,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": -5,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     },
     {
       "id": 6,
@@ -282,7 +287,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": 2,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     },
     {
       "id": 7,
@@ -290,7 +296,8 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem vitae dolorum illo odio suscipit laudantium blanditiis eos explicabo, commodi aliquid vel veritatis quia minus?",
       "rating": 5,
       "filmId": 5,
-      "userId": 5
+      "userId": 5,
+      "children": []
     }
   ]
 }

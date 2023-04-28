@@ -16,7 +16,7 @@ const ContentCreators: React.FC<IContentCreators> = ({ creators }) => {
           <ul key={index} className={css.galleryList}>
             {personArray.person.map((e, index) => (
               <li key={index}>
-                <PersonAvatar person={e} showFilmsCount />
+                <PersonAvatar person={e} showFilmsCount avatarType='large' />
               </li>
             ))}
           </ul>

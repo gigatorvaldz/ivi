@@ -131,13 +131,16 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
       </section>
       <PopupFilm
         visiblePopup={visiblePopup}
+        comments={film.reviews}
         creators={[
-          {profession: 'Актёры', person: film.actors},
-          {profession: 'Дизайнеры', person: film.designers},
           {profession: 'Режиссёры', person: film.directors},
-          {profession: 'Композиторы', person: film.musicians},
+          {profession: 'Актёры', person: film.actors},
           {profession: 'Продюсеры', person: film.producers},
+          {profession: 'Художники', person: film.designers},
           {profession: 'Сценаристы', person: film.writers},
+          {profession: 'Композиторы', person: film.musicians},
+        // {profession: 'Монтаж', person: film.?},
+        // {profession: 'Переводчик', person: film.?}, 
         ]}
         title={film.name}
         genre="Фильм"

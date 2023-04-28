@@ -4,16 +4,17 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 4px;
-  width: 20px;
-  height: 20px;
-  text-align: center;
+  border-radius: .4rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   span {
-    font-size: 13px;
-    font-weight: 500;
+    @include font(1.2rem, 120%, 500)
   }
   .icon {
-    width: 16px;
-    height: 16px;
+    width: 1.6rem;
+    height: 1.6rem;
   }
 }

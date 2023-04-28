@@ -9,7 +9,7 @@ import AsidePoster from '@/UI/AsidePoster';
 import { useRouter } from 'next/router';
 import ContentCreators from '../ContentCreators';
 import { CreatorsBlock } from '@/interfaces';
-import { tabsListItems } from '@/constants/tabsListItems';
+import { Review } from '@/interfaces/Review';
 
 interface IPopupFilm {
   title: string;
@@ -17,6 +17,7 @@ interface IPopupFilm {
   year: number;
   visiblePopup: boolean;
   creators: CreatorsBlock[];
+  comments: Review[];
 }
 
 const PopupFilm: React.FC<IPopupFilm> = ({
@@ -25,10 +26,16 @@ const PopupFilm: React.FC<IPopupFilm> = ({
   year,
   visiblePopup,
   creators,
+  comments
 }) => {
   const [contentType, setContentType] = useState<string>('');
   const router = useRouter();
-
+  
+  const tabsListItems = [
+    { title: 'Создатели', href: 'person' },
+    { title: 'Комментарии', count: comments.length, href: 'comments' },
+  ];
+  
   useEffect(() => {
     const query = router.asPath.split('?').slice(-1).join('');
     if (query === 'comments') setContentType('comments');
@@ -50,7 +57,7 @@ const PopupFilm: React.FC<IPopupFilm> = ({
           {contentType === 'comments' ? (
             <>
               <CommentsForm />
-              <CommentsList />
+              <CommentsList items={comments} />
             </>
           ) : (
             <ContentCreators creators={creators} />
