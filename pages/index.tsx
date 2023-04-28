@@ -19,17 +19,12 @@ import gift from '/assets/mainPage/gift.svg';
 import { collections } from '@/constants/collections';
 import CollectionItem from '@/UI/CollectionItem';
 
-interface IHome {
-  children: React.ReactNode;
-}
-
-const Home: NextPage<IHome> = ({ children }) => {
+const Home: NextPage = () => {
   return (
     <>
       <Meta title="Главная" description="Онлайн кинотеатр Иви" />
       <Header />
       <main className={css.main}>
-        {children}
         <Banner
           slides={bannerSlides.map((e, index) => (
             <BannerSlide
