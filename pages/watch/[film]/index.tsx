@@ -22,7 +22,7 @@ import styles from './filmPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
 import Player from '@/components/Player';
 import { Film } from '@/interfaces/Film';
-import PopupComments from '@/components/PopupComments';
+import PopupFilm from '@/components/PopupFilm';
 
 type FilmPageProps = {
   film: Film;
@@ -30,14 +30,15 @@ type FilmPageProps = {
 
 const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
   const { name: firstCountry, englishName: firstCountryEng } = film.countries[0];
-  const [visibleComments, setVisibleComments] = useState<boolean>(false);
-
+  const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
   const router = useRouter();
+  const currentQuery = router.asPath.split('?');
 
   useEffect(() => {
-    if (router.asPath.split('?').slice(-1).join('') === 'comments') setVisibleComments(true);
-    else setVisibleComments(false);
-  }, [router])
+    if (currentQuery.length !== 1 && currentQuery.slice(-1).join('') !== 'search')
+      setVisiblePopup(true);
+    else setVisiblePopup(false);
+  }, [router]);
 
   return (
     <>
@@ -128,7 +129,20 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
           </div>
         </div>
       </section>
-      <PopupComments visibleComments={visibleComments} title="Зелёная книга" genre="Фильм" year={2018} /> 
+      <PopupFilm
+        visiblePopup={visiblePopup}
+        creators={[
+          {profession: 'Актёры', person: film.actors},
+          {profession: 'Дизайнеры', person: film.designers},
+          {profession: 'Режиссёры', person: film.directors},
+          {profession: 'Композиторы', person: film.musicians},
+          {profession: 'Продюсеры', person: film.producers},
+          {profession: 'Сценаристы', person: film.writers},
+        ]}
+        title={film.name}
+        genre="Фильм"
+        year={film.year}
+      />
       <Footer />
     </>
   );

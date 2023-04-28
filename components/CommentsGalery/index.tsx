@@ -21,7 +21,7 @@ const CommentsGalery: React.FC<CommentsGaleryProps> = ({ film, arrowsBottomOffse
       <div className="wrapper">
         <div className={styles.container}>
           <span
-            onClick={() => router.push('/watch/greenbook?comments', undefined, { shallow: true })}
+            onClick={() => router.push(router.asPath + '?comments', undefined, { shallow: true })}
             className={classNames(styles.heading, styles.link)}
           >
             Комментарии <span className={styles.commentsCount}>{film.reviews.length}</span>

@@ -33,7 +33,7 @@ const PersonAvatar: React.FC<PersonAvatarProps> = ({ person, role, showFilmsCoun
         <h3 className={styles.name}>{name}</h3>
         <h3 className={styles.surname}>{surname}</h3>
         {!showFilmsCount && <p className={styles.role}>{role}</p>}
-        {showFilmsCount && <p className={styles.role}>{person.films?.length || ''}</p>}
+        {showFilmsCount && <p className={styles.role}>{person.films?.length + ' фильм' || ''}</p>}
       </div>
     </div>
   );

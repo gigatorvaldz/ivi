@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import css from './Header.module.scss';
 import Button from '@/UI/Button';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -16,13 +16,21 @@ import { HeaderItem, HeaderControlsItem } from '@/interfaces';
 import HeaderControls from './HeaderControls';
 import TvDropDownContent from './HeaderDropDownContent/TvDropDownContent/index';
 import ProfileDropDownContent from './HeaderDropDownContent/ProfileDropDownContent';
+import PopupSearch from '../PopupSearch';
+import { useRouter } from 'next/router';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [visibleSearch, setVisibleSearch] = useState<boolean>(false);
   const dropContent = useRef<HTMLDivElement>(null);
   const [currentDropDown, setCurrentDropDown] = useState<React.ReactNode>(null);
-
+  const router = useRouter();
   const [dropDownFocusOn, dropDownFocusOff] = useToggleDropDown(isOpen, setIsOpen, dropContent);
+
+  useEffect(() => {
+    if (router.asPath.split('?').slice(-1).join('') === 'search') setVisibleSearch(true);
+    else setVisibleSearch(false);
+  }, [router]);
 
   const NavbarItems: Array<HeaderItem> = [
     { title: 'Мой Иви', dropdown: undefined, href: '/' },
@@ -42,13 +50,15 @@ const Header: React.FC = () => {
     },
     {
       title: (
-        <div className={css.search}>
+        <div
+          className={css.search}
+          onClick={() => router.push(router.asPath + '?search', undefined, { shallow: true })}
+        >
           <AiOutlineSearch strokeWidth={18} size={20} />
           <p>Поиск</p>
         </div>
       ),
       dropdown: undefined,
-      href: '/search',
       name: 'searchbutton',
     },
     {
@@ -120,6 +130,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      <PopupSearch visibleSearch={visibleSearch} />
     </header>
   );
 };

@@ -12,7 +12,7 @@ const Modal: React.FC<IModal> = ({ children, visible }) => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, []);
+  }, [visible]);
 
   return (
     <>
