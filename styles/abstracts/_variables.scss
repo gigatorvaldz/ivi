@@ -3,8 +3,8 @@
 // -----------------------------------------------------------------------------
 
 // fonts
-$font-serif: Arial, "Helvetica Neue Light", sans-serif !default;
-$font-sans: "Inter", "Times New Roman", Times, serif !default;
+$font-serif: Arial, 'Helvetica Neue Light', sans-serif !default;
+$font-sans: 'Inter', 'Times New Roman', Times, serif !default;
 $font-weight-normal: 400;
 $font-weight-semibold: 500;
 $font-weight-bold: 700;
@@ -41,14 +41,14 @@ $border-primary: 1px solid hsla(0, 0%, 100%, 0.16);
 
 //breakpoints
 $break-xs: 320px;
-$break-sm: 600px;
-$break-md: 1024px;
+$break-sm: 768px;
+$break-md: 1160px;
 $break-lg: 1280px;
 $break-xl: 1600px;
 
 /// Container's maximum width
 /// @type Length
-$max-width: 1240px !default;
+$max-width: 1304px !default;
 
 //variables for button component
 $button-green: #66c05d;

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useMediaQueriesMinWidth } from './useMediaQueries';
 
 export function useCarousel(
-  imagesListedPerSwap: number,
   itemsWidthAreEqual: boolean,
   carouselRef: React.RefObject<HTMLDivElement>,
   carouselTrackRef: React.RefObject<HTMLUListElement>,
-  stepWidth: number,
-  setStepWidth: React.Dispatch<React.SetStateAction<number>>,
   location: {
     left: number;
     right: number;
@@ -16,16 +14,61 @@ export function useCarousel(
       left: number;
       right: number;
     }>
-  >
+  >,
+  setItemWidth?: React.Dispatch<React.SetStateAction<number>>
 ) {
   const [startX, setStartX] = useState(0);
   const [distance, setDistance] = useState(0);
+  const [imagesPerSwap, setImagesPerSwap] = useState(1);
+  const [stepWidth, setStepWidth] = useState(200 * imagesPerSwap);
+
+  const { isMobile, is500, isTable, isLaptop, isDesktop } = useMediaQueriesMinWidth();
+
+  useEffect(() => {
+    const handleWidthChange = () => {
+      setLocation({ left: 0, right: location.right + location.left });
+      carouselTrackRef.current!.style.transform = `translateX(${0}px)`;
+
+      if (setItemWidth) {
+        if (isDesktop) {
+          setItemWidth(Math.ceil(1240 / 7));
+          setImagesPerSwap(6);
+          return;
+        } else if (isLaptop) {
+          setItemWidth(Math.ceil((window.innerWidth - 64) / 6));
+          setImagesPerSwap(5);
+          return;
+        } else if (isTable) {
+          setItemWidth(Math.ceil((window.innerWidth - 64) / 5));
+          setImagesPerSwap(4);
+          return;
+        } else if (is500) {
+          setItemWidth(Math.ceil((window.innerWidth - 64) / 4));
+          setImagesPerSwap(3);
+          return;
+        } else if (isMobile) {
+          setItemWidth(Math.ceil((window.innerWidth - 64) / 3));
+          setImagesPerSwap(2);
+          return;
+        } else {
+          setItemWidth(Math.ceil((window.innerWidth - 64) / 2));
+          setImagesPerSwap(1);
+        }
+      }
+    };
+
+    handleWidthChange();
+    window.addEventListener('resize', handleWidthChange);
+    return () => {
+      window.removeEventListener('resize', handleWidthChange);
+    };
+  }, [isMobile, is500, isTable, isLaptop, isDesktop]);
 
   useEffect(() => {
     function setInitialStepWidth() {
       if (itemsWidthAreEqual) {
         let itemWidth = (carouselTrackRef.current!.children![0] as HTMLElement).offsetWidth;
-        setStepWidth(itemWidth * imagesListedPerSwap);
+        setStepWidth(itemWidth * imagesPerSwap);
       }
 
       let carouselWidth = carouselRef.current!.offsetWidth;
@@ -34,7 +77,12 @@ export function useCarousel(
     }
 
     setInitialStepWidth();
-  }, []);
+    window.addEventListener('resize', setInitialStepWidth);
+
+    return () => {
+      window.removeEventListener('resize', setInitialStepWidth);
+    };
+  }, [imagesPerSwap, setImagesPerSwap]);
 
   function toLeft() {
     let left = location.left - stepWidth;

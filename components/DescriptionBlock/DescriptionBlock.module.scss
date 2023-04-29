@@ -4,6 +4,14 @@
   .descriptionTitle {
     @include font(4rem, 160%, 700);
     color: white;
+
+    @include maxQ(large) {
+      @include font(2.5rem, 130%, 700);
+    }
+
+    @include maxQ(small) {
+      @include font(2rem, 2rem, 500);
+    }
   }
 
   .paragraph {
@@ -12,6 +20,10 @@
 
     &:not(:first-of-type) {
       margin-top: 0.8rem;
+    }
+
+    @include maxQ(small) {
+      @include font(1.2rem, 130%, 400);
     }
   }
 
@@ -26,6 +38,10 @@
     @include onHover() {
       color: #ffffff;
       cursor: pointer;
+    }
+
+    @include maxQ(small) {
+      @include font(1.2rem, 130%, 500);
     }
   }
 }

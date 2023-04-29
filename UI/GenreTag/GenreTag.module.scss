@@ -1,5 +1,4 @@
 .container {
-  width: 15.3rem;
   padding: 2.4rem 0.8rem;
   border-radius: 0.8rem;
   background-color: $primary-color-2;
@@ -8,6 +7,14 @@
   color: white;
   @include font(1.5rem, 2rem, 500);
   white-space: nowrap;
+
+  @include maxQ(large) {
+    @include font(1.3rem, 130%, 500);
+  }
+
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 500);
+  }
 
   display: flex;
   flex-direction: column;

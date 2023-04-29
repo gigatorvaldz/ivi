@@ -7,12 +7,11 @@ import { useCarousel } from '../../hooks/useCarousel';
 
 type GaleryCarouselType = {
   slides: React.ReactNode[];
-  step?: number;
   buttonsBackground?: boolean;
   buttonsOutside?: boolean;
   itemsWidthAreEqual?: boolean;
-  imagesListedPerSwap?: number;
   arrowsBottomOffset?: number;
+  smallArrows?: boolean;
 };
 
 /**
@@ -25,25 +24,23 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
   buttonsBackground = false,
   buttonsOutside = false,
   itemsWidthAreEqual = true,
-  imagesListedPerSwap = 6,
   arrowsBottomOffset,
+  smallArrows = false,
 }) => {
   const [location, setLocation] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
-  const [stepWidth, setStepWidth] = useState(200 * imagesListedPerSwap);
   const [isDragging, setIsDragging] = useState<'toLeft' | 'toRight' | false>(false);
+  const [itemWidth, setItemWidth] = useState<number>(0);
 
   const carouselTrackRef = useRef<HTMLUListElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const [toLeft, toRight, handleTouchStart, handleTouchMove, handleTouchEnd] = useCarousel(
-    imagesListedPerSwap,
     itemsWidthAreEqual,
     carouselRef,
     carouselTrackRef,
-    stepWidth,
-    setStepWidth,
     location,
-    setLocation
+    setLocation,
+    setItemWidth
   );
 
   return (
@@ -64,13 +61,11 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
       >
         {!!location.left && (
           <BsChevronCompactLeft
-            className={classNames(
-              {
-                [style.gelatine]: isDragging === 'toLeft',
-                [style.outside]: buttonsOutside,
-              },
-              style.iconArrow
-            )}
+            className={classNames(style.iconArrow, {
+              [style.gelatine]: isDragging === 'toLeft',
+              [style.outside]: buttonsOutside,
+              [style.smallArrows]: smallArrows,
+            })}
             onAnimationEnd={() => setIsDragging(false)}
           />
         )}
@@ -84,7 +79,11 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
           onTouchEnd={handleTouchEnd}
         >
           {slides.map((slide, index) => (
-            <li key={index} className={style.carouselItem}>
+            <li
+              key={index}
+              className={style.carouselItem}
+              style={{ width: itemsWidthAreEqual ? itemWidth + 'px' : 'auto' }}
+            >
               {slide}
             </li>
           ))}
@@ -106,13 +105,11 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
       >
         {!!location.right && (
           <BsChevronCompactRight
-            className={classNames(
-              {
-                [style.gelatine]: isDragging === 'toRight',
-                [style.outside]: buttonsOutside,
-              },
-              style.iconArrow
-            )}
+            className={classNames(style.iconArrow, {
+              [style.gelatine]: isDragging === 'toRight',
+              [style.outside]: buttonsOutside,
+              [style.smallArrows]: smallArrows,
+            })}
             onAnimationEnd={() => setIsDragging(false)}
           />
         )}

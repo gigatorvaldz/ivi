@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import style from './ImageCarousel.module.scss';
 
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
@@ -23,23 +23,17 @@ const ImageCarousel: React.FC<ImageCarouselType> = ({
   slides,
   buttonsBackground = false,
   buttonsOutside = false,
-  itemsWidthAreEqual = false,
-  imagesListedPerSwap = 1,
 }) => {
   const [location, setLocation] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
-  const [stepWidth, setStepWidth] = useState(200 * imagesListedPerSwap);
   const [isDragging, setIsDragging] = useState<'toLeft' | 'toRight' | false>(false);
 
   const carouselTrackRef = useRef<HTMLUListElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const [toLeft, toRight, handleTouchStart, handleTouchMove, handleTouchEnd] = useCarousel(
-    imagesListedPerSwap,
-    itemsWidthAreEqual,
+    false,
     carouselRef,
     carouselTrackRef,
-    stepWidth,
-    setStepWidth,
     location,
     setLocation
   );

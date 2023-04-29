@@ -38,7 +38,6 @@ const Galery: React.FC<GaleryProps> = ({
           <GaleryCarousel
             buttonsOutside
             itemsWidthAreEqual
-            imagesListedPerSwap={6}
             arrowsBottomOffset={arrowsBottomOffset}
             slides={slides}
           />

@@ -9,9 +9,10 @@ interface DropDownProps {
   type: 'hover' | 'click';
   options: (string | number)[];
   children?: React.ReactNode;
+  substring?: string[]
 }
 
-const DropDown: React.FC<DropDownProps> = ({ options, type }) => {
+const DropDown: React.FC<DropDownProps> = ({ options, type, substring }) => {
   const [selectedOption, setSelectedOption] = useState<(typeof options)[number]>(options[0]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -51,6 +52,7 @@ const DropDown: React.FC<DropDownProps> = ({ options, type }) => {
     >
       <div className={st['dropDown__title'] + ' ' + (isOpen ? st.opened : '')}>
         {selectedOption}
+        {substring && substring.map(filter => <p key={filter}>{filter}</p>)}
         <BsChevronCompactDown className={st.arrowDown + ' ' + (isOpen ? st.opened : '')} />
       </div>
       {isOpen && (
