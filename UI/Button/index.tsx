@@ -13,7 +13,7 @@ interface IButton {
   disabled?: boolean;
 }
 
-const Button: React.FC<IButton> = ({
+const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
   onClickHandler,
   primaryText,
   preamble,

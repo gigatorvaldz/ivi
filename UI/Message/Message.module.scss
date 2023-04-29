@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    background-color: $accent-purple;
+    padding: 16px;
+    border-radius: 20px 20px 20px 0;
+    h2 {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    p {
+        color: #a5a1b2;
+        font-size: 13px;
+        line-height: 16px;
+        font-style: normal;
+        margin-top: 4px;
+    }
+}
