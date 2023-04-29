@@ -13,7 +13,8 @@
 @use "themes" as *;
 
 body {
-    font-family: "Iter", sans-serif;
+    font-family: "Inter", sans-serif;
+    background-color: $primary-color-1;
 }
 
 .drawer-opened{

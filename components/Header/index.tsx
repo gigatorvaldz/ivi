@@ -1,81 +1,41 @@
-import React, { useRef, useState } from 'react';
-import css from './Header.module.scss';
-import Button from '@/UI/Button';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { IoMdNotificationsOutline } from 'react-icons/io';
-import { RxPerson } from 'react-icons/rx';
+import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import FilmsDropDownContent from './HeaderDropDownContent/FilmsDropDownContent';
-import NotificationDropDownContent from './HeaderDropDownContent/NotificationDropDownContent';
-import { Film, Series, Animation } from '@/constants/header';
+import css from './Header.module.scss';
+import PopupSearch from '../PopupSearch';
+import { NavbarItems, ControlsItems } from '@/constants/header';
+import { useRouter } from 'next/router';
 import { useToggleDropDown } from '@/hooks/useToggleDropDown';
 import HeaderDropDown from './HeaderDropDown';
 import { AnimatePresence, motion } from 'framer-motion';
 import HeaderNavbar from './HeaderNavbar';
-import { HeaderItem, HeaderControlsItem } from '@/interfaces';
 import HeaderControls from './HeaderControls';
-import TvDropDownContent from './HeaderDropDownContent/TvDropDownContent/index';
-import ProfileDropDownContent from './HeaderDropDownContent/ProfileDropDownContent';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [visibleSearch, setVisibleSearch] = useState<boolean>(false);
   const dropContent = useRef<HTMLDivElement>(null);
   const [currentDropDown, setCurrentDropDown] = useState<React.ReactNode>(null);
-
+  const router = useRouter();
   const [dropDownFocusOn, dropDownFocusOff] = useToggleDropDown(isOpen, setIsOpen, dropContent);
+  const isDropDown = isOpen && currentDropDown;
 
-  const NavbarItems: Array<HeaderItem> = [
-    { title: 'Мой Иви', dropdown: undefined, href: '/' },
-    { title: 'Что нового', dropdown: undefined, href: '/' },
-    { title: 'Фильмы', dropdown: <FilmsDropDownContent content={Film} />, href: '/movies' },
-    { title: 'Сериалы', dropdown: <FilmsDropDownContent content={Series} />, href: '/series' },
-    { title: 'Мультфильмы', dropdown: <FilmsDropDownContent content={Animation} />, href: '/' },
-    { title: 'TV+', dropdown: <TvDropDownContent />, href: '/' },
-  ];
+  useEffect(() => {
+    if (router.asPath.split('?').slice(-1).join('') === 'search') setVisibleSearch(true);
+    else setVisibleSearch(false);
+  }, [router]);
 
-  const ControlsItems: Array<HeaderControlsItem> = [
-    {
-      title: <Button primaryText="Смотреть 30 дней бесплатно" styling="accent" />,
-      dropdown: undefined,
-      href: '/',
-      name: 'subbutton',
-    },
-    {
-      title: (
-        <div className={css.search}>
-          <AiOutlineSearch strokeWidth={18} size={20} />
-          <p>Поиск</p>
-        </div>
-      ),
-      dropdown: undefined,
-      href: '/search',
-      name: 'searchbutton',
-    },
-    {
-      title: (
-        <div className={css.notification}>
-          <IoMdNotificationsOutline strokeWidth={18} size={20} />
-        </div>
-      ),
-      dropdown: <NotificationDropDownContent />,
-      href: '/profile/pull_notifications',
-      name: 'notificationbutton',
-    },
-    {
-      title: (
-        <div className={css.profile}>
-          <RxPerson size={24} />
-        </div>
-      ),
-      dropdown: <ProfileDropDownContent />,
-      href: '/profile',
-      name: 'profilebutton',
-    },
-  ];
+  const unmountDropDown = () => {
+    dropDownFocusOff();
+    setCurrentDropDown(undefined);
+  };
+
+  const mountDropDown = () => {
+    dropDownFocusOn();
+  };
 
   return (
     <header className={css.header}>
-      <div className="wrapper">
+      <div className={css.wrapper}>
         <div
           ref={dropContent}
           className={classNames(
@@ -85,19 +45,12 @@ const Header: React.FC = () => {
             css.container
           )}
         >
-          <div
-            onMouseLeave={() => {
-              dropDownFocusOff();
-              setCurrentDropDown(undefined);
-            }}
-            onMouseEnter={() => {
-              dropDownFocusOn();
-            }}
-            className={css.content}
-          >
+          <div onMouseLeave={unmountDropDown} onMouseEnter={mountDropDown} className={css.content}>
             <div className={css.borderBottom}></div>
+
             <div className={css.inner}>
               <HeaderNavbar items={NavbarItems} setCurrentDropDown={setCurrentDropDown} />
+
               <div className={css.controls}>
                 <HeaderControls items={ControlsItems} setCurrentDropDown={setCurrentDropDown} />
               </div>
@@ -105,7 +58,7 @@ const Header: React.FC = () => {
 
             <div>
               <AnimatePresence>
-                {isOpen && currentDropDown && (
+                {isDropDown && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
@@ -120,6 +73,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      <PopupSearch visibleSearch={visibleSearch} />
     </header>
   );
 };

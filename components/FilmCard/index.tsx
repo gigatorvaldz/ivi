@@ -11,7 +11,7 @@ const FilmCard: React.FC = () => {
     <Link href="/watch/greenbook">
       <div className={css.container}>
         <div className={css.imageSection}>
-          <Image className={css.logo} src={poster} alt="poster" fill />
+          <Image className={css.logo} src={poster} alt="poster" />
           <Image className={css.ageBadge} src={ageBadge} alt="ageBadge" width={24} height={16} />
           <div className={css.properties}>
             <FilmCardButtons />
@@ -31,13 +31,8 @@ const FilmCard: React.FC = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div className={css.title}>
-            <span>Зеленая книга</span>
-          </div>
-          <div className={css.extra}>
-            <span>Подписка</span>
-          </div>
+        <div className={css.title}>
+          <span>Зеленая книга</span>
         </div>
       </div>
     </Link>

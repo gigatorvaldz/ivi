@@ -7,7 +7,11 @@ import { IoCloseOutline } from 'react-icons/io5';
 import { GiFilmProjector } from 'react-icons/gi';
 import Input from '@/UI/Input';
 
-const PopupSearch: React.FC = () => {
+interface IPopupSearch {
+  visibleSearch: boolean;
+}
+
+const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const wrapperRef = useRef(null);
   const router = useRouter();
@@ -60,9 +64,9 @@ const PopupSearch: React.FC = () => {
   };
 
   return (
-    <Modal>
-      <IoCloseOutline className={css.closePopup} onClick={() => router.back()} />
+    <Modal visible={visibleSearch}>
       <div className={css.container}>
+        <IoCloseOutline className={css.closePopup} onClick={() => router.back()} />
         <div className={css.content}>
           <div className={css.searchInput}>
             <h1>Поиск</h1>

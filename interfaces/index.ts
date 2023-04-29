@@ -1,3 +1,5 @@
+import { Person } from "./Person";
+
 export interface ListItem {
   title: string;
   href?: string;
@@ -14,7 +16,8 @@ export interface CommentItem {
 
 export interface TabsListItem {
   title: string;
-  amount?: number;
+  count?: number;
+  href?: string;
 }
 
 export interface Poster {
@@ -37,6 +40,11 @@ export type HeaderItem = {
 export interface HeaderControlsItem {
   title: React.ReactNode;
   dropdown: React.ReactNode;
-  href: string;
+  href?: string;
   name: string;
+}
+
+export interface CreatorsBlock {
+  profession: string;
+  person: Person[];
 }

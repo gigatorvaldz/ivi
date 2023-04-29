@@ -25,6 +25,11 @@
   overflow: hidden;
 }
 
+.avatarContainerLarge {
+  width: 12.8rem;
+  height: 12.8rem;
+}
+
 .avatar {
   object-fit: cover;
 }
@@ -37,6 +42,10 @@
   @include font(1.3rem, 1.6rem, 500);
 
   @extend %transition;
+}
+
+.largeText {
+  @include font(1.5rem, 2rem, 500)
 }
 
 .role {

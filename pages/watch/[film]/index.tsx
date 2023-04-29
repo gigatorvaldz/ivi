@@ -1,5 +1,5 @@
 import { NextPage, GetServerSideProps } from 'next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header/index';
 import Footer from '@/components/Footer/index';
 import Meta from '@/components/Meta';
@@ -21,6 +21,7 @@ import styles from './filmPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
 import Player from '@/components/Player';
 import { Film } from '@/interfaces/Film';
+import PopupFilm from '@/components/PopupFilm';
 
 type FilmPageProps = {
   film: Film;
@@ -28,6 +29,15 @@ type FilmPageProps = {
 
 const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
   const { name: firstCountry, englishName: firstCountryEng } = film.countries[0];
+  const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
+  const router = useRouter();
+  const currentQuery = router.asPath.split('?');
+
+  useEffect(() => {
+    if (currentQuery.length !== 1 && currentQuery.slice(-1).join('') !== 'search')
+      setVisiblePopup(true);
+    else setVisiblePopup(false);
+  }, [router]);
 
   return (
     <>
@@ -118,7 +128,23 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
           </div>
         </div>
       </section>
-
+      <PopupFilm
+        visiblePopup={visiblePopup}
+        comments={film.reviews}
+        creators={[
+          {profession: 'Режиссёры', person: film.directors},
+          {profession: 'Актёры', person: film.actors},
+          {profession: 'Продюсеры', person: film.producers},
+          {profession: 'Художники', person: film.designers},
+          {profession: 'Сценаристы', person: film.writers},
+          {profession: 'Композиторы', person: film.musicians},
+        // {profession: 'Монтаж', person: film.?},
+        // {profession: 'Переводчик', person: film.?}, 
+        ]}
+        title={film.name}
+        genre="Фильм"
+        year={film.year}
+      />
       <Footer />
     </>
   );
@@ -126,6 +152,7 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
 
 import fsPromises from 'fs/promises';
 import path from 'path';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
   // const { id } = context.params;

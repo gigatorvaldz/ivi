@@ -1,24 +1,29 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import css from './Modal.module.scss';
 
 interface IModal {
-  children: ReactNode;
+  children: React.ReactNode;
+  visible: boolean;
 }
 
-const Modal: React.FC<IModal> = ({ children }) => {
+const Modal: React.FC<IModal> = ({ children, visible }) => {
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    if (visible) document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, []);
+  }, [visible]);
 
   return (
-    <div className={css.background}>
-      <div className={css.overlay}>
-        <div className={css.wrapper}>{children}</div>
-      </div>
-    </div>
+    <>
+      {visible && (
+        <div className={css.background}>
+          <div className={css.overlay}>
+            <div className={css.wrapper}>{children}</div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

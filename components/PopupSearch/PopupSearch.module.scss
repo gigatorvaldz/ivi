@@ -1,21 +1,21 @@
-.closePopup {
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 28px;
-  width: 40px;
-  height: auto;
-  color: #a5a1b2;
-  transform-origin: bottom;
-  transition: all 0.2s;
-  &:hover {
-    transform: scale(1.1);
-  }
-}
 .container {
   background-color: none;
   max-width: 1279px;
   margin: 0 auto;
+  .closePopup {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    width: 40px;
+    height: auto;
+    color: #a5a1b2;
+    transform-origin: bottom;
+    transition: all 0.2s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
   .content {
     margin: 0 auto;
     width: 67.4%;
