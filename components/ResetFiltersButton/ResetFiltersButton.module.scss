@@ -9,6 +9,10 @@
 
   transition: all ease-in 0.15s;
 
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 400);
+  }
+
   @include onHover() {
     cursor: pointer;
     color: $accent-color-1;

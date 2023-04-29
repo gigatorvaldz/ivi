@@ -9,6 +9,10 @@
   font-family: $font-sans;
   color: #ffffff;
   @include font(1.5rem, 130%, 500);
+
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 400);
+  }
 }
 
 .breadcrumb {

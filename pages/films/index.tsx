@@ -3,62 +3,64 @@ import Breadcrumbs from '@/components/BreadCrumbs';
 import DescriptionBlock from '@/components/DescriptionBlock';
 import descriptions from '@/constants/filmsDescriptionText';
 import TagButton from '@/UI/TagButton';
-import ImageCarousel from '@/UI/ImageCarousel';
 import suggestionTags from '@/constants/suggestionsTags';
 import FiltersDesktop from '@/components/FiltersDesktop/index';
 import Galery from '@/components/Galery';
 import GenreTag from '@/UI/GenreTag';
 import { genresIcons } from '@/constants/genres';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import GaleryCarousel from '../../UI/GaleryCarousel';
+import FooterMobile from '../../components/FooterMobile';
+import { useMediaQueriesMinWidth } from '../../hooks/useMediaQueries';
 
 import styles from './filmsPage.module.scss';
-import GaleryCarousel from '../../UI/GaleryCarousel';
+import Layout from './../../components/Layout/index';
 
 const FilmsPage = () => {
+  const { isLaptop } = useMediaQueriesMinWidth();
+
   return (
     <>
       <Meta title="films" description="films page" />
-      <Header />
-      <section className={styles.aboutSection}>
-        <div className="wrapper">
-          <div className={styles.container}>
-            <Breadcrumbs />
-            <div className={styles.descriptionBlock}>
-              <DescriptionBlock title="Фильмы" content={descriptions.films} />
-            </div>
-            <div className={styles.suggestionsTags}>
-              <GaleryCarousel
-                buttonsOutside
-                slides={suggestionTags.map((tag) => (
-                  <TagButton tag={tag} />
-                ))}
-                itemsWidthAreEqual={false}
-                smallArrows={true}
-              />
+      <Layout>
+        <section className={styles.aboutSection}>
+          <div className="wrapper">
+            <div className={styles.container}>
+              <Breadcrumbs />
+              <div className={styles.descriptionBlock}>
+                <DescriptionBlock title="Фильмы" content={descriptions.films} />
+              </div>
+              <div className={styles.suggestionsTags}>
+                <GaleryCarousel
+                  buttonsOutside
+                  slides={suggestionTags.map((tag) => (
+                    <TagButton tag={tag} />
+                  ))}
+                  itemsWidthAreEqual={false}
+                  smallArrows={true}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className={styles.filtersSection}>
-        <div className="wrapper">
-          <div className={styles.container}>
-            <FiltersDesktop />
+        </section>
+        <section className={styles.filtersSection}>
+          <div className="wrapper">
+            <div className={styles.container}>
+              <FiltersDesktop />
+            </div>
           </div>
-        </div>
-      </section>
-      <Galery
-        title="Жанры"
-        slides={genresIcons.map(({ genre, icon }) => (
-          <GenreTag tag={genre} Icon={icon} key={genre} />
-        ))}
-        isTitleLink={false}
-        arrowsBottomOffset={0}
-      />
-      <Galery title="Фильмы-новинки" slides={FilmCardArray} isTitleLink={false} />
-      <Galery title="Лучшие фильмы" slides={FilmCardArray} isTitleLink={false} />
-      <Footer />
+        </section>
+        <Galery
+          title="Жанры"
+          slides={genresIcons.map(({ genre, icon }) => (
+            <GenreTag tag={genre} Icon={icon} key={genre} />
+          ))}
+          isTitleLink={false}
+          arrowsBottomOffset={0}
+        />
+        <Galery title="Фильмы-новинки" slides={FilmCardArray} isTitleLink={false} />
+        <Galery title="Лучшие фильмы" slides={FilmCardArray} isTitleLink={false} />
+      </Layout>
     </>
   );
 };

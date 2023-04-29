@@ -30,6 +30,10 @@
   @include font(1.3rem, 2rem, 600);
   color: $primary-black;
 
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 500);
+  }
+
   &:focus {
     outline: none;
 
@@ -37,6 +41,10 @@
       top: 0.2rem;
       transform: translateY(0%);
       @include font(1.3rem, 2rem, 700);
+
+      @include maxQ(medium) {
+        @include font(1.2rem, 130%, 500);
+      }
     }
   }
 }
@@ -65,6 +73,10 @@
     top: 0.2rem;
     transform: translateY(0%);
     @include font(1.3rem, 2rem, 700);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 500);
+    }
   }
 }
 
