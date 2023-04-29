@@ -13,11 +13,33 @@
 .filtersByBlock {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1.2rem;
 
   & div {
     max-width: 63rem;
+  }
+
+  & > div {
+    max-width: 23%;
+  }
+
+  @include maxQ(medium) {
+    & div {
+      max-width: 100%;
+    }
+
+    & > div {
+      max-width: 46%;
+    }
+  }
+
+  @include maxQ(small) {
+    justify-content: flex-start;
+    & > div {
+      max-width: 100%;
+    }
   }
 }
 

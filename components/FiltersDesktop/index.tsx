@@ -26,6 +26,7 @@ import { genresIcons, Genres } from '@/constants/genres';
 import { Countries } from '@/constants/countries';
 import { modifyGenreLinks } from '@/helpers/modifyGenreLinks';
 import { ProductionYears } from '@/constants/productionYears';
+import { useMediaQueriesMinWidth } from '../../hooks/useMediaQueries';
 
 const FiltersDesktop = () => {
   const dispatch = useAppDispatch();
@@ -44,6 +45,8 @@ const FiltersDesktop = () => {
   const minRating = useAppSelector(selectMinRating);
   const minRatingsCount = useAppSelector(selectMinRatingsCount);
 
+  const { isMobile, is500, isTable, isLaptop, isDesktop } = useMediaQueriesMinWidth();
+
   return (
     <div className={styles.container}>
       <div className={styles.filtersByBlock}>
@@ -57,7 +60,12 @@ const FiltersDesktop = () => {
             ))}
           />
           <div className={styles.genreListsBlock}>
-            <MarkableList items={genres} Mark={MdDone} queryType={'genre'} columns={3} />
+            <MarkableList
+              items={genres}
+              Mark={MdDone}
+              queryType={'genre'}
+              columns={isLaptop ? 3 : 1}
+            />
           </div>
         </DropDownMenu>
         <DropDownMenu title={'Страны'} type="click" contentType="country">
@@ -68,7 +76,12 @@ const FiltersDesktop = () => {
             ))}
           />
           <div className={styles.genreListsBlock}>
-            <MarkableList items={countries} Mark={MdDone} queryType={'country'} columns={3} />
+            <MarkableList
+              items={countries}
+              Mark={MdDone}
+              queryType={'country'}
+              columns={isLaptop ? 3 : 1}
+            />
           </div>
         </DropDownMenu>
         <DropDownMenu title={'Годы'} type="click" contentType="year">
@@ -97,11 +110,11 @@ const FiltersDesktop = () => {
           />
         </DropDownMenu>
       </div>
-      <div className={styles.filterTags}>
+      {/* <div className={styles.filterTags}>
         {filmsFilterBlockTags.map((tag) => (
           <TagButton tag={tag} Icon={BsPlus} outlined key={tag} />
         ))}
-      </div>
+      </div> */}
       <DropDown
         options={['По рейтингу', 'По количеству оценок', 'По дате выхода', 'По Алфавиту']}
         type="hover"
