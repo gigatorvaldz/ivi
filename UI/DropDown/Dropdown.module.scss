@@ -26,6 +26,10 @@
     cursor: pointer;
     filter: brightness(1.09);
   }
+
+  @include maxQ(large) {
+    @include font(1.2rem, 130%, $font-weight-semibold);
+  }
 }
 
 .dropDown__title.opened {
@@ -89,6 +93,11 @@
     text-transform: capitalize;
     letter-spacing: 0.1rem;
     vertical-align: middle;
+
+    @include maxQ(large) {
+      @include font(1rem, 130%, $font-weight-semibold);
+    }
+
 
     @include onHover() {
       cursor: pointer;

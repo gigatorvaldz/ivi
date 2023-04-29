@@ -13,6 +13,10 @@
 .descriptionBlock {
   margin-top: 2.4rem;
   width: 75%;
+
+  @include maxQ(small) {
+    width: 100%;
+  }
 }
 
 .suggestionsTags {

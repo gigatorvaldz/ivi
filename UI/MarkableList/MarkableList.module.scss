@@ -36,7 +36,7 @@
   width: 2rem;
   height: 2rem;
 
-  transition: all ease-in 0.15s;
+  transition: all cubic-bezier(0, 1, 0.52, 0.83) 0.25s;
 }
 
 .linkContainer {
@@ -44,7 +44,7 @@
   justify-content: space-between;
   align-items: center;
 
-  transition: all ease-in 0.15s;
+  transition: all cubic-bezier(0, 1, 0.52, 0.83) 0.25s;
 
   @include onHover() {
     cursor: pointer;
@@ -56,7 +56,6 @@
   }
 
   &.active {
-    pointer-events: none;
     color: white;
 
     & > .mark {

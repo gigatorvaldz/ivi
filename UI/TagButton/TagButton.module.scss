@@ -22,6 +22,14 @@
   color: rgb(181, 179, 186);
   font-family: $font-sans;
   @include font(1.5rem, 2rem, 500);
+
+  @include maxQ(large) {
+    @include font(1.2rem, 1.4rem, 500);
+  }
+
+  @include maxQ(small) {
+    @include font(1.1rem, 1.3rem, 500);
+  }
 }
 
 .icon {

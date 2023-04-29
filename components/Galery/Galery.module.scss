@@ -30,6 +30,14 @@
 
   transition: all ease-in 0.15s;
 
+  @include maxQ(large) {
+    @include font(2rem, 2.2rem, 700);
+  }
+
+  @include maxQ(small) {
+    @include font(1.6rem, 1.6rem, 500);
+  }
+
   &.link {
     @include onHover() {
       color: $accent-color-1;

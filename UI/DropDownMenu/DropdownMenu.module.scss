@@ -26,6 +26,36 @@
     cursor: pointer;
     filter: brightness(1.09);
   }
+
+  @include maxQ(large) {
+    @include font(1.2rem, 130%, $font-weight-semibold);
+  }
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.subtitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  color: $primary-lightgray;
+  @include font(1.3rem, 1.6rem, 500);
+
+  @include maxQ(large) {
+    @include font(1rem, 130%, 400);
+  }
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 15rem;
 }
 
 .dropDown__title.opened {

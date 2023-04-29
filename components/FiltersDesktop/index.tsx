@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DropDown from '@/UI/DropDown/index';
 import DropDownMenu from '@/UI/DropDownMenu/index';
 import TagButton from '@/UI/TagButton';
@@ -6,6 +6,16 @@ import ResetFiltersButton from '../ResetFiltersButton';
 import GenreTag from '@/UI/GenreTag';
 import ImageCarousel from '@/UI/ImageCarousel';
 import MarkableList from '@/UI/MarkableList/MarkableList';
+import FilterInput from '@/UI/FilterInput';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import {
+  clearFilters,
+  selectMinRating,
+  selectMinRatingsCount,
+  setMinRating,
+  setMinRatingsCount,
+} from '@/redux/features/filmList/filmList';
+import Slider from '@/UI/Slider';
 
 import styles from './FiltersDesktop.module.scss';
 import { BsPlus } from 'react-icons/bs';
@@ -16,9 +26,13 @@ import { genresIcons, Genres } from '@/constants/genres';
 import { Countries } from '@/constants/countries';
 import { modifyGenreLinks } from '@/helpers/modifyGenreLinks';
 import { ProductionYears } from '@/constants/productionYears';
-import FilterInput from '../../UI/FilterInput';
 
 const FiltersDesktop = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(clearFilters());
+  }, []);
+
   const genres = modifyGenreLinks(Genres).sort((genre1, genre2) =>
     genre1.title.localeCompare(genre2.title)
   );
@@ -27,10 +41,13 @@ const FiltersDesktop = () => {
     .sort((country1, country2) => country1.localeCompare(country2))
     .map((country) => ({ title: country }));
 
+  const minRating = useAppSelector(selectMinRating);
+  const minRatingsCount = useAppSelector(selectMinRatingsCount);
+
   return (
     <div className={styles.container}>
       <div className={styles.filtersByBlock}>
-        <DropDownMenu title={'Жанры'} type="click">
+        <DropDownMenu title={'Жанры'} type="click" contentType="genre">
           <ImageCarousel
             buttonsBackground
             itemsWidthAreEqual
@@ -40,27 +57,44 @@ const FiltersDesktop = () => {
             ))}
           />
           <div className={styles.genreListsBlock}>
-            <MarkableList items={genres} Mark={MdDone} columns={3} />
+            <MarkableList items={genres} Mark={MdDone} queryType={'genre'} columns={3} />
           </div>
         </DropDownMenu>
-        <DropDownMenu title={'Страны'} type="click">
+        <DropDownMenu title={'Страны'} type="click" contentType="country">
           <ImageCarousel
             buttonsBackground
-            itemsWidthAreEqual
-            imagesListedPerSwap={2}
             slides={Object.values(Countries).map((country) => (
               <TagButton tag={country} outlined key={country} />
             ))}
           />
           <div className={styles.genreListsBlock}>
-            <MarkableList items={countries} Mark={MdDone} columns={3} />
+            <MarkableList items={countries} Mark={MdDone} queryType={'country'} columns={3} />
           </div>
         </DropDownMenu>
-        <DropDownMenu title={'Годы'} type="click">
-          <MarkableList items={years} Mark={BiCircle} />
+        <DropDownMenu title={'Годы'} type="click" contentType="year">
+          <MarkableList items={years} Mark={BiCircle} queryType={'year'} />
         </DropDownMenu>
         <DropDownMenu title={'Рейтинг Кинопоиска'} type="click">
-          123
+          <Slider
+            min={0}
+            max={10}
+            step={0.1}
+            value={minRating}
+            handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              dispatch(setMinRating(+e.target.value));
+            }}
+            description="Рейтинг кинопоиска"
+          />
+          <Slider
+            min={0}
+            max={100000}
+            step={1000}
+            value={minRatingsCount}
+            handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              dispatch(setMinRatingsCount(+e.target.value));
+            }}
+            description="Количество оценок"
+          />
         </DropDownMenu>
       </div>
       <div className={styles.filterTags}>

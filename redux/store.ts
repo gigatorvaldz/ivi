@@ -6,15 +6,15 @@ import {
   PreloadedState,
 } from '@reduxjs/toolkit';
 import filmListReducer from './features/filmList/filmList';
+import { createWrapper } from 'next-redux-wrapper';
 
 const rootReducer = combineReducers({
   filmList: filmListReducer,
 });
 
-export function setupStore(preloadedState?: PreloadedState<RootState>) {
+export function setupStore() {
   return configureStore({
     reducer: rootReducer,
-    preloadedState,
   });
 }
 
@@ -27,3 +27,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
+export const wrapper = createWrapper(setupStore);

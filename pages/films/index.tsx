@@ -1,7 +1,4 @@
 import Meta from '@/components/Meta/index';
-import Footer from '@/components/Footer/index';
-
-import styles from './filmsPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
 import DescriptionBlock from '@/components/DescriptionBlock';
 import descriptions from '@/constants/filmsDescriptionText';
@@ -13,7 +10,11 @@ import Galery from '@/components/Galery';
 import GenreTag from '@/UI/GenreTag';
 import { genresIcons } from '@/constants/genres';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
-import Header from '@/components/Header/index';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+
+import styles from './filmsPage.module.scss';
+import GaleryCarousel from '../../UI/GaleryCarousel';
 
 const FilmsPage = () => {
   return (
@@ -28,11 +29,13 @@ const FilmsPage = () => {
               <DescriptionBlock title="Фильмы" content={descriptions.films} />
             </div>
             <div className={styles.suggestionsTags}>
-              <ImageCarousel
+              <GaleryCarousel
                 buttonsOutside
                 slides={suggestionTags.map((tag) => (
                   <TagButton tag={tag} />
                 ))}
+                itemsWidthAreEqual={false}
+                smallArrows={true}
               />
             </div>
           </div>
@@ -54,10 +57,28 @@ const FilmsPage = () => {
         arrowsBottomOffset={0}
       />
       <Galery title="Фильмы-новинки" slides={FilmCardArray} isTitleLink={false} />
-      <Galery title="Лучшие фильмы" slides={FilmCardArray} />
+      <Galery title="Лучшие фильмы" slides={FilmCardArray} isTitleLink={false} />
       <Footer />
     </>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
+//   const { id } = context.params;
+//   const response = await fetch('https://64143550600d6c8387434f0a.mockapi.io/api/film');
+
+//   console.log(response);
+//   const film: Film = (await response.json())[0];
+
+//   if (!film) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: { film },
+//   };
+// };
 
 export default FilmsPage;

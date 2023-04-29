@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './FilterInput.module.scss';
-// import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import classNames from 'classnames';
 import { BiSearch } from 'react-icons/bi';
@@ -13,8 +12,6 @@ type FilterInputProps = {
 const FilterInput: React.FC<FilterInputProps> = ({ query }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [searchValue, setSearchValue] = useState<string>('');
-  // const dispatch = useAppDispatch();
-  // const searchQuery = useAppSelector(selectSearchQuery);
 
   function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
