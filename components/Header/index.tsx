@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-
 import css from './Header.module.scss';
-
+import PopupSearch from '../PopupSearch';
 import { NavbarItems, ControlsItems } from '@/constants/header';
-
+import { useRouter } from 'next/router';
 import { useToggleDropDown } from '@/hooks/useToggleDropDown';
 import HeaderDropDown from './HeaderDropDown';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -13,12 +12,17 @@ import HeaderControls from './HeaderControls';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [visibleSearch, setVisibleSearch] = useState<boolean>(false);
   const dropContent = useRef<HTMLDivElement>(null);
   const [currentDropDown, setCurrentDropDown] = useState<React.ReactNode>(null);
-
+  const router = useRouter();
   const [dropDownFocusOn, dropDownFocusOff] = useToggleDropDown(isOpen, setIsOpen, dropContent);
-
   const isDropDown = isOpen && currentDropDown;
+
+  useEffect(() => {
+    if (router.asPath.split('?').slice(-1).join('') === 'search') setVisibleSearch(true);
+    else setVisibleSearch(false);
+  }, [router]);
 
   const unmountDropDown = () => {
     dropDownFocusOff();
@@ -69,6 +73,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      <PopupSearch visibleSearch={visibleSearch} />
     </header>
   );
 };

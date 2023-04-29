@@ -5,15 +5,14 @@ import { BiSearch } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
-export type TInputType = 'search' | 'comment' | 'reply';
-
+export type TInputType = 'search' | 'comment' | 'reply' | 'email' | 'password' | 'retryPassword';
 interface IInput {
   value: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputType: TInputType;
   forwardRef: React.MutableRefObject<null>;
-  lengthError?: boolean;
+  lengthError?: boolean; 
 }
 
 const Input: React.FC<IInput> = ({
@@ -50,7 +49,13 @@ const Input: React.FC<IInput> = ({
         {isSearch
           ? 'Фильмы, персоны, жанры'
           : inputType === 'comment'
-          ? 'Написать отзыв'
+          ? 'Написать отзыв' 
+          : inputType === 'email'
+          ? 'Введите e-mail'
+          : inputType === 'password'
+          ? 'Введите пароль'
+          : inputType === 'retryPassword'
+          ? 'Повторите пароль'
           : 'Ответить на комментарий'}
       </span>
       <input value={value} onChange={handleInput} type="text" />

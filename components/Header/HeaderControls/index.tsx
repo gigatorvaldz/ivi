@@ -21,7 +21,7 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
             setCurrentDropDown(el.dropdown);
           }}
         >
-          <Link href={el.href}>{el.title}</Link>
+          {el.href ? <Link href={el.href}>{el.title}</Link> : <span>{el.title}</span>}
         </div>
       ))}
     </div>
