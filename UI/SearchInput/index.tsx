@@ -6,28 +6,20 @@ import { IoCloseOutline } from 'react-icons/io5';
 import Input, { InputProps } from '../Input';
 
 interface SearchInputProps extends InputProps {
-};
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const SearchInput: React.FC<SearchInputProps> = ({ placeholder }) => {
-  const [searchValue, setSearchValue] = useState<string>('');
-
-  function onChangeHandle(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchValue(event.currentTarget.value);
-  }
-
+const SearchInput: React.FC<SearchInputProps> = ({ placeholder, setValue, onChange, value }) => {
   return (
     <div className={styles.container}>
       <Input
         placeholder={placeholder}
-        onChange={onChangeHandle}
-        value={searchValue}
+        onChange={onChange}
+        value={value}
         aside={
-          <div
-            className={classNames({ [styles.active]: searchValue })}
-            onClick={() => setSearchValue('')}
-          >
-            {!searchValue && <BiSearch className={styles.icon} />}
-            {searchValue && <IoCloseOutline className={styles.icon} />}
+          <div className={classNames({ [styles.active]: value })} onClick={() => setValue('')}>
+            {!value && <BiSearch className={styles.icon} />}
+            {value && <IoCloseOutline className={styles.icon} />}
           </div>
         }
       />
