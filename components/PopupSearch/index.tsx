@@ -13,7 +13,6 @@ interface IPopupSearch {
 
 const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
   const [inputValue, setInputValue] = useState<string>('');
-  const wrapperRef = useRef(null);
   const router = useRouter();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,6 +70,7 @@ const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
           <div className={css.searchInput}>
             <h1>Поиск</h1>
             <SearchInput
+              setValue={setInputValue}
               value={inputValue}
               onChange={handleInput}
               placeholder="Фильмы, персоны, жанры"
