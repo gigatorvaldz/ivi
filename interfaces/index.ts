@@ -40,7 +40,8 @@ export type HeaderItem = {
 export interface HeaderControlsItem {
   title: React.ReactNode;
   dropdown: React.ReactNode;
-  href?: string;
+  href: string;
+  linkToAnotherPage: boolean;
   name: string;
 }
 

@@ -48,6 +48,7 @@ const Home: NextPage = () => {
             </div>
           </section>
           <Galery
+            initialVisibleCards={4}
             isTitleLink={false}
             title="Подборки"
             slides={collections.map((e, index) => (
@@ -55,6 +56,7 @@ const Home: NextPage = () => {
             ))}
           />
           <Galery
+            initialVisibleCards={5}
             titleImage={titleBadge}
             title="за неделю"
             slides={topTenCards.map((e, index) => (

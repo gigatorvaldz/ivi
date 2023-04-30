@@ -205,6 +205,7 @@ export const ControlsItems: Array<HeaderControlsItem> = [
     title: <Button primaryText="Смотреть 30 дней бесплатно" styling="accent" />,
     dropdown: undefined,
     href: '/',
+    linkToAnotherPage: true,
     name: 'subbutton',
   },
   {
@@ -215,7 +216,8 @@ export const ControlsItems: Array<HeaderControlsItem> = [
       </div>
     ),
     dropdown: undefined,
-    href: '/search',
+    href: 'search',
+    linkToAnotherPage: false,
     name: 'searchbutton',
   },
   {
@@ -226,6 +228,7 @@ export const ControlsItems: Array<HeaderControlsItem> = [
     ),
     dropdown: <NotificationDropDownContent />,
     href: '/profile/pull_notifications',
+    linkToAnotherPage: true,
     name: 'notificationbutton',
   },
   {
@@ -236,6 +239,7 @@ export const ControlsItems: Array<HeaderControlsItem> = [
     ),
     dropdown: <ProfileDropDownContent />,
     href: '/profile',
+    linkToAnotherPage: true,
     name: 'profilebutton',
   },
 ];

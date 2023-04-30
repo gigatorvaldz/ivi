@@ -2,6 +2,7 @@ import React from 'react';
 import css from './HeaderControls.module.scss';
 import { HeaderControlsItem } from '@/interfaces';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface HeaderControlsI {
   items: Array<HeaderControlsItem>;
@@ -12,6 +13,8 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
   items,
   setCurrentDropDown,
 }: HeaderControlsI) => {
+  const router = useRouter();
+
   return (
     <div className={css.container}>
       {items.map((el) => (
@@ -21,7 +24,11 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
             setCurrentDropDown(el.dropdown);
           }}
         >
-          {el.href ? <Link href={el.href}>{el.title}</Link> : <span>{el.title}</span>}
+          {!el.linkToAnotherPage ? (
+            <span onClick={() => router.push(router.asPath + '?' + el.href)}>{el.title}</span>
+          ) : (
+            <Link href={el.href}>{el.title}</Link>
+          )}
         </div>
       ))}
     </div>

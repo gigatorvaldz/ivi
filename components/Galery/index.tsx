@@ -16,6 +16,7 @@ type GaleryProps = {
   isTitleLink?: boolean;
   arrowsBottomOffset?: number;
   titleImage?: StaticImageData;
+  initialVisibleCards?: number;
 };
 
 const Galery: React.FC<GaleryProps> = ({
@@ -24,6 +25,7 @@ const Galery: React.FC<GaleryProps> = ({
   isTitleLink = true,
   arrowsBottomOffset = 0,
   titleImage,
+  initialVisibleCards
 }) => {
   return (
     <section className={styles.galerySection}>
@@ -43,6 +45,7 @@ const Galery: React.FC<GaleryProps> = ({
             )}
           </div>
           <GaleryCarousel
+            initialVisibleCards={initialVisibleCards}
             buttonsOutside
             itemsWidthAreEqual
             arrowsBottomOffset={arrowsBottomOffset}

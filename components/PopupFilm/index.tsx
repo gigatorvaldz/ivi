@@ -48,7 +48,9 @@ const PopupFilm: React.FC<IPopupFilm> = ({
   return (
     <Modal visible={visiblePopup}>
       <div className={css.container}>
-        <BackArrow redirectTo="фильм" />
+        <div className={css.backArrow}>
+          <BackArrow redirectTo="К фильму" />
+        </div>
         <div className={css.inner}>
           <h1>
             {title} ({genre} {year})

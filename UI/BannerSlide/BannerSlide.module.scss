@@ -14,7 +14,7 @@
       z-index: 1;
       display: flex;
       flex-direction: column;
-      max-width: 46rem;
+      width: calc(40% + 25.6px);
       .title {
         height: auto;
         margin-bottom: 2rem;
@@ -25,6 +25,9 @@
       }
       .buttonBlock {
         width: 65%;
+        @include maxQ(tablet-s) {
+          display: none;
+        }
       }
     }
   }

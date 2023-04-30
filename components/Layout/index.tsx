@@ -15,17 +15,17 @@ interface ILayout {
 const Layout: React.FC<ILayout> = ({ children }) => {
   return (
     <>
-      <MediaQuery minWidth={1025}>
+      <MediaQuery minWidth={1161}>
         <Header />
       </MediaQuery>
-      <MediaQuery maxWidth={1024}>
+      <MediaQuery maxWidth={1160}>
         <HeaderMobile />
       </MediaQuery>
       {children}
-      <MediaQuery minWidth={1025}>
+      <MediaQuery minWidth={1161}>
         <Footer />
       </MediaQuery>
-      <MediaQuery maxWidth={1024}>
+      <MediaQuery maxWidth={1160}>
         <FooterMobile />
       </MediaQuery>
     </>

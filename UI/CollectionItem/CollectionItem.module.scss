@@ -4,6 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1.2rem;
+  @include maxQ(large) {
+    width: 100%;
+  }
   cursor: pointer;
   &:hover {
     img {
