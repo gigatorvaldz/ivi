@@ -31,8 +31,8 @@ const CommentsGalery: React.FC<CommentsGaleryProps> = ({ film, arrowsBottomOffse
           <GaleryCarousel
             buttonsOutside
             itemsWidthAreEqual
-            imagesListedPerSwap={6}
             arrowsBottomOffset={arrowsBottomOffset}
+            initialVisibleCards={4}
             slides={film.reviews.map(({ id, title, text, rating }) => (
               <CommentBlock key={id} title={title} content={text} rating={rating} />
             ))}

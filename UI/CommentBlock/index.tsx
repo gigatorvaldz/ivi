@@ -24,7 +24,7 @@ const CommentBlock: React.FC<CommentBlockProps> = ({
       <p className={styles.comment}>{content}</p>
       <div className={styles.infoBlock}>
         <p className={styles.date}>{date}</p>
-        <LikesCounter likes={rating} />
+        <LikesCounter rating={rating} />
       </div>
     </div>
   );

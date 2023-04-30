@@ -7,10 +7,9 @@
   align-items: center;
   gap: 0.8rem;
 
-& * {
-  @extend %transition;
-
-}
+  & * {
+    @extend %transition;
+  }
 
   @include onHover() {
     cursor: pointer;
@@ -53,6 +52,10 @@
     color: white;
     @include font(1.5rem, 2rem, 500);
     text-align: center;
+
+    @include maxQ(medium) {
+      @include font(1.1rem, 130%, 500);
+    }
   }
 }
 
@@ -68,4 +71,8 @@
   color: $primary-lightgray;
   @include font(1.3rem, 1.6rem, 400);
   text-align: center;
+
+  @include maxQ(medium) {
+    @include font(1.1rem, 130%, 400);
+  }
 }

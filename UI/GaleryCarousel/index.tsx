@@ -12,6 +12,7 @@ type GaleryCarouselType = {
   itemsWidthAreEqual?: boolean;
   arrowsBottomOffset?: number;
   smallArrows?: boolean;
+  initialVisibleCards?: number;
 };
 
 /**
@@ -26,6 +27,7 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
   itemsWidthAreEqual = true,
   arrowsBottomOffset,
   smallArrows = false,
+  initialVisibleCards = 7
 }) => {
   const [location, setLocation] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
   const [isDragging, setIsDragging] = useState<'toLeft' | 'toRight' | false>(false);
@@ -40,7 +42,8 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
     carouselTrackRef,
     location,
     setLocation,
-    setItemWidth
+    setItemWidth,
+    initialVisibleCards
   );
 
   return (
