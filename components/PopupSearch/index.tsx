@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import Link from 'next/link';
 import { IoCloseOutline } from 'react-icons/io5';
 import { GiFilmProjector } from 'react-icons/gi';
-import Input from '@/UI/Input';
+import SearchInput from '@/UI/SearchInput';
 
 interface IPopupSearch {
   visibleSearch: boolean;
@@ -70,12 +70,10 @@ const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
         <div className={css.content}>
           <div className={css.searchInput}>
             <h1>Поиск</h1>
-            <Input
-              forwardRef={wrapperRef}
+            <SearchInput
               value={inputValue}
-              setInputValue={setInputValue}
-              handleInput={handleInput}
-              inputType="search"
+              onChange={handleInput}
+              placeholder="Фильмы, персоны, жанры"
             />
           </div>
           <div
