@@ -18,6 +18,10 @@
     @include font(2rem, 120%, 700);
     color: white;
     width: 75%;
+
+    @include maxQ(large) {
+      width: 100%
+    }
   }
 
   .paragraph {
@@ -36,6 +40,10 @@
   .mainPageParagraph {
     margin-top: 1.2rem;
     width: 75%;
+
+    @include maxQ(large) {
+      width: 100%
+    }
   }
 
   .toggleDesciption {

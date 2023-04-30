@@ -6,6 +6,10 @@
   border-radius: 8px;
   color: white;
 
+  @include maxQ(large) {
+    white-space: nowrap;
+  }
+
   &:disabled {
     background-color: #53051f !important;
     color: #59545a !important;
@@ -26,6 +30,10 @@
 
 .textOnly {
   padding: 9px 42px;
+
+  @include maxQ(large) {
+    padding: 5px 20px;
+  }
 }
 
 .iconOnly {
