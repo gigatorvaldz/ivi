@@ -22,7 +22,7 @@
     align-items: flex-start;
 
     @include maxQ(medium) {
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 2rem;
     }
   }
@@ -53,12 +53,12 @@
     color: white;
     @include font(2.4rem, 2.8rem, 700);
 
-    @include maxQ(medium) {
-      @include font(2rem, 130%, 700);
+    @include maxQ(large) {
+      @include font(2rem, 2.2rem, 700);
     }
 
     @include maxQ(small) {
-      @include font(1.8rem, 130%, 500);
+      @include font(1.6rem, 1.8rem, 500);
     }
   }
 
@@ -81,11 +81,11 @@
 
   @include maxQ(medium) {
     position: static;
+    width: 100%;
   }
 }
 
 .aboutFilmSection {
-  padding: 0 1rem;
   flex: 0 1 40%;
 
   display: flex;
@@ -111,7 +111,11 @@
   text-align: center;
 
   @include maxQ(medium) {
-    @include font(4rem, 4rem, 700);
+    @include font(4rem, 4.5rem, 700);
+  }
+
+  @include maxQ(small) {
+    @include font(3rem, 3.5rem, 700);
   }
 }
 

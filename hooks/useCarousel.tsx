@@ -16,7 +16,7 @@ export function useCarousel(
     }>
   >,
   setItemWidth?: React.Dispatch<React.SetStateAction<number>>,
-  initialVisibleCards?: number
+  initialVisibleCards?: number,
 ) {
   const [startX, setStartX] = useState(0);
   const [distance, setDistance] = useState(0);
@@ -34,29 +34,35 @@ export function useCarousel(
       if (setItemWidth) {
         if (isDesktop) {
           setItemWidth(Math.ceil(1240 / visibleCards));
-          setImagesPerSwap(visibleCards - 1 || 1);
+          setImagesPerSwap(visibleCards - 1 <= 0 ? 1 : visibleCards - 1);
           return;
         } else if (isLaptop) {
-          setItemWidth(Math.ceil((window.innerWidth - 62) / (visibleCards - 1)));
-          setImagesPerSwap(visibleCards - 2 || 1);
+          setItemWidth(
+            Math.ceil((window.innerWidth - 63) / (visibleCards - 1 <= 0 ? 1 : visibleCards - 1)),
+          );
+          setImagesPerSwap(visibleCards - 2 <= 0 ? 1 : visibleCards - 2);
           return;
         } else if (isTable) {
-          setItemWidth(Math.ceil((window.innerWidth - 62) / (visibleCards - 2)));
-          setImagesPerSwap(visibleCards - 3 || 1);
+          setItemWidth(
+            Math.ceil((window.innerWidth - 63) / (visibleCards - 2 <= 0 ? 1 : visibleCards - 2)),
+          );
+          setImagesPerSwap(visibleCards - 3 <= 0 ? 1 : visibleCards - 3);
           return;
         } else if (is500) {
-          setItemWidth(Math.ceil((window.innerWidth - 62) / (visibleCards - 3)));
-          setImagesPerSwap(visibleCards - 4 || 1);
+          setItemWidth(
+            Math.ceil((window.innerWidth - 63) / (visibleCards - 3 <= 0 ? 1 : visibleCards - 3)),
+          );
+          setImagesPerSwap(visibleCards - 4 <= 0 ? 1 : visibleCards - 4);
           return;
         } else if (isMobile) {
           setItemWidth(
-            Math.ceil((window.innerWidth - 62) / (visibleCards - 4 <= 0 ? 1 : visibleCards - 4))
+            Math.ceil((window.innerWidth - 64) / (visibleCards - 4 <= 0 ? 1 : visibleCards - 4)),
           );
-          setImagesPerSwap(visibleCards - 5 || 1);
+          setImagesPerSwap(visibleCards - 5 <= 0 ? 1 : visibleCards - 5);
           return;
         } else {
           setItemWidth(
-            Math.ceil((window.innerWidth - 62) / (visibleCards - 5 <= 0 ? 1 : visibleCards - 5))
+            Math.ceil((window.innerWidth - 64) / (visibleCards - 5 <= 0 ? 1 : visibleCards - 5)),
           );
           setImagesPerSwap(1);
         }
@@ -82,7 +88,9 @@ export function useCarousel(
       setLocation((prevState) => ({ ...prevState, right }));
     }
 
-    setInitialStepWidth();
+    setTimeout(() => {
+      setInitialStepWidth();
+    }, 100);
     window.addEventListener('resize', setInitialStepWidth);
 
     return () => {
