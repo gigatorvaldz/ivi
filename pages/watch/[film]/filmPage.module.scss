@@ -20,6 +20,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
+    @include maxQ(medium) {
+      flex-direction: column;
+      gap: 2rem;
+    }
   }
 }
 
@@ -37,16 +42,33 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 2.4rem;
+
+    @include maxQ(medium) {
+      max-width: 100%;
+      gap: 1rem;
+    }
   }
 
   .allDevicesHeader {
     color: white;
     @include font(2.4rem, 2.8rem, 700);
+
+    @include maxQ(medium) {
+      @include font(2rem, 130%, 700);
+    }
+
+    @include maxQ(small) {
+      @include font(1.8rem, 130%, 500);
+    }
   }
 
   .availableDevices {
     color: $primary-lightgray;
     @include font(1.5rem, 2rem, 400);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 400);
+    }
   }
 }
 
@@ -56,6 +78,10 @@
 
   position: sticky;
   top: 2rem;
+
+  @include maxQ(medium) {
+    position: static;
+  }
 }
 
 .aboutFilmSection {
@@ -67,6 +93,10 @@
   justify-content: space-between;
   align-items: center;
   gap: 2.4rem;
+
+  @include maxQ(medium) {
+    gap: 1.5rem;
+  }
 }
 
 .filmTitleContainer {
@@ -79,6 +109,14 @@
   color: white;
   @include font(5.6rem, 5.6rem, 700);
   text-align: center;
+
+  @include maxQ(medium) {
+    @include font(4rem, 4rem, 700);
+  }
+}
+
+.subtitle {
+  white-space: nowrap;
 }
 
 .paramsContainer {
@@ -94,6 +132,10 @@
   justify-content: center;
   align-items: center;
   gap: 1.2rem;
+
+  @include maxQ(medium) {
+    gap: 1rem;
+  }
 }
 
 .param {
@@ -101,6 +143,10 @@
   font-family: $font-sans;
   color: $primary-lightgray;
   @include font(1.5rem, 1.5rem, 400);
+
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 400);
+  }
 
   span::before {
     position: absolute;

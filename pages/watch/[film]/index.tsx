@@ -15,7 +15,7 @@ import CommentsGalery from '@/components/CommentsGalery';
 import LinkButton from '@/UI/LinkButton';
 import Link from 'next/link';
 import classNames from 'classnames';
-
+import Layout from '@/components/Layout';
 
 import styles from './filmPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
@@ -42,110 +42,112 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
   return (
     <>
       <Meta title="film" description="film page" />
-      <Header />
-      <section className={styles.breadcrumbs}>
-        <div className="wrapper">
-          <div className={styles.container}>
-            <Breadcrumbs />
-          </div>
-        </div>
-      </section>
-      <section className={styles.infoSection}>
-        <div className="wrapper">
-          <div className={styles.container}>
-            <div className={styles.playerSection}>
-              <Player film={film} />
+      <Layout>
+        <section className={styles.breadcrumbs}>
+          <div className="wrapper">
+            <div className={styles.container}>
+              <Breadcrumbs />
             </div>
-            <div className={styles.aboutFilmSection}>
-              <div className={styles.filmTitleContainer}>
-                <h1 className={styles.title}>{film.name}</h1>
-                <h2 className={styles.subtitle}>{`(Фильм ${film.year})`}</h2>
+          </div>
+        </section>
+        <section className={styles.infoSection}>
+          <div className="wrapper">
+            <div className={styles.container}>
+              <div className={styles.playerSection}>
+                <Player film={film} />
               </div>
-              <div className={styles.paramsContainer}>
-                <div className={styles.paramsList}>
-                  <p className={styles.param}>{film.year}</p>
-                  <p className={styles.param}>1 серия</p>
-                  <p className={styles.param}>{film.mpaaRating}</p>
+              <div className={styles.aboutFilmSection}>
+                <div className={styles.filmTitleContainer}>
+                  <h1 className={styles.title}>{film.name}</h1>
+                  <h2 className={styles.subtitle}>{`(Фильм ${film.year})`}</h2>
                 </div>
-                <div className={styles.paramsList}>
-                  <Link
-                    href={`/films/${firstCountryEng}`}
-                    className={classNames(styles.param, styles.link)}
-                  >
-                    {firstCountry}
-                  </Link>
-                  {film.genres.map(({ name, englishName, id }) => (
+                <div className={styles.paramsContainer}>
+                  <div className={styles.paramsList}>
+                    <p className={styles.param}>{film.year}</p>
+                    <p className={styles.param}>1 серия</p>
+                    <p className={styles.param}>{film.mpaaRating}</p>
+                  </div>
+                  <div className={styles.paramsList}>
                     <Link
-                      href={`/films/${englishName}`}
+                      href={`/films/${firstCountryEng}`}
                       className={classNames(styles.param, styles.link)}
-                      key={id}
                     >
-                      <span></span>
-                      {name}
+                      {firstCountry}
                     </Link>
+                    {film.genres.map(({ name, englishName, id }) => (
+                      <Link
+                        href={`/films/${englishName}`}
+                        className={classNames(styles.param, styles.link)}
+                        key={id}
+                      >
+                        <span></span>
+                        {name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.medallionsContainer}>
+                  <MedallionButton caption="Рейтинг Кинопоиска" text={film.rating} />
+                  {film.actors.slice(0, 4).map((actor) => (
+                    <MedallionButton caption={actor.name} src={actor.photo} key={actor.id} />
                   ))}
                 </div>
+                <DescriptionBlock content={[film.description]}>
+                  <WatchOptions
+                    qualities={['FullHD', 'HD', '1080', '720']}
+                    languages={['Русский', 'Английский']}
+                  />
+                </DescriptionBlock>
+                <RatingMobile rating={film.rating} ratesCount={film.ratingsNumber} />
               </div>
-              <div className={styles.medallionsContainer}>
-                <MedallionButton caption="Рейтинг Кинопоиска" text={film.rating} />
-                {film.actors.slice(0, 4).map((actor) => (
-                  <MedallionButton caption={actor.name} src={actor.photo} key={actor.id} />
-                ))}
-              </div>
-              <DescriptionBlock content={[film.description]}>
-                <WatchOptions
-                  qualities={['FullHD', 'HD', '1080', '720']}
-                  languages={['Русский', 'Английский']}
-                />
-              </DescriptionBlock>
-              <RatingMobile rating={film.rating} ratesCount={film.ratingsNumber} />
             </div>
           </div>
-        </div>
-      </section>
-      <Galery
-        title={`С фильмом «${film.name}» смотрят:`}
-        slides={FilmCardArray}
-        isTitleLink={false}
-      />
+        </section>
+        <Galery
+          title={`С фильмом «${film.name}» смотрят:`}
+          slides={FilmCardArray}
+          isTitleLink={false}
+        />
 
-      <ActorsPanel film={film} />
-      <ExtraContentPanel film={film} />
-      <CommentsGalery film={film} />
+        <ActorsPanel film={film} />
+        <ExtraContentPanel film={film} />
+        <CommentsGalery film={film} />
 
-      <section className={styles.allDevices}>
-        <div className="wrapper">
-          <div className={styles.container}>
-            <h2 className={styles.allDevicesHeader}>Cмотреть «{film.name}» на всех устройствах</h2>
-            <p className={styles.availableDevices}>
-              Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
-            </p>
-            <LinkButton
-              href="https://www.ivi.ru/devices"
-              primaryText="Подключить устройства"
-              styling="accent"
-            />
+        <section className={styles.allDevices}>
+          <div className="wrapper">
+            <div className={styles.container}>
+              <h2 className={styles.allDevicesHeader}>
+                Cмотреть «{film.name}» на всех устройствах
+              </h2>
+              <p className={styles.availableDevices}>
+                Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
+              </p>
+              <LinkButton
+                href="https://www.ivi.ru/devices"
+                primaryText="Подключить устройства"
+                styling="accent"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-      <PopupFilm
-        visiblePopup={visiblePopup}
-        comments={film.reviews}
-        creators={[
-          {profession: 'Режиссёры', person: film.directors},
-          {profession: 'Актёры', person: film.actors},
-          {profession: 'Продюсеры', person: film.producers},
-          {profession: 'Художники', person: film.designers},
-          {profession: 'Сценаристы', person: film.writers},
-          {profession: 'Композиторы', person: film.musicians},
-        // {profession: 'Монтаж', person: film.?},
-        // {profession: 'Переводчик', person: film.?}, 
-        ]}
-        title={film.name}
-        genre="Фильм"
-        year={film.year}
-      />
-      <Footer />
+        </section>
+        <PopupFilm
+          visiblePopup={visiblePopup}
+          comments={film.reviews}
+          creators={[
+            { profession: 'Режиссёры', person: film.directors },
+            { profession: 'Актёры', person: film.actors },
+            { profession: 'Продюсеры', person: film.producers },
+            { profession: 'Художники', person: film.designers },
+            { profession: 'Сценаристы', person: film.writers },
+            { profession: 'Композиторы', person: film.musicians },
+            // {profession: 'Монтаж', person: film.?},
+            // {profession: 'Переводчик', person: film.?},
+          ]}
+          title={film.name}
+          genre="Фильм"
+          year={film.year}
+        />
+      </Layout>
     </>
   );
 };
