@@ -1,62 +1,112 @@
-.inputBody {
+.form {
   position: relative;
-  background-color: #d9d7e0;
-  color: #1f1b2e;
+  display: inline-block;
   width: 100%;
-  height: 40px;
-  line-height: 20px;
-  font-weight: 500;
-  border-radius: 8px;
-  .placeholder {
-    pointer-events: none;
-    color: rgb(165, 161, 178);
-    transition: all 0.08s ease-in-out;
-    position: absolute;
-    left: 12px;
-    top: 10px;
+
+  & * {
+    @include onHover() {
+      cursor: pointer;
+    }
   }
-  .editingPlaceholder {
-    transform: translate3d(-8px, -8px, 0) scale(0.86666667) perspective(1px);
+
+  &.active * {
+    @include onHover() {
+      cursor: text;
+    }
   }
-  input {
-    border-radius: 8px;
+}
+
+.searchBar {
+  width: 100%;
+
+  background-color: $input-white;
+  flex: 0 1 20%;
+  min-width: 15rem;
+
+  padding: 1.8rem 4rem 0.2rem 1.2rem;
+  border-radius: 0.8rem;
+
+  font-family: $font-sans;
+  @include font(1.3rem, 2rem, 600);
+  color: $primary-black;
+
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 500);
+  }
+
+  &:focus {
     outline: none;
-    background-color: #d9d7e0;
-    color: #1f1b2e;
-    width: 100%;
-    height: 40px;
-    padding: 18px 40px 2px 12px;
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    &:focus {
-      cursor: auto;
-    }
-  }
-  .inputIcon {
-    cursor: pointer;
-    pointer-events: none;
-    width: 20px;
-    height: auto;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: rgb(165, 161, 178);
-  }
-  .closeIcon {
-    pointer-events: all;
-    transition: color 0.2s;
-    &:hover {
-      color: black;
+
+    & ~ .placeholder {
+      top: 0.2rem;
+      transform: translateY(0%);
+      @include font(1.3rem, 2rem, 700);
+
+      @include maxQ(medium) {
+        @include font(1.2rem, 130%, 500);
+      }
     }
   }
 }
-.inputBodyComment {
-  width: 100% !important; //додумать
+
+.label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
-.lengthError {
-  background-color: #fff3f0 !important;
+
+.placeholder {
+  position: absolute;
+  pointer-events: none;
+
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-family: $font-sans;
+  @include font(1.5rem, 2rem, 700);
+  color: rgba($color: #555248, $alpha: 0.56);
+
+  transition: all ease-out 0.25s;
+
+  &.inputFilled {
+    top: 0.2rem;
+    transform: translateY(0%);
+    @include font(1.3rem, 2rem, 700);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 500);
+    }
+  }
+}
+
+.iconContainer {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: rgba($color: #555248, $alpha: 0.56);
+  width: 4rem;
+  height: 100%;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  &.active {
+    @include onHover() {
+      cursor: pointer !important;
+
+      & .icon {
+        color: $primary-black;
+      }
+    }
+  }
+}
+
+.invalid {
   .placeholder {
     color: #ff8469;
   }

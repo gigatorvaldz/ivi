@@ -1,83 +1,39 @@
 import React, { useState } from 'react';
-import css from './Input.module.scss';
+import styles from './Input.module.scss';
 import classNames from 'classnames';
-import { BiSearch } from 'react-icons/bi';
-import { IoCloseOutline } from 'react-icons/io5';
-import { useClickOutside } from '@/hooks/useClickOutside';
 
-export type TInputType = 'search' | 'comment' | 'reply' | 'email' | 'password' | 'retryPassword';
-interface IInput {
-  value?: string;
-  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
-  handleInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputType: TInputType;
-  forwardRef: React.MutableRefObject<null>;
-  lengthError?: boolean;
-  name?: string;
+export interface InputProps {
+  placeholder: string;
+  aside?: React.ReactNode;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  invalid?: boolean;
 }
 
-const Input: React.FC<IInput & React.HTMLProps<HTMLInputElement>> = ({
-  value,
-  setInputValue = () => {},
-  handleInput,
-  inputType,
-  forwardRef,
-  lengthError,
-  name,
-}) => {
-  const [editingInput, setEditingInput] = useState<boolean>(false);
-
-  useClickOutside(forwardRef, () => {
-    if (!document.getElementsByTagName('input')[0].value) return setEditingInput(false);
-  });
-
-  const isSearch: boolean = inputType === 'search';
+const Input: React.FC<InputProps> = ({ placeholder, aside, onChange, value, invalid }) => {
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div
       className={classNames(
-        {
-          [css.inputBodyComment]: !isSearch,
-          [css.lengthError]: lengthError,
-        },
-        css.inputBody
+        { [styles.active]: value || isFocused, [styles.invalid]: invalid },
+        styles.form
       )}
-      ref={forwardRef}
-      onClick={() => setEditingInput(true)}
     >
-      <span
-        className={editingInput ? `${css.placeholder} ${css.editingPlaceholder}` : css.placeholder}
-      >
-        {isSearch
-          ? 'Фильмы, персоны, жанры'
-          : inputType === 'comment'
-          ? 'Написать отзыв'
-          : inputType === 'email'
-          ? 'Введите e-mail'
-          : inputType === 'password'
-          ? 'Введите пароль'
-          : inputType === 'retryPassword'
-          ? 'Повторите пароль'
-          : 'Ответить на комментарий'}
-      </span>
-      <input
-        value={value}
-        onChange={handleInput}
-        type="text"
-        name={name}
-      />
-      {isSearch && (
-        <>
-          {!value ? (
-            <BiSearch className={css.inputIcon} />
-          ) : (
-            <IoCloseOutline
-              className={`${css.inputIcon} ${css.closeIcon}`}
-              onClick={() => setInputValue('')}
-            />
-          )}
-        </>
-      )}
+      <label className={styles.label}>
+        <input
+          type="text"
+          value={value}
+          className={styles.searchBar}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          onChange={onChange}
+        />
+        <span className={classNames({ [styles.inputFilled]: value }, styles.placeholder)}>
+          {placeholder}
+        </span>
+      </label>
+      {aside && <div className={styles.iconContainer}>{aside}</div>}
     </div>
   );
 };
