@@ -24,12 +24,10 @@ const CommentsForm: React.FC = () => {
         <Avatar />
         <div className={css.input}>
           <Input
-            forwardRef={wrapperRef}
             value={inputValue}
-            setInputValue={setInputValue}
-            handleInput={handleInput}
-            inputType="comment"
-            lengthError={!!inputValue && inputValue.length < 10}
+            onChange={handleInput}
+            placeholder='Написать отзыв'
+            invalid={!!inputValue && inputValue.length < 10}
           />
           {inputValue && inputValue.length < 10 && (
             <span className={css.errorCaption}>

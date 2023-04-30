@@ -1,0 +1,21 @@
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    transition: all ease-out 0.15s;
+
+    cursor: pointer !important;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.active {
+    @include onHover() {
+        cursor: pointer !important;
+
+        & .icon {
+            color: $primary-black;
+        }
+    }
+}
