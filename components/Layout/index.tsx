@@ -1,22 +1,33 @@
 import React, { ReactNode } from 'react';
-import { useMediaQueriesMinWidth } from '@/hooks/useMediaQueries';
 import Footer from '../Footer';
 import FooterMobile from '../FooterMobile';
 import Header from '../Header';
 import HeaderMobile from '../HeaderMobile';
+import dynamic from 'next/dynamic';
+const MediaQuery = dynamic(() => import('react-responsive'), {
+  ssr: false,
+});
 
 interface ILayout {
   children: ReactNode;
 }
 
 const Layout: React.FC<ILayout> = ({ children }) => {
-  const { isLaptop } = useMediaQueriesMinWidth();
-
   return (
     <>
-      {!!isLaptop ? <Header /> : <HeaderMobile />}
+      <MediaQuery minWidth={1025}>
+        <Header />
+      </MediaQuery>
+      <MediaQuery maxWidth={1024}>
+        <HeaderMobile />
+      </MediaQuery>
       {children}
-      {!!isLaptop ? <Footer /> : <FooterMobile />}
+      <MediaQuery minWidth={1025}>
+        <Footer />
+      </MediaQuery>
+      <MediaQuery maxWidth={1024}>
+        <FooterMobile />
+      </MediaQuery>
     </>
   );
 };

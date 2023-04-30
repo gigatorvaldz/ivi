@@ -32,8 +32,8 @@
       margin-top: 0.8rem;
     }
 
-    @include maxQ(small) {
-      @include font(1.2rem, 130%, 400);
+    @include maxQ(medium) {
+      @include font(1.3rem, 130%, 400);
     }
   }
 

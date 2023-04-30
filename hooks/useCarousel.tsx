@@ -15,7 +15,8 @@ export function useCarousel(
       right: number;
     }>
   >,
-  setItemWidth?: React.Dispatch<React.SetStateAction<number>>
+  setItemWidth?: React.Dispatch<React.SetStateAction<number>>,
+  initialVisibleCards?: number
 ) {
   const [startX, setStartX] = useState(0);
   const [distance, setDistance] = useState(0);
@@ -28,30 +29,35 @@ export function useCarousel(
     const handleWidthChange = () => {
       setLocation({ left: 0, right: location.right + location.left });
       carouselTrackRef.current!.style.transform = `translateX(${0}px)`;
+      let visibleCards = initialVisibleCards || 7;
 
       if (setItemWidth) {
         if (isDesktop) {
-          setItemWidth(Math.ceil(1240 / 7));
-          setImagesPerSwap(6);
+          setItemWidth(Math.ceil(1240 / visibleCards));
+          setImagesPerSwap(visibleCards - 1 || 1);
           return;
         } else if (isLaptop) {
-          setItemWidth(Math.ceil((window.innerWidth - 64) / 6));
-          setImagesPerSwap(5);
+          setItemWidth(Math.ceil((window.innerWidth - 62) / (visibleCards - 1)));
+          setImagesPerSwap(visibleCards - 2 || 1);
           return;
         } else if (isTable) {
-          setItemWidth(Math.ceil((window.innerWidth - 64) / 5));
-          setImagesPerSwap(4);
+          setItemWidth(Math.ceil((window.innerWidth - 62) / (visibleCards - 2)));
+          setImagesPerSwap(visibleCards - 3 || 1);
           return;
         } else if (is500) {
-          setItemWidth(Math.ceil((window.innerWidth - 64) / 4));
-          setImagesPerSwap(3);
+          setItemWidth(Math.ceil((window.innerWidth - 62) / (visibleCards - 3)));
+          setImagesPerSwap(visibleCards - 4 || 1);
           return;
         } else if (isMobile) {
-          setItemWidth(Math.ceil((window.innerWidth - 64) / 3));
-          setImagesPerSwap(2);
+          setItemWidth(
+            Math.ceil((window.innerWidth - 62) / (visibleCards - 4 <= 0 ? 1 : visibleCards - 4))
+          );
+          setImagesPerSwap(visibleCards - 5 || 1);
           return;
         } else {
-          setItemWidth(Math.ceil((window.innerWidth - 64) / 2));
+          setItemWidth(
+            Math.ceil((window.innerWidth - 62) / (visibleCards - 5 <= 0 ? 1 : visibleCards - 5))
+          );
           setImagesPerSwap(1);
         }
       }

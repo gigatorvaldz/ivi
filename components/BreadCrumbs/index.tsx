@@ -49,9 +49,8 @@ const Breadcrumbs = () => {
         <p className={style.divider}>/</p>
         {breadcrumbs.map(({ href, breadcrumb }, index) => {
           return (
-            <>
+            <React.Fragment key={href}>
               <li
-                key={href}
                 className={classNames(
                   { [style.disabled]: index === breadcrumbs.length - 1 },
                   style.breadcrumb
@@ -60,7 +59,7 @@ const Breadcrumbs = () => {
                 <Link href={href}>{convertBreadcrumb(breadcrumb as keyof typeof Routes)}</Link>
               </li>
               {index != breadcrumbs.length - 1 && <p className={style.divider}>/</p>}
-            </>
+            </React.Fragment>
           );
         })}
       </ol>

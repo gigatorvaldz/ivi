@@ -8,6 +8,10 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
+
+    @include maxQ(medium) {
+      gap: 1rem;
+    }
   }
 }
 
@@ -27,6 +31,14 @@
 
   transition: all ease-in 0.15s;
 
+  @include maxQ(medium) {
+    @include font(2rem, 130%, 700);
+  }
+
+  @include maxQ(small) {
+    @include font(1.8rem, 130%, 500);
+  }
+
   &.link {
     @include onHover() {
       color: $accent-color-1;
@@ -42,6 +54,10 @@
 
     color: $primary-lightgray;
     @include font(1.3rem, 1.6rem, 400);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 400);
+    }
   }
 }
 
@@ -49,6 +65,10 @@
   font-family: $font-sans;
   color: $primary-lightgray;
   @include font(1.5rem, 2rem, 400);
+
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 400);
+  }
 }
 
 .iconArrow {

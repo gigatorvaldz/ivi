@@ -32,7 +32,7 @@ const ActorsPanel: React.FC<ActorsPanelProps> = ({ film }) => {
           </span>
           <div className={styles.actorCardsContainer}>
             {persons.map(({ person, role }) => (
-              <PersonAvatar person={person} role={role} />
+              <PersonAvatar person={person} role={role} key={person.id} />
             ))}
           </div>
         </div>
