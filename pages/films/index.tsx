@@ -10,7 +10,6 @@ import GenreTag from '@/UI/GenreTag';
 import { genresIcons } from '@/constants/genres';
 import { FilmCardArray } from '@/mocks/FilmCardArray';
 import GaleryCarousel from '../../UI/GaleryCarousel';
-import { useMediaQueriesMinWidth } from '../../hooks/useMediaQueries';
 
 import styles from './filmsPage.module.scss';
 import Layout from './../../components/Layout/index';

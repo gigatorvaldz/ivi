@@ -22,6 +22,14 @@
   color: white;
   @include font(2.4rem, 2.8rem, 700);
 
+  @include maxQ(large) {
+    @include font(2rem, 2.2rem, 700);
+  }
+
+  @include maxQ(small) {
+    @include font(1.6rem, 1.6rem, 500);
+  }
+
   border-bottom: 1px solid $primary-lightgray;
 
   transition: all ease-in 0.15s;
@@ -42,5 +50,8 @@
 .actorCardsContainer {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+}
+
+.actorCard {
+  padding-right: 2rem;
 }

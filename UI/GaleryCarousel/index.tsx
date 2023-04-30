@@ -27,7 +27,7 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
   itemsWidthAreEqual = true,
   arrowsBottomOffset,
   smallArrows = false,
-  initialVisibleCards = 7
+  initialVisibleCards = 7,
 }) => {
   const [location, setLocation] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
   const [isDragging, setIsDragging] = useState<'toLeft' | 'toRight' | false>(false);
@@ -43,7 +43,7 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
     location,
     setLocation,
     setItemWidth,
-    initialVisibleCards
+    initialVisibleCards,
   );
 
   return (
@@ -55,7 +55,7 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
             [style.noBackground]: !buttonsBackground,
             [style.outside]: buttonsOutside,
           },
-          style.toLeftContainer
+          style.toLeftContainer,
         )}
         onClick={() => {
           setIsDragging('toLeft');
@@ -99,7 +99,7 @@ const GaleryCarousel: React.FC<GaleryCarouselType> = ({
             [style.noBackground]: !buttonsBackground,
             [style.outside]: buttonsOutside,
           },
-          style.toRightContainer
+          style.toRightContainer,
         )}
         onClick={() => {
           setIsDragging('toRight');
