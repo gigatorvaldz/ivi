@@ -1,0 +1,60 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  color: hsla(0, 0%, 100%, 0.48);
+}
+.descriptionMobile {
+  margin-top: 2.4rem;
+}
+.support {
+  margin-top: 20px;
+  .wideButton {
+    margin-bottom: 1.2rem;
+    width: 70%;
+    @include maxQ(tablet-ps) {
+      width: 100%;
+    }
+  }
+  .supportButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    .supportIcon {
+      width: 16px;
+      height: auto;
+    }
+  }
+}
+.supportMobile {
+  display: flex;
+  @include maxQ(tablet-ps) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.supportButtonsMobile {
+  margin-left: 24px;
+  @include maxQ(tablet-ps) {
+    margin-left: 0;
+  }
+}
+.questions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  span {
+    color: hsla(0,0%,100%,.48);
+  }
+  a {
+    color: white;
+    font-weight: 700;
+    transition: all 0.2s;
+    width: fit-content;
+    &:hover {
+      color: rgb(185, 184, 187);
+    }
+    &:active {
+      color: white;
+    }
+  }
+}

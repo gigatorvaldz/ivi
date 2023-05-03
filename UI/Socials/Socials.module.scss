@@ -21,6 +21,9 @@
     &:active {
       background-color: black;
     }
+    @include maxQ(tablet-ps) {
+      margin-left: 3px;
+    }
     .icon {
       color: white;
       width: 16px;

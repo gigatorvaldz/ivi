@@ -11,6 +11,7 @@ interface IButton {
   icon?: ReactNode;
   styling?: ButtonStylingT;
   disabled?: boolean;
+  isHundredPercentsWidth?: boolean;
 }
 
 const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
   icon,
   styling = 'primary',
   disabled = false,
+  isHundredPercentsWidth = false,
 }) => {
   return (
     <button
@@ -27,6 +29,7 @@ const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
       onClick={onClickHandler}
       className={classNames(
         {
+          [css.wideButton]: isHundredPercentsWidth,
           [css.textOnlyAccent]: !icon && !preamble && primaryText && styling==='accent',
           [css.textOnly]: !icon && !preamble && primaryText,
           [css.iconOnly]: !primaryText && !preamble && icon,

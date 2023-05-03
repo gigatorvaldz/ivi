@@ -40,36 +40,6 @@
           display: flex;
           flex-direction: column;
         }
-        .support {
-          margin-top: 20px;
-          .questions {
-            margin-top: 24px;
-            display: flex;
-            flex-direction: column;
-            a {
-              color: white;
-              font-weight: 700;
-              transition: all 0.2s;
-              width: fit-content;
-              &:hover {
-                color: rgb(185, 184, 187);
-              }
-              &:active {
-                color: white;
-              }
-            }
-          }
-          .supportButtons {
-            display: flex;
-            flex-direction: row;
-            gap: 12px;
-            margin-top: 12px;
-            .supportIcon {
-              width: 16px;
-              height: auto;
-            }
-          }
-        }
         .widget {
           cursor: pointer;
           .widgetIcon {

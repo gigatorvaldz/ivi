@@ -10,6 +10,7 @@ import Stores from '@/UI/Stores';
 import Button from '@/UI/Button';
 import { BsTelephone } from 'react-icons/bs';
 import { FiMail } from 'react-icons/fi';
+import SupportService from '@/UI/SupportService';
 
 const Footer: React.FC = () => {
   return (
@@ -29,27 +30,7 @@ const Footer: React.FC = () => {
           </div>
           <div className={css.column}>
             <span className={css.title}>Служба поддержки</span>
-            <div className={css.description}>
-              <span>Мы всегда готовы вам помочь.</span>
-              <span>Наши операторы онлайн 24/7</span>
-            </div>
-            <div className={css.support}>
-              <Button onClickHandler={() => console.log(1)} primaryText="Написать в чате" />
-              <div className={css.supportButtons}>
-                <Button
-                  onClickHandler={() => console.log(1)}
-                  icon={<FiMail className={css.supportIcon} />}
-                />
-                <Button
-                  onClickHandler={() => console.log(1)}
-                  icon={<BsTelephone className={css.supportIcon} />}
-                />
-              </div>
-              <div className={css.questions}>
-                <Link href="/123">ask.ivi.ru</Link>
-                <span>Ответы на вопросы</span>
-              </div>
-            </div>
+            <SupportService />
           </div>
           <div className={css.column}>
             <div className={css.widget}>

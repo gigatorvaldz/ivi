@@ -5,21 +5,27 @@ import classNames from 'classnames';
 import Accordion from '@/UI/Accordion';
 import Link from 'next/link';
 import ActionCard from '@/UI/ActionCard';
+import Socials from '@/UI/Socials';
+import Stores from '@/UI/Stores';
+
 import DrawerNavigationAccordion from './DrawerAccordionContent/DrawerNavigationAccordion';
+import DrawerTVAccordion from './DrawerAccordionContent/DrawerTVAccordion';
+import DrawerAboutAccordion from './DrawerAccordionContent/DrawerAboutAccordion';
 
 import { IoDiamondOutline } from 'react-icons/io5';
-import { BsAward, BsCameraReels, BsCollectionPlay, BsTv } from 'react-icons/bs';
+import { BsQrCodeScan, BsAward, BsCameraReels, BsCollectionPlay, BsTv } from 'react-icons/bs';
 import { WiTrain } from 'react-icons/wi';
+import { RiErrorWarningLine, RiMessage2Line } from 'react-icons/ri';
 
 import { Film, Series, Animation } from '@/constants/header';
-import DrawerTVAccordion from './DrawerAccordionContent/DrawerTVAccordion';
+import SupportService from '@/UI/SupportService';
 
 const Drawer: React.FC = () => {
   useEffect(() => {
-    document.body.classList.add('drawer-opened');
+    document.body.style.overflow = 'hidden';
 
     return () => {
-      document.body.classList.remove('drawer-opened');
+      document.body.style.overflow = 'auto';
     };
   }, []);
 
@@ -96,6 +102,35 @@ const Drawer: React.FC = () => {
           <Link href="/goodmovies">
             <h3>Что посмотреть</h3>
           </Link>
+        </div>
+        <ul className={classNames(css['navigation-group'], css.ratings)}>
+          <li>
+            <Link href="">Иви.Рейтинг фильмы</Link>
+          </li>
+          <li>
+            <Link href="">Иви.Рейтинг сериалы</Link>
+          </li>
+        </ul>
+        <div className={classNames(css['navigation-group'], css.about)}>
+          <div className={css.accordion}>
+            <Accordion label="О нас" icon={<RiErrorWarningLine size={22} />}>
+              <DrawerAboutAccordion />
+            </Accordion>
+            <Link href="/" className={css.code}>
+              <BsQrCodeScan className={css.icon} />
+              <h3>Вход по коду</h3>
+            </Link>
+            <Stores isMobile={true} />
+          </div>
+        </div>
+        <div className={classNames(css['navigation-group'], css.help)}>
+          <Accordion label="Служба поддержки" icon={<RiMessage2Line size={22} />}>
+            <SupportService isMobile={true} />
+          </Accordion>
+        </div>
+        <div className={classNames(css['navigation-group'], css.footer)}>
+          <Socials />
+          <span>© 2023 OOO «Иви.ру»</span>
         </div>
       </div>
     </div>
