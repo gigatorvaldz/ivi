@@ -9,6 +9,7 @@ import { RxPerson } from 'react-icons/rx';
 
 import headerLogo from '@/assets/header/logo.svg';
 import classNames from 'classnames';
+import LanguageSwitcher from '@/UI/LanguageSwitcher';
 
 const HeaderMobile: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const HeaderMobile: React.FC = () => {
             <Image src={headerLogo} alt="header logo" />
           </Link>
           <div className={css.controls}>
-            <Link href="/">
+            <Link className={css.lsTablet} href="/">
               <Button primaryText="Смотреть 30 дней бесплатно" styling="accent" />
             </Link>
             <Link
@@ -28,6 +29,7 @@ const HeaderMobile: React.FC = () => {
             >
               <IoMdNotificationsOutline strokeWidth={18} size={20} />
             </Link>
+            <LanguageSwitcher />
             <Link href="/profile" className={classNames(css.profile, css.tablet)}>
               <RxPerson size={24} />
             </Link>

@@ -83,7 +83,23 @@
                 .tablet {
                     display: none;
                 }
+
+                .lsTablet {
+                    button {
+                        padding: 4px 4px;
+                        span {
+                            font-size: 12px;
+                            word-wrap: break-word;
+                        }
+                    }
+                }
             }
         }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .lsTablet{
+        display: none;
     }
 }
