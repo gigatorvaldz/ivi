@@ -72,11 +72,9 @@ const Comment: React.FC<Review> = ({ id, title, text, rating, children, level = 
           {replying && (
             <div className={css.replyForm}>
               <Input
-                forwardRef={wrapperRef}
                 value={replyText}
-                setInputValue={setReplyText}
-                handleInput={handleChange}
-                inputType="reply"
+                onChange={handleChange}
+                placeholder='Ответить'
               />
               <Button primaryText="Ответить" onClickHandler={() => handleSubmit()} />
             </div>

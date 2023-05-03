@@ -24,7 +24,6 @@
         margin-bottom: 2.4rem;
       }
       .buttonBlock {
-        width: 65%;
         @include maxQ(tablet-s) {
           display: none;
         }
@@ -36,7 +35,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 2.6rem;
     pointer-events: none;
     z-index: 0;

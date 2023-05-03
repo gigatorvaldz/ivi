@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import css from './PopupSearch.module.scss';
 import { useRouter } from 'next/router';
 import Modal from '../Modal';
@@ -14,6 +14,10 @@ interface IPopupSearch {
 const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const router = useRouter();
+
+  useEffect(() => {
+    return(() => {setInputValue('')})
+  }, [visibleSearch])
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

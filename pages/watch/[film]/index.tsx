@@ -122,10 +122,9 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
               <p className={styles.availableDevices}>
                 Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
               </p>
-              <LinkButton
-                href="https://www.ivi.ru/devices"
-                primaryText="Подключить устройства"
-                styling="accent"
+              <Button 
+                primaryText='Подключить устройства'
+                styling='accent'
               />
             </div>
           </div>
@@ -155,6 +154,7 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
 import fsPromises from 'fs/promises';
 import path from 'path';
 import { useRouter } from 'next/router';
+import Button from '@/UI/Button';
 
 export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
   // const { id } = context.params;

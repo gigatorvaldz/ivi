@@ -27,6 +27,7 @@ const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
       onClick={onClickHandler}
       className={classNames(
         {
+          [css.textOnlyAccent]: !icon && !preamble && primaryText && styling==='accent',
           [css.textOnly]: !icon && !preamble && primaryText,
           [css.iconOnly]: !primaryText && !preamble && icon,
           [css.iconWithPrimary]: !preamble && icon && primaryText,

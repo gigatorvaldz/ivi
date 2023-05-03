@@ -1,5 +1,8 @@
 .main {
   min-height: 100vh;
+  @include maxQ(medium) {
+    padding-bottom: 5rem;
+  }
   .description {
     padding: 2.4rem 0;
   }

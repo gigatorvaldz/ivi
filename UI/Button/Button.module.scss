@@ -30,10 +30,10 @@
 
 .textOnly {
   padding: 9px 42px;
+}
 
-  @include maxQ(large) {
-    padding: 7px 11px;
-  }
+.textOnlyAccent {
+  padding: 7px 11px;
 }
 
 .iconOnly {
