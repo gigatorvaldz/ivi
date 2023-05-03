@@ -34,6 +34,12 @@
   width: 5.6rem;
   height: 5.6rem;
   border-radius: 1.5rem;
+
+  @include maxQ(small) {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+  }
 }
 
 .content {
@@ -46,6 +52,12 @@
   width: 4.4rem;
   height: 4.4rem;
   border-radius: 1rem;
+
+  @include maxQ(small) {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.6rem;
+  }
 
   .text {
     font-family: $font-sans;
@@ -64,6 +76,12 @@
   height: 4.4rem;
   border-radius: 1rem;
   object-fit: cover;
+
+  @include maxQ(small) {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.6rem;
+  }
 }
 
 .caption {

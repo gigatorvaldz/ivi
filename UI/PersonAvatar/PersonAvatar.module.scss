@@ -23,6 +23,11 @@
 
   border-radius: 100%;
   overflow: hidden;
+
+  @include maxQ(small) {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
 }
 
 .avatarContainerLarge {
@@ -34,7 +39,6 @@
   object-fit: cover;
 }
 
-
 .name,
 .surname {
   font-family: $font-sans;
@@ -42,14 +46,22 @@
   @include font(1.3rem, 1.6rem, 500);
 
   @extend %transition;
+
+  @include maxQ(small) {
+    @include font(1.1rem, 1.3rem, 500);
+  }
 }
 
 .largeText {
-  @include font(1.5rem, 2rem, 500)
+  @include font(1.5rem, 2rem, 500);
 }
 
 .role {
   font-family: $font-sans;
   color: $primary-lightgray;
   @include font(1.3rem, 1.6rem, 400);
+
+  @include maxQ(small) {
+    @include font(1.1rem, 1.3rem, 400);
+  }
 }

@@ -31,12 +31,12 @@
 
   transition: all ease-in 0.15s;
 
-  @include maxQ(medium) {
-    @include font(2rem, 130%, 700);
+  @include maxQ(large) {
+    @include font(2rem, 2.2rem, 700);
   }
 
   @include maxQ(small) {
-    @include font(1.8rem, 130%, 500);
+    @include font(1.6rem, 1.6rem, 500);
   }
 
   &.link {

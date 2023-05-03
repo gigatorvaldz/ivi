@@ -12,7 +12,18 @@
   gap: 1.6rem;
 
   @include onHover() {
-    cursor: pointer
+    cursor: pointer;
+  }
+
+  @include maxQ(medium) {
+    max-width: 35rem;
+    align-self: flex-start;
+  }
+
+  @include maxQ(small) {
+    align-self: center;
+    width: max-content;
+    flex-direction: column;
   }
 }
 
@@ -29,6 +40,10 @@
   font-family: $font-sans;
   color: white;
   @include font(2.4rem, 2.8rem, 700);
+
+  @include maxQ(medium) {
+    @include font(2rem, 2rem, 500);
+  }
 }
 
 .ratingDescription {
@@ -36,19 +51,35 @@
 
   font-family: $font-sans;
 
+  @include maxQ(small) {
+    display: none;
+  }
+
   .caption {
     color: white;
     @include font(1.5rem, 2rem, 500);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 500);
+    }
   }
 
   .subtitle {
     color: $primary-lightgray;
     @include font(1.5rem, 2rem, 400);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 400);
+    }
   }
 
   .ratingCount {
     color: $primary-lightgray;
     @include font(1.3rem, 1.6rem, 400);
+
+    @include maxQ(medium) {
+      @include font(1.2rem, 130%, 400);
+    }
   }
 }
 
@@ -66,5 +97,9 @@
 
   @include onHover() {
     border-color: white;
+  }
+
+  @include maxQ(medium) {
+    @include font(1.2rem, 130%, 500);
   }
 }

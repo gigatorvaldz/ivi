@@ -16,6 +16,9 @@ import LinkButton from '@/UI/LinkButton';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Layout from '@/components/Layout';
+const MediaQuery = dynamic(() => import('react-responsive'), {
+  ssr: false,
+});
 
 import styles from './filmPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
@@ -88,9 +91,16 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
                 </div>
                 <div className={styles.medallionsContainer}>
                   <MedallionButton caption="Рейтинг Кинопоиска" text={film.rating} />
-                  {film.actors.slice(0, 4).map((actor) => (
-                    <MedallionButton caption={actor.name} src={actor.photo} key={actor.id} />
-                  ))}
+                  <MediaQuery minWidth={768}>
+                    {film.actors.slice(0, 4).map((actor) => (
+                      <MedallionButton caption={actor.name} src={actor.photo} key={actor.id} />
+                    ))}
+                  </MediaQuery>
+                  <MediaQuery maxWidth={767}>
+                    {film.actors.slice(0, 3).map((actor) => (
+                      <MedallionButton caption={actor.name} src={actor.photo} key={actor.id} />
+                    ))}
+                  </MediaQuery>
                 </div>
                 <DescriptionBlock content={[film.description]}>
                   <WatchOptions
@@ -155,6 +165,7 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 import { useRouter } from 'next/router';
 import Button from '@/UI/Button';
+import dynamic from 'next/dynamic';
 
 export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
   // const { id } = context.params;

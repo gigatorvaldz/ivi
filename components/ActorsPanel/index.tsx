@@ -1,5 +1,4 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
 
 import styles from './ActorsPanel.module.scss';
 import classNames from 'classnames';
@@ -12,6 +11,8 @@ type ActorsPanelProps = {
 };
 
 const ActorsPanel: React.FC<ActorsPanelProps> = ({ film }) => {
+  const [avatarsCount, setAvatarsCount] = useState(0);
+
   const directors = film.directors.map((director) => ({ person: director, role: 'Режиссёр' }));
   const actors = film.actors.map((actor) => ({ person: actor, role: 'Актёр' }));
   const writers = film.writers.map((writer) => ({ person: writer, role: 'Сценарист' }));
@@ -19,6 +20,23 @@ const ActorsPanel: React.FC<ActorsPanelProps> = ({ film }) => {
   const persons = [...directors, ...actors, ...writers, ...producers];
 
   const router = useRouter();
+
+  const AvatarsContainer = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    function setAvatarsNumber() {
+      let containerWidth = (AvatarsContainer.current! as HTMLElement).offsetWidth;
+      let avatarWidth = (AvatarsContainer.current!.children![0] as HTMLElement).offsetWidth;
+      setAvatarsCount(Math.floor(containerWidth / avatarWidth));
+    }
+
+    setAvatarsNumber();
+    window.addEventListener('resize', setAvatarsNumber);
+
+    return () => {
+      window.removeEventListener('resize', setAvatarsNumber);
+    };
+  }, [avatarsCount, setAvatarsCount]);
 
   return (
     <section className={styles.galerySection}>
@@ -30,11 +48,16 @@ const ActorsPanel: React.FC<ActorsPanelProps> = ({ film }) => {
           >
             Актёры и создатели
           </span>
-          <div className={styles.actorCardsContainer}>
-            {persons.map(({ person, role }) => (
-              <PersonAvatar person={person} role={role} key={person.id} />
+          <ul className={styles.actorCardsContainer} ref={AvatarsContainer}>
+            <li className={styles.actorCard}>
+              <PersonAvatar person={persons[0].person} role={persons[0].role} />
+            </li>
+            {persons.slice(1, avatarsCount - 1).map(({ person, role }) => (
+              <li className={styles.actorCard} key={person.id}>
+                <PersonAvatar person={person} role={role} />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
