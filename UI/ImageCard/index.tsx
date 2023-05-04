@@ -10,7 +10,7 @@ interface ImageCardI {
 const ImageCard: React.FC<ImageCardI> = ({ src, alt = 'image card' }) => {
   return (
     <div className={css.container}>
-      <Image fill src={src} alt={alt} />
+      <Image className={css.inner} fill src={src} alt={alt} />
     </div>
   );
 };
