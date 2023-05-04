@@ -23,7 +23,7 @@ const FooterMobile: React.FC = () => {
       ? router.push(router.asPath.split('?').slice(0, -1).join(''))
       : router.push(path);
   };
-
+  
   const items = [
     { component: <BiHomeAlt className={css.icon} />, text: 'Мой Иви', path: '/' },
     { component: <AiOutlineFolder className={css.icon} />, text: 'Каталог', path: '/films' },

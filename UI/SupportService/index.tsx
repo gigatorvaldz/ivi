@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import css from './SupportService.module.scss';
 import Button from '../Button';
 import { BsTelephone } from 'react-icons/bs';
 import { FiMail } from 'react-icons/fi';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 interface ISupportService {
   isMobile?: boolean;
 }
 
 const SupportService: React.FC<ISupportService> = ({ isMobile = false }) => {
+  const [visibleNumber, setVisibleNumber] = useState<boolean>(false);
+  const numberRef = useRef(null);
+
+  useClickOutside(numberRef, setVisibleNumber);
+
   return (
     <>
       <div className={classNames({ [css.descriptionMobile]: isMobile }, css.description)}>
@@ -19,15 +25,30 @@ const SupportService: React.FC<ISupportService> = ({ isMobile = false }) => {
       </div>
       <div className={classNames({ [css.supportMobile]: isMobile }, css.support)}>
         <div className={css.wideButton}>
-          <Button isHundredPercentsWidth={true} primaryText="Написать в чате" />
+          <Link href="/profile">
+            <Button isHundredPercentsWidth={true} primaryText="Написать в чате" />
+          </Link>
         </div>
         <div className={classNames({ [css.supportButtonsMobile]: isMobile }, css.supportButtons)}>
-          <Button icon={<FiMail className={css.supportIcon} />} />
-          <Button icon={<BsTelephone className={css.supportIcon} />} />
+          <Link href="mailto:support@ivi.ru">
+            <Button icon={<FiMail className={css.supportIcon} />} />
+          </Link>
+          <Button
+            innerRef={numberRef}
+            onClickHandler={() => setVisibleNumber(!visibleNumber)}
+            icon={<BsTelephone className={css.supportIcon} />}
+          />
+          <Link
+            href="tel:88002344923"
+            className={classNames({ [css.showed]: visibleNumber }, css.phoneItem)}
+          >
+            <span className={css.phoneNumber}>8 800 234-49-23</span>
+            <span className={css.phoneFree}>Бесплатно по России</span>
+          </Link>
         </div>
       </div>
       <div className={css.questions}>
-        <Link href="/123">ask.ivi.ru</Link>
+        <Link href="https://ask.ivi.ru/">ask.ivi.ru</Link>
         <span>Ответы на вопросы</span>
       </div>
     </>

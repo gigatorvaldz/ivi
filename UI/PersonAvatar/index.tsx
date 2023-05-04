@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 
 import styles from './PersonAvatar.module.scss';
 import { Person } from '../../interfaces/Person';
 import ImageWithFallback from '../ImageWithFallback';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
+import { wordDeclension } from '../../helpers/wordDeclension';
 
 type PersonAvatarProps = {
   avatarType?: 'little' | 'large';
@@ -29,7 +29,7 @@ const PersonAvatar: React.FC<PersonAvatarProps> = ({
       <div
         className={classNames(
           { [styles.avatarContainerLarge]: avatarType === 'large' },
-          styles.avatarContainer
+          styles.avatarContainer,
         )}
       >
         <ImageWithFallback
@@ -49,7 +49,17 @@ const PersonAvatar: React.FC<PersonAvatarProps> = ({
           {surname}
         </h3>
         {!showFilmsCount && <p className={styles.role}>{role}</p>}
-        {showFilmsCount && <p className={styles.role}>{person.films?.length + ' фильм' || ''}</p>}
+        {showFilmsCount && (
+          <p className={styles.role}>
+            {person.films?.length +
+              ' ' +
+              wordDeclension(person.films?.length, [
+                'фильм',
+                'фильма',
+                'фильмов',
+              ]) || ''}
+          </p>
+        )}
       </div>
     </div>
   );

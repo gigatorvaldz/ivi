@@ -11,6 +11,9 @@
   .wideButton {
     margin-bottom: 1.2rem;
     width: 70%;
+    @include maxQ(tablet-s) {
+      width: 50%;
+    }
     @include maxQ(tablet-ps) {
       width: 100%;
     }
@@ -19,9 +22,40 @@
     display: flex;
     flex-direction: row;
     gap: 12px;
+    position: relative;
     .supportIcon {
       width: 16px;
       height: auto;
+    }
+    .phoneItem {
+      display: block;
+      position: absolute;
+      left: -1%;
+      top: 100%;
+      margin-top: 1.2rem;
+      background-color: $primary-color-2;
+      border-radius: .8rem;
+      width: 20rem;
+      padding: 1.6rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      visibility: hidden;
+      @include maxQ(medium) {
+        margin-top: 0;
+        top: 90%
+      }
+      @media (max-width: 520px) {
+        left: -40%;
+      }
+      @include maxQ(tablet-ps) {
+        left: 0;
+      }
+      .phoneNumber {
+        color: white;
+      }
+      span {
+        @include font(1.5rem, 2rem, 500);
+      }
     }
   }
 }
@@ -57,4 +91,7 @@
       color: white;
     }
   }
+}
+.showed {
+  visibility: visible !important;
 }

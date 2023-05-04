@@ -7,9 +7,6 @@ import Socials from '@/UI/Socials';
 import { LINKS } from '@/constants/footer';
 import noAds from 'public/assets/footer/noAds.svg';
 import Stores from '@/UI/Stores';
-import Button from '@/UI/Button';
-import { BsTelephone } from 'react-icons/bs';
-import { FiMail } from 'react-icons/fi';
 import SupportService from '@/UI/SupportService';
 
 const Footer: React.FC = () => {
@@ -25,7 +22,7 @@ const Footer: React.FC = () => {
             <span className={css.title}>Разделы</span>
             <List items={LINKS[1]} />
             <div className={css.certificateLink}>
-              <Link href="/123">Активация сертификата</Link>
+              <Link href="https://www.ivi.ru/cert">Активация сертификата</Link>
             </div>
           </div>
           <div className={css.column}>
@@ -34,10 +31,12 @@ const Footer: React.FC = () => {
           </div>
           <div className={css.column}>
             <div className={css.widget}>
-              <div className={css.widgetIcon}>
-                <Image src={noAds} alt="noAds" width={56} height={56} />
-              </div>
-              <p className={css.widgetText}>Смотрите фильмы, сериалы и мультфильмы без рекламы</p>
+              <Link href="https://www.ivi.ru/subscribe?redirect_url=%2F">
+                <div className={css.widgetIcon}>
+                  <Image src={noAds} alt="noAds" width={56} height={56} />
+                </div>
+                <p className={css.widgetText}>Смотрите фильмы, сериалы и мультфильмы без рекламы</p>
+              </Link>
             </div>
           </div>
         </div>

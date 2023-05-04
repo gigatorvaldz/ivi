@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, RefObject } from 'react';
 import css from './Button.module.scss';
 import classNames from 'classnames';
 
@@ -12,6 +12,7 @@ interface IButton {
   styling?: ButtonStylingT;
   disabled?: boolean;
   isHundredPercentsWidth?: boolean;
+  innerRef?: RefObject<HTMLButtonElement>;
 }
 
 const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
@@ -22,9 +23,11 @@ const Button: React.FC<IButton & React.HTMLProps<HTMLButtonElement>> = ({
   styling = 'primary',
   disabled = false,
   isHundredPercentsWidth = false,
+  innerRef
 }) => {
   return (
     <button
+      ref={innerRef}
       disabled={disabled}
       onClick={onClickHandler}
       className={classNames(
