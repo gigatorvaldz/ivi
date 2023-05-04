@@ -10,6 +10,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { RxPerson } from 'react-icons/rx';
 import headercss from '@/components/Header/Header.module.scss';
+import LanguageSwitcher from '@/UI/LanguageSwitcher';
 
 export const Film = {
   genres: [
@@ -196,7 +197,11 @@ export const NavbarItems: Array<HeaderItem> = [
   { title: 'Что нового', dropdown: undefined, href: 'https://www.ivi.ru/new' },
   { title: 'Фильмы', dropdown: <FilmsDropDownContent content={Film} />, href: '/films' },
   { title: 'Сериалы', dropdown: <FilmsDropDownContent content={Series} />, href: '/series' },
-  { title: 'Мультфильмы', dropdown: <FilmsDropDownContent content={Animation} />, href: '/animation' },
+  {
+    title: 'Мультфильмы',
+    dropdown: <FilmsDropDownContent content={Animation} />,
+    href: '/animation',
+  },
   { title: 'TV+', dropdown: <TvDropDownContent />, href: 'https://www.ivi.ru/tvplus' },
 ];
 
@@ -230,6 +235,17 @@ export const ControlsItems: Array<HeaderControlsItem> = [
     href: '/profile/pull_notifications',
     linkToAnotherPage: true,
     name: 'notificationbutton',
+  },
+  {
+    title: (
+      <div className={headercss.language}>
+        <LanguageSwitcher />
+      </div>
+    ),
+    dropdown: undefined,
+    href: '/',
+    linkToAnotherPage: true,
+    name: 'languagebutton',
   },
   {
     title: (

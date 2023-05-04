@@ -70,6 +70,14 @@
           }
         }
 
+        .language{
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+
         .profile {
           border-radius: 8px;
           border: 2px solid $text-color-1;
