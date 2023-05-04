@@ -18,5 +18,18 @@
         font-size: 15px;
         border-left: 1px solid hsla(0, 0%, 100%, 0.16);
         padding-left: 20px;
+        flex-grow: 1;
+        .auth{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            & > * {
+                width: 100%;
+            }
+
+            & > *:not(:first-child){
+                margin-top: 15px;
+            }
+        }
     }
 }
