@@ -1,0 +1,28 @@
+.loginform {
+    align-self: flex-end;
+    width: max-content;
+
+    .submit {
+        margin-top: 20px;
+
+        & > * {
+            font-weight: 700;
+            width: 100%;
+        }
+    }
+
+    .errors {
+        max-width: 300px;
+        margin-top: 20px;
+
+        & > *:not(:first-child) {
+            margin-top: 10px;
+        }
+    }
+}
+
+@include maxQ("tablet-ps") {
+    .loginform {
+        width: 100%;
+    }
+}
