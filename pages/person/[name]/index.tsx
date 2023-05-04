@@ -5,18 +5,18 @@ import css from './personPage.module.scss';
 
 import ImageWithFallback from '@/UI/ImageWithFallback';
 import BackArrow from '@/UI/BackArrow';
+import Layout from '@/components/Layout';
+import Link from 'next/link';
+import ActionFilmCardList from '@/components/ActionFilmCardList';
+
 
 // Some tests
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { ActionFilmCardI } from '@/UI/ActionFilmCard';
-import ActionFilmCardList from '@/components/ActionFilmCardList';
-import Link from 'next/link';
 
 const film = {
   id: 4,
   name: 'Очень крутой фильм',
-  poster: "https://i.ibb.co/xhpjcPy/image.png",
+  poster: 'https://i.ibb.co/xhpjcPy/image.png',
   mpaaRating: '18+',
   rating: 2.2,
   ratingsNumber: 1223,
@@ -51,54 +51,52 @@ interface PersonPageI {}
 const PersonPage: NextPage<PersonPageI> = () => {
   return (
     <>
-      <Header />
-      {/*test*/}
-
-      <div className={css.container}>
-        <div className={css.backarrow}>
-          <BackArrow redirectTo="Назад" />
-        </div>
-
-        <section className={classNames(css.pagesection, css.personcard)}>
-          <div className={css.pagewrapper}>
-            <div className={css.avatarcontainer}>
-              <ImageWithFallback
-                alt="person image"
-                src="https://i.ibb.co/xhpjcPy/image.png"
-                width={120}
-                height={120}
-                placeholder="blur"
-                blurDataURL="https://i.ibb.co/NsVFCBw/image.png"
-              />
-            </div>
-            <h2 className={css.title}>Адам Сэндлер</h2>
-            <ul className={css.anchorlinklist}>
-              <li className={css.anchorlink}>
-                <Link passHref replace href="#filmography">18 фильмов</Link>
-              </li>
-            </ul>
+      <Layout>
+        <div className={css.container}>
+          <div className={css.backarrow}>
+            <BackArrow redirectTo="Назад" />
           </div>
-        </section>
 
-        <section className={classNames(css.filmography, css.pagesection)} id="filmography">
-          <div className={css.pagewrapper}>
-            <div className={css.title}>
-              <h2>Полная фильмография</h2>
-              <span>18 фильмов</span>
-            </div>
-
-            <div className={css.controls}>
-              <div className={css.inner}>
-                <span>Всё</span>
+          <section className={classNames(css.pagesection, css.personcard)}>
+            <div className={css.pagewrapper}>
+              <div className={css.avatarcontainer}>
+                <ImageWithFallback
+                  alt="person image"
+                  src="https://i.ibb.co/xhpjcPy/image.png"
+                  width={120}
+                  height={120}
+                  placeholder="blur"
+                  blurDataURL="https://i.ibb.co/NsVFCBw/image.png"
+                />
               </div>
+              <h2 className={css.title}>Адам Сэндлер</h2>
+              <ul className={css.anchorlinklist}>
+                <li className={css.anchorlink}>
+                  <Link passHref replace href="#filmography">
+                    18 фильмов
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <ActionFilmCardList items={items} />
-          </div>
-        </section>
-      </div>
+          </section>
 
-      {/*test*/}
-      <Footer />
+          <section className={classNames(css.filmography, css.pagesection)} id="filmography">
+            <div className={css.pagewrapper}>
+              <div className={css.title}>
+                <h2>Полная фильмография</h2>
+                <span>18 фильмов</span>
+              </div>
+
+              <div className={css.controls}>
+                <div className={css.inner}>
+                  <span>Всё</span>
+                </div>
+              </div>
+              <ActionFilmCardList items={items} />
+            </div>
+          </section>
+        </div>
+      </Layout>
     </>
   );
 };
