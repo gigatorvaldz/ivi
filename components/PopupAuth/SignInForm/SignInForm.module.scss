@@ -21,8 +21,8 @@
     }
 }
 
-@include maxQ("tablet-ps"){
-    .loginform{
+@include maxQ("tablet-ps") {
+    .loginform {
         width: 100%;
     }
 }

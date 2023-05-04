@@ -1,13 +1,12 @@
 import React from 'react';
-import css from './AuthForm.module.scss';
+import css from './SignUpForm.module.scss';
 import { useForm } from 'react-hook-form';
 import AuthInput from '../AuthInput';
 import AuthErrorMessage from '../AuthErrorMessage';
 import AuthPrivacy from '../AuthPrivacy';
 import Button from '@/UI/Button';
 
-const AuthForm: React.FC = () => {
-
+const SignUpForm: React.FC = () => {
   const onSubmit = (data: object) => {
     console.log(JSON.stringify(data));
     reset();
@@ -29,9 +28,10 @@ const AuthForm: React.FC = () => {
     <form action="#" className={css.loginform} onSubmit={handleSubmit(onSubmit)}>
       <AuthInput
         control={control}
+        placeholder={"Введите e-mail"}
         name="login"
         rules={{
-          required: 'Не указан логин.',
+          required: 'Не указан e-mail.',
           pattern: {
             value:
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -44,10 +44,16 @@ const AuthForm: React.FC = () => {
         name="password"
         rules={{
           required: 'Не указан пароль',
+          minLength: {
+            value: 6,
+            message: "Пароль должен состоять не меньше чем из 6 символов."
+          },
         }}
+        placeholder={'Придумайте пароль'}
       />
       <AuthInput
         control={control}
+        placeholder={'Повторите пароль'}
         name="retryPassword"
         rules={{
           required: 'Не указано подтверждение пароля.',
@@ -79,4 +85,4 @@ const AuthForm: React.FC = () => {
   );
 };
 
-export default AuthForm;
+export default SignUpForm;
