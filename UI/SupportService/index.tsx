@@ -5,7 +5,7 @@ import { BsTelephone } from 'react-icons/bs';
 import { FiMail } from 'react-icons/fi';
 import Link from 'next/link';
 import classNames from 'classnames';
-import { useClickOutside } from '@/hooks/useClickOutside';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 interface ISupportService {
   isMobile?: boolean;

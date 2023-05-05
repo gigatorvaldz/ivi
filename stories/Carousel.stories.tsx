@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../UI/Button/Button';
+import Button from '../UI/Button';
 import ImageCarousel from '../UI/ImageCarousel';
 
 const meta: Meta<typeof ImageCarousel> = {

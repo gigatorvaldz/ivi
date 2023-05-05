@@ -3,7 +3,7 @@ import css from './TopTenCard.module.scss';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
-interface ITopTenCard {
+export interface ITopTenCard {
   position: StaticImageData[];
   title: StaticImageData;
   poster: StaticImageData;

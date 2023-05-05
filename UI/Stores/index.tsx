@@ -42,8 +42,8 @@ const Stores: React.FC<IStores> = ({ isMobile }) => {
 
   return (
     <div className={css.stores}>
-      {resultStores.map((e) => (
-        <Link href={e.href}>
+      {resultStores.map((e, index) => (
+        <Link href={e.href} key={index}>
           <Button
             key={e.primaryText}
             icon={e.icon}
