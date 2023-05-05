@@ -69,6 +69,10 @@
 
   transition: all ease-out 0.25s;
 
+  @include maxQ(medium) {
+    @include font(1.3rem, 130%, 700);
+  }
+
   &.inputFilled {
     top: 0.2rem;
     transform: translateY(0%);

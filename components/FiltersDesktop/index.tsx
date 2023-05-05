@@ -35,7 +35,7 @@ const FiltersDesktop = () => {
   }, []);
 
   const genres = modifyGenreLinks(Genres).sort((genre1, genre2) =>
-    genre1.title.localeCompare(genre2.title)
+    genre1.title.localeCompare(genre2.title),
   );
   const years = Object.values(ProductionYears).map((year) => ({ title: year }));
   const countries = Object.values(Countries)
@@ -121,6 +121,7 @@ const FiltersDesktop = () => {
       />
       <FilterInput query={'producer'} />
       <FilterInput query={'actor'} />
+      <FilterInput query={'name'} />
       <ResetFiltersButton />
     </div>
   );

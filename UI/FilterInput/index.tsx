@@ -6,7 +6,7 @@ import { BiSearch } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 
 type FilterInputProps = {
-  query: 'producer' | 'actor';
+  query: 'producer' | 'actor' | 'name';
 };
 
 const FilterInput: React.FC<FilterInputProps> = ({ query }) => {
@@ -35,7 +35,7 @@ const FilterInput: React.FC<FilterInputProps> = ({ query }) => {
           }
         />
         <span className={classNames({ [styles.inputFilled]: searchValue }, styles.placeholder)}>
-          Поиск по {query === 'producer' ? 'режиссеру' : 'актеру'}
+          Поиск по {query === 'producer' ? 'режиссеру' : query === 'actor' ? 'актеру' : 'названию'}
         </span>
       </label>
       <div
