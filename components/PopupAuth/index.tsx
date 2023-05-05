@@ -9,13 +9,15 @@ import SignInForm from './SignInForm';
 
 interface PopupAuthI {
   type: 'registration' | 'login';
+  setIsVisible: (param: boolean) => void
 }
 
-const closeButtonHandle = () => {
-  router.back();
-};
+const PopupAuth: React.FC<PopupAuthI> = ({ setIsVisible, type }) => {
 
-const PopupAuth: React.FC<PopupAuthI> = ({ type }) => {
+  const closeButtonHandle = () => {
+    setIsVisible(false);
+  };
+
   return (
     <Modal visible={true}>
       <div className={css.container}>

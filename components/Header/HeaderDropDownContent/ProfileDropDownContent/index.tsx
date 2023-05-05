@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './ProfileDropDownContent.module.scss';
 
 import ActionCard from '@/UI/ActionCard';
@@ -16,7 +16,8 @@ import {
 } from 'react-icons/bs';
 import { IoDiamondOutline } from 'react-icons/io5';
 import { TbDeviceTvOld } from 'react-icons/tb';
-import { useRouter } from 'next/router';
+import PopupAuth from '@/components/PopupAuth';
+import Portal from '@/components/Portal';
 
 const controlsItems: Array<ListItem> = [
   { title: 'Настройки', href: '/profile/settings' },
@@ -27,12 +28,13 @@ const controlsItems: Array<ListItem> = [
 ];
 
 const ProfileDropDownContent: React.FC = () => {
-  const router = useRouter();
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [authType, setAuthType] = useState<'registration' | 'login'>('registration');
 
-  // Auth Buttons
-  const onAuthButtonClickHandle = (type: string) => {
+  const onAuthButtonClickHandle = (type: 'registration' | 'login') => {
     return () => {
-      router.push(router.asPath + `?${type}`, undefined, { shallow: true });
+      setAuthType(type);
+      setIsAuth(true);
     };
   };
 
@@ -67,8 +69,21 @@ const ProfileDropDownContent: React.FC = () => {
       </div>
       <div className={css.controls}>
         <div className={css.auth}>
-          <Button primaryText="Войти" styling="accent" />
-          <Button primaryText="Зарегистрироваться" styling="accent" />
+          <Button
+            onClickHandler={onAuthButtonClickHandle('login')}
+            primaryText="Войти"
+            styling="accent"
+          />
+          <Button
+            onClickHandler={onAuthButtonClickHandle('registration')}
+            primaryText="Зарегистрироваться"
+            styling="accent"
+          />
+          {isAuth && (
+            <Portal>
+              <PopupAuth setIsVisible={setIsAuth} type={authType} />
+            </Portal>
+          )}
         </div>
         <List items={controlsItems} />
       </div>
