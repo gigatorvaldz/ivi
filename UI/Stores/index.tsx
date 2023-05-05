@@ -6,39 +6,19 @@ import { BsApple, BsGooglePlay } from 'react-icons/bs';
 import { MdOutlineMonitor, MdDevicesOther } from 'react-icons/md';
 
 interface IStores {
+  items: {
+    icon: React.ReactNode;
+    primaryText: string;
+    preamble?: string;
+    href: string;
+  }[];
   isMobile?: boolean;
 }
 
-const Stores: React.FC<IStores> = ({ isMobile }) => {
-  const storeItems = [
-    {
-      icon: <BsApple className={css.storeIcon} />,
-      primaryText: 'App Store',
-      preamble: 'Загрузить в',
-      href: 'https://apps.apple.com/RU/app/id455705533?mt=8',
-    },
-    {
-      icon: <BsGooglePlay className={css.storeIcon} />,
-      primaryText: 'Google Play',
-      preamble: 'Доступно в',
-      href: 'https://play.google.com/store/apps/details?id=ru.ivi.client&referrer=af_tranid%3DRr7d_GphzalA85B2ML2oFQ%26shortlink%3DdevicesAndroid%26c%3DdevicesAndroid%26pid%3DWebsite%20ivi%26source_caller%3Dui',
-    },
-    {
-      icon: <MdOutlineMonitor className={css.storeIcon} />,
-      primaryText: 'Smart TV',
-      preamble: 'Смотрите на',
-      href: 'https://www.ivi.ru/pages/tvsmart/',
-    },
-    {
-      icon: <MdDevicesOther className={css.storeIcon} />,
-      primaryText: 'Все устройства',
-      href: 'https://www.ivi.ru/devices',
-    },
-  ];
+const Stores: React.FC<IStores> = ({ items, isMobile }) => {
 
   let resultStores;
-
-  isMobile ? (resultStores = storeItems.slice(2)) : (resultStores = [...storeItems]);
+  isMobile ? (resultStores = items.slice(2)) : (resultStores = [...items]);
 
   return (
     <div className={css.stores}>

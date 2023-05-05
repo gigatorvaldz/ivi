@@ -1,23 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import css from './PopupSearch.module.scss';
-import { useRouter } from 'next/router';
 import Modal from '../Modal';
 import Link from 'next/link';
 import { IoCloseOutline } from 'react-icons/io5';
 import { GiFilmProjector } from 'react-icons/gi';
 import SearchInput from '@/UI/SearchInput';
+import { useURLQuery } from '@/hooks/useURLQuery';
 
-interface IPopupSearch {
-  visibleSearch: boolean;
-}
-
-const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
+const PopupSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
-  const router = useRouter();
+  const {currentQuery, toggleQuery} = useURLQuery();
 
   useEffect(() => {
     return(() => {setInputValue('')})
-  }, [visibleSearch])
+  }, [currentQuery])
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -67,9 +63,9 @@ const PopupSearch: React.FC<IPopupSearch> = ({ visibleSearch }) => {
   };
 
   return (
-    <Modal visible={visibleSearch}>
+    <Modal visible={currentQuery === 'search'}>
       <div className={css.container}>
-        <IoCloseOutline className={css.closePopup} onClick={() => router.back()} />
+        <IoCloseOutline className={css.closePopup} onClick={() => toggleQuery('?search')} />
         <div className={css.content}>
           <div className={css.searchInput}>
             <h1>Поиск</h1>

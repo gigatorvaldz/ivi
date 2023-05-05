@@ -6,10 +6,10 @@ import CommentsList from '@/UI/CommentsList/CommentsList';
 import BackArrow from '@/UI/BackArrow';
 import TabsList from '@/UI/TabsList';
 import AsidePoster from '@/UI/AsidePoster';
-import { useRouter } from 'next/router';
 import ContentCreators from '../ContentCreators';
 import { CreatorsBlock } from '@/interfaces';
 import { Review } from '@/interfaces/Review';
+import { useURLQuery } from '@/hooks/useURLQuery';
 
 interface IPopupFilm {
   title: string;
@@ -26,24 +26,23 @@ const PopupFilm: React.FC<IPopupFilm> = ({
   year,
   visiblePopup,
   creators,
-  comments
+  comments,
 }) => {
   const [contentType, setContentType] = useState<string>('');
-  const router = useRouter();
-  
+  const { currentQuery } = useURLQuery();
+
   const tabsListItems = [
     { title: 'Создатели', href: 'person' },
     { title: 'Комментарии', count: comments.length, href: 'comments' },
   ];
-  
+
   useEffect(() => {
-    const query = router.asPath.split('?').slice(-1).join('');
-    if (query === 'comments') setContentType('comments');
-    if (query === 'person') setContentType('person');
+    if (currentQuery === 'comments') setContentType('comments');
+    if (currentQuery === 'person') setContentType('person');
     return () => {
       setContentType('');
     };
-  }, [router]);
+  }, [currentQuery]);
 
   return (
     <Modal visible={visiblePopup}>

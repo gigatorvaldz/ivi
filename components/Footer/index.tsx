@@ -8,6 +8,8 @@ import { LINKS } from '@/constants/footer';
 import noAds from 'public/assets/footer/noAds.svg';
 import Stores from '@/UI/Stores';
 import SupportService from '@/UI/SupportService';
+import { stores } from '@/constants/stores';
+import { socials } from '@/constants/socials';
 
 const Footer: React.FC = () => {
   return (
@@ -42,14 +44,14 @@ const Footer: React.FC = () => {
         </div>
         <div className={css.footerBottom}>
           <div className={css.columnWide}>
-            <Stores />
+            <Stores items={stores} />
             <div className={css.copyrights}>
               <span>© 2023 OOO «Иви.ру»</span>
               <span>HBO ® and related service marks are the property of Home Box Office, Inc</span>
             </div>
           </div>
           <div className={css.columnWide}>
-            <Socials />
+            <Socials items={socials} />
           </div>
         </div>
       </div>

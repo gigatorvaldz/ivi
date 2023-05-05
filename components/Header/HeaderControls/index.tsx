@@ -2,7 +2,7 @@ import React from 'react';
 import css from './HeaderControls.module.scss';
 import { HeaderControlsItem } from '@/interfaces';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useURLQuery } from '@/hooks/useURLQuery';
 
 interface HeaderControlsI {
   items: Array<HeaderControlsItem>;
@@ -13,7 +13,7 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
   items,
   setCurrentDropDown,
 }: HeaderControlsI) => {
-  const router = useRouter();
+  const { toggleQuery } = useURLQuery();
 
   return (
     <div className={css.container}>
@@ -25,7 +25,7 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
           }}
         >
           {!el.linkToAnotherPage ? (
-            <span onClick={() => router.push(router.asPath + '?' + el.href)}>{el.title}</span>
+            <span onClick={() => toggleQuery('?' + el.href)}>{el.title}</span>
           ) : (
             <Link href={el.href}>{el.title}</Link>
           )}

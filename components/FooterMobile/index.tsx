@@ -8,31 +8,28 @@ import { AiOutlineFolder } from 'react-icons/ai';
 import { MdMonitor, MdOutlineMoreHoriz } from 'react-icons/md';
 import glowImage from '/assets/footer/glowImage.svg';
 import Drawer from '../Drawer';
+import { useURLQuery } from '@/hooks/useURLQuery';
+import PopupSearch from '../PopupSearch';
 
 const FooterMobile: React.FC = () => {
   const router = useRouter();
   const [visibleDrawer, setVisibleDrawer] = useState<boolean>(false);
+  const { currentQuery, lastPage, toggleQuery } = useURLQuery();
 
   useEffect(() => {
-    if (router.asPath === '/?navigation') setVisibleDrawer(true);
+    if (currentQuery === 'navigation') setVisibleDrawer(true);
     else setVisibleDrawer(false);
-  }, [router]);
+  }, [currentQuery]);
 
-  const goTo = (path: string) => {
-    router.asPath === path
-      ? router.push(router.asPath.split('?').slice(0, -1).join(''))
-      : router.push(path);
-  };
-  
   const items = [
     { component: <BiHomeAlt className={css.icon} />, text: 'Мой Иви', path: '/' },
     { component: <AiOutlineFolder className={css.icon} />, text: 'Каталог', path: '/films' },
-    { component: <BiSearch className={css.icon} />, text: 'Поиск', path: '/search' },
+    { component: <BiSearch className={css.icon} />, text: 'Поиск', path: '?search' },
     { component: <MdMonitor className={css.icon} />, text: 'TV+', path: '/tv+' },
     {
       component: <MdOutlineMoreHoriz className={css.icon} />,
       text: 'Ещё',
-      path: '/?navigation',
+      path: '?navigation',
     },
   ];
 
@@ -41,14 +38,18 @@ const FooterMobile: React.FC = () => {
       {visibleDrawer && <Drawer />}
       <footer className={css.container}>
         {items.map((e, index) => (
-          <div className={css.item} key={index} onClick={() => goTo(e.path)}>
+          <div
+            className={css.item}
+            key={index}
+            onClick={() => (e.path.slice(0, 1) === '?' ? toggleQuery(e.path) : router.push(e.path))}
+          >
             <Image
               width={64}
               height={48}
               src={glowImage}
               alt="glowImage"
               className={classNames(
-                { [css.glowImageActive]: router.asPath === e.path },
+                { [css.glowImageActive]: lastPage === e.path },
                 css.glowImage,
               )}
             />
@@ -57,6 +58,7 @@ const FooterMobile: React.FC = () => {
           </div>
         ))}
       </footer>
+      <PopupSearch />
     </>
   );
 };

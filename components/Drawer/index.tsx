@@ -19,6 +19,8 @@ import { RiErrorWarningLine, RiMessage2Line } from 'react-icons/ri';
 
 import { Film, Series, Animation } from '@/constants/header';
 import SupportService from '@/UI/SupportService';
+import { stores } from '@/constants/stores';
+import { socials } from '@/constants/socials';
 
 const Drawer: React.FC = () => {
   useEffect(() => {
@@ -120,7 +122,7 @@ const Drawer: React.FC = () => {
               <BsQrCodeScan className={css.icon} />
               <h3>Вход по коду</h3>
             </Link>
-            <Stores isMobile={true} />
+            <Stores items={stores} isMobile={true} />
           </div>
         </div>
         <div className={classNames(css['navigation-group'], css.help)}>
@@ -129,7 +131,7 @@ const Drawer: React.FC = () => {
           </Accordion>
         </div>
         <div className={classNames(css['navigation-group'], css.footer)}>
-          <Socials />
+          <Socials items={socials} />
           <span>© 2023 OOO «Иви.ру»</span>
         </div>
       </div>

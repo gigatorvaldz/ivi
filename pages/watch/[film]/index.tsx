@@ -1,7 +1,5 @@
 import { NextPage, GetServerSideProps } from 'next';
 import React, { useEffect, useState } from 'react';
-import Header from '@/components/Header/index';
-import Footer from '@/components/Footer/index';
 import Meta from '@/components/Meta';
 import MedallionButton from '@/UI/MedallionButton';
 import DescriptionBlock from '@/components/DescriptionBlock';
@@ -12,7 +10,6 @@ import { FilmCardArray } from '@/mocks/FilmCardArray';
 import ActorsPanel from '@/components/ActorsPanel';
 import ExtraContentPanel from '@/components/ExtraContentPanel';
 import CommentsGalery from '@/components/CommentsGalery';
-import LinkButton from '@/UI/LinkButton';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Layout from '@/components/Layout';
@@ -33,14 +30,12 @@ type FilmPageProps = {
 const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
   const { name: firstCountry, englishName: firstCountryEng } = film.countries[0];
   const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
-  const router = useRouter();
-  const currentQuery = router.asPath.split('?');
+  const { currentQuery } = useURLQuery();
 
   useEffect(() => {
-    if (currentQuery.length !== 1 && currentQuery.slice(-1).join('') !== 'search')
-      setVisiblePopup(true);
+    if (currentQuery === 'comments' || currentQuery === 'person') setVisiblePopup(true);
     else setVisiblePopup(false);
-  }, [router]);
+  }, [currentQuery]);
 
   return (
     <>
@@ -132,10 +127,7 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
               <p className={styles.availableDevices}>
                 Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
               </p>
-              <Button 
-                primaryText='Подключить устройства'
-                styling='accent'
-              />
+              <Button primaryText="Подключить устройства" styling="accent" />
             </div>
           </div>
         </section>
@@ -166,6 +158,7 @@ import path from 'path';
 import { useRouter } from 'next/router';
 import Button from '@/UI/Button';
 import dynamic from 'next/dynamic';
+import { useURLQuery } from '@/hooks/useURLQuery';
 
 export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
   // const { id } = context.params;

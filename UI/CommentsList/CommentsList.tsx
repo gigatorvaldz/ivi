@@ -29,6 +29,7 @@ const CommentsList: React.FC<ICommentsList> = ({items}) => {
       {slicedComments.length !== items.length && (
         <div className={css.moreComments}>
           <Button
+            isHundredPercentsWidth={true}
             primaryText="Показать ещё"
             onClickHandler={() => setSliceCounter((prev) => prev + 1)}
           />
