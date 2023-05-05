@@ -70,11 +70,19 @@
           }
         }
 
-        .language{
-          transition: 0.3s ease-in-out;
+        .language {
+          width: 2rem;
+          text-align: center;
+          a {
+            transition: 0.3s ease-in-out;
+            font-size: 16px;
+            font-weight: 600;
+          }
 
           &:hover {
-            color: #fff;
+            a {
+              color: #fff;
+            }
           }
         }
 

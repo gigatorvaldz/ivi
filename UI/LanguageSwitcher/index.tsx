@@ -1,5 +1,5 @@
 import React from 'react';
-import './LanguageSwitcher.module.scss'
+import css from './LanguageSwitcher.module.scss'
 import useTranslation from '../../hooks/useTranslation';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ const LanguageSwitcher: React.FC = () => {
   const switchedLanguage = locale == 'ru' ? 'en' : 'ru';
 
   return (
-    <Link href={pathname} locale={switchedLanguage}>
+    <Link className={css.container} href={pathname} locale={switchedLanguage}>
       {switchedLanguage}
     </Link>
   );
