@@ -2,7 +2,7 @@ import React from 'react';
 import css from './BannerSlide.module.scss';
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
-import Button from '@/UI/Button';
+import Button from '../Button';
 
 interface IBannerSlide {
   backgroundImage: StaticImageData;

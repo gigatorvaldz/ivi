@@ -1,5 +1,6 @@
 import React from 'react';
-import useTranslation from '@/hooks/useTranslation';
+import './LanguageSwitcher.module.scss'
+import useTranslation from '../../hooks/useTranslation';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 

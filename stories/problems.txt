@@ -1,6 +1,9 @@
 SearchInput?
 LinkButton?
 Slider
-TabsList style
-PersonAvatar
+TabsList + BannerSlide style
 MarkableList
+Input
+ActionFilmCard + AsidePoster + PersonAvatar(no data)
+
+Button<>GenreTag
