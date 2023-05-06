@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import PersonAvatar from '../../UI/PersonAvatar';
 import { Film } from '../../interfaces/Film';
 import { useRouter } from 'next/router';
+import ShowMoreButton from '../../UI/ShowMoreButton';
 
 type ActorsPanelProps = {
   film: Film;
@@ -57,6 +58,9 @@ const ActorsPanel: React.FC<ActorsPanelProps> = ({ film }) => {
                 <PersonAvatar person={person} role={role} />
               </li>
             ))}
+            <li className={styles.actorCard}>
+              <ShowMoreButton placeholder="Eщё" />
+            </li>
           </ul>
         </div>
       </div>

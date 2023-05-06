@@ -1,0 +1,13 @@
+.notFoundPage {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  place-items: center center;
+
+  font-family: $font-sans;
+  color: white;
+  @include font(5rem, 5rem, 700);
+}

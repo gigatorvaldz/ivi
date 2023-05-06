@@ -2,13 +2,15 @@
   "name": "ivi",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "server": "json-server -p 4000 --watch ./mocks/db.json"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -40,6 +42,7 @@
     "@storybook/react": "^7.0.4",
     "@storybook/testing-library": "^0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.11",
+    "json-server": "^0.17.3",
     "prettier": "2.8.7",
     "sb": "^7.0.4",
     "storybook": "^7.0.4"

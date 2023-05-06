@@ -11,7 +11,7 @@ const BackArrow: React.FC<IBackArrow> = ({ redirectTo }) => {
   const router = useRouter();
 
   return (
-    <div className={css.container} onClick={() => router.push(router.asPath.split('?').slice(0, -1).join(''))}>
+    <div className={css.container} onClick={() => router.back()}>
       <MdOutlineArrowBackIosNew className={css.icon} />
       <span>{redirectTo}</span>
     </div>

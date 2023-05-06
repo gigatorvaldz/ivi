@@ -19,7 +19,10 @@ const CommentBlock: React.FC<CommentBlockProps> = ({
   const router = useRouter();
 
   return (
-    <div className={styles.container} onClick={() => router.push('/films/comments')}>
+    <div
+      className={styles.container}
+      onClick={() => router.push(router.asPath + '?comments', undefined, { shallow: true })}
+    >
       <h3 className={styles.author}>{title}</h3>
       <p className={styles.comment}>{content}</p>
       <div className={styles.infoBlock}>

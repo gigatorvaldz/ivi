@@ -1,0 +1,49 @@
+@use 'sass:color';
+
+.container {
+  max-width: max-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  font-family: $font-sans;
+  color: rgba($color: white, $alpha: 0.85);
+  @include font(1.3rem, 1.6rem, 500);
+
+  @include maxQ(small) {
+    @include font(1.1rem, 1.3rem, 500);
+  }
+}
+
+.avatarContainer {
+  background-color: $accent-purple;
+  position: relative;
+  width: 8.8rem;
+  height: 8.8rem;
+  object-fit: cover;
+
+  border-radius: 100%;
+  overflow: hidden;
+
+  display: grid;
+  place-items: center center;
+
+  @extend %transition;
+
+  @include onHover() {
+    cursor: pointer;
+    background-color: color.scale($color: $accent-purple, $lightness: 20%);
+  }
+
+  @include maxQ(small) {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+}
+
+.avatarContainerLarge {
+  width: 12.8rem;
+  height: 12.8rem;
+}

@@ -8,14 +8,19 @@ import FiltersDesktop from '@/components/FiltersDesktop/index';
 import Galery from '@/components/Galery';
 import GenreTag from '@/UI/GenreTag';
 import { genresIcons } from '@/constants/genres';
-import { FilmCardArray } from '@/mocks/FilmCardArray';
 import GaleryCarousel from '../../UI/GaleryCarousel';
+import { GetServerSideProps, NextPage } from 'next';
+import { Film } from '../../interfaces/Film';
 
 import styles from './filmsPage.module.scss';
 import Layout from './../../components/Layout/index';
+import FilmCard from '../../components/FilmCard';
 
-const FilmsPage = () => {
+type FilmsPageProps = {
+  films: Film[];
+};
 
+const FilmsPage: NextPage<FilmsPageProps> = ({ films }) => {
   return (
     <>
       <Meta title="films" description="films page" />
@@ -55,29 +60,32 @@ const FilmsPage = () => {
           isTitleLink={false}
           arrowsBottomOffset={0}
         />
-        <Galery title="Фильмы-новинки" slides={FilmCardArray} isTitleLink={false} />
-        <Galery title="Лучшие фильмы" slides={FilmCardArray} isTitleLink={false} />
+        <Galery
+          title="Фильмы-новинки"
+          slides={films.map((film) => (
+            <FilmCard film={film} key={film.id} />
+          ))}
+          isTitleLink={false}
+        />
       </Layout>
     </>
   );
 };
 
-// export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
-//   const { id } = context.params;
-//   const response = await fetch('https://64143550600d6c8387434f0a.mockapi.io/api/film');
+export const getServerSideProps: GetServerSideProps<FilmsPageProps> = async () => {
+  const response = await fetch(`http://localhost:4000/films`);
 
-//   console.log(response);
-//   const film: Film = (await response.json())[0];
+  const films: Film[] = await response.json();
 
-//   if (!film) {
-//     return {
-//       notFound: true,
-//     };
-//   }
+  if (!films) {
+    return {
+      notFound: true,
+    };
+  }
 
-//   return {
-//     props: { film },
-//   };
-// };
+  return {
+    props: { films },
+  };
+};
 
 export default FilmsPage;

@@ -1,7 +1,5 @@
 import { NextPage, GetServerSideProps } from 'next';
 import React, { useEffect, useState } from 'react';
-import Header from '@/components/Header/index';
-import Footer from '@/components/Footer/index';
 import Meta from '@/components/Meta';
 import MedallionButton from '@/UI/MedallionButton';
 import DescriptionBlock from '@/components/DescriptionBlock';
@@ -12,18 +10,20 @@ import { FilmCardArray } from '@/mocks/FilmCardArray';
 import ActorsPanel from '@/components/ActorsPanel';
 import ExtraContentPanel from '@/components/ExtraContentPanel';
 import CommentsGalery from '@/components/CommentsGalery';
-import LinkButton from '@/UI/LinkButton';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Layout from '@/components/Layout';
+import dynamic from 'next/dynamic';
 const MediaQuery = dynamic(() => import('react-responsive'), {
   ssr: false,
 });
+import { Film } from '@/interfaces/Film';
+import { useRouter } from 'next/router';
+import Button from '@/UI/Button';
 
 import styles from './filmPage.module.scss';
 import Breadcrumbs from '@/components/BreadCrumbs';
 import Player from '@/components/Player';
-import { Film } from '@/interfaces/Film';
 import PopupFilm from '@/components/PopupFilm';
 
 type FilmPageProps = {
@@ -113,11 +113,11 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
             </div>
           </div>
         </section>
-        <Galery
+        {/* <Galery
           title={`С фильмом «${film.name}» смотрят:`}
           slides={FilmCardArray}
           isTitleLink={false}
-        />
+        /> */}
 
         <ActorsPanel film={film} />
         <ExtraContentPanel film={film} />
@@ -132,10 +132,7 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
               <p className={styles.availableDevices}>
                 Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
               </p>
-              <Button 
-                primaryText='Подключить устройства'
-                styling='accent'
-              />
+              <Button primaryText="Подключить устройства" styling="accent" />
             </div>
           </div>
         </section>
@@ -161,22 +158,12 @@ const FilmPage: NextPage<FilmPageProps> = ({ film }) => {
   );
 };
 
-import fsPromises from 'fs/promises';
-import path from 'path';
-import { useRouter } from 'next/router';
-import Button from '@/UI/Button';
-import dynamic from 'next/dynamic';
-
 export const getServerSideProps: GetServerSideProps<FilmPageProps> = async (context) => {
-  // const { id } = context.params;
-  // const response = await fetch('https://64143550600d6c8387434f0a.mockapi.io/api/film');
+  const { id } = context.params!;
+  const response = await fetch(`http://localhost:4000/films/${id}`);
 
-  // console.log(response);
-  // const film: Film = (await response.json())[0];
-
-  const filePath = path.join(process.cwd(), './mocks/filmResponse.json');
-  const jsonData = (await fsPromises.readFile(filePath)) as unknown as string;
-  const film: Film = JSON.parse(jsonData);
+  console.log(response);
+  const film: Film = await response.json();
 
   if (!film) {
     return {
