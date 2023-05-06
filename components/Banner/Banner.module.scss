@@ -6,6 +6,9 @@
   flex-direction: row;
   overflow: hidden;
   user-select: none;
+  @media (max-width: 1360px) {
+    height: 37vw;    
+  }
   .carouselInitialized {
     display: flex;
     width: 100%;
@@ -32,6 +35,9 @@
         position: absolute;
         color: hsla(0, 0%, 100%, 0.72);
         top: 50%;
+        @include maxQ(tablet-s) {
+          visibility: hidden;
+        }
       }
     }
     .mainSlide {
@@ -40,8 +46,7 @@
       margin-right: auto;
       width: 1216px;
       @media (max-width: 1360px) {
-        overflow: hidden;
-        width: calc(100% - 6rem);
+        width: 80%;
       }
       .carouselContainer {
         height: 100%;
@@ -49,10 +54,9 @@
         display: flex;
         flex-direction: row;
         position: relative;
-        transform: translateX(-2464px);
+        transform: translateX(calc((-100% / 5) * 2));
         @media (max-width: 1360px) {
-          width: calc(6160px - 30rem);
-          transform: translateX(calc(-100%  + 356rem));
+          width: calc((100% + 1.6rem) * 5);
         }
       }
     }
@@ -80,6 +84,9 @@
         transition: transform 0.4s, opacity 0.4s;
         font-size: 32px;
         height: 32px;
+        @include maxQ(tablet-s) {
+          visibility: hidden;
+        }
       }
     }
   }
@@ -95,18 +102,18 @@
 
 @keyframes next {
   0% {
-    transform: translateX(-1232px);
+    transform: translateX(calc(-100% / 5));
   }
   100% {
-    transform: translateX(-2464px);
+    transform: translateX(calc((-100% / 5) * 2));
   }
 }
 
 @keyframes prev {
   0% {
-    transform: translateX(-3696px);
+    transform: translateX(calc(-100% / 5) * 3);
   }
   100% {
-    transform: translateX(-2464px);
+    transform: translateX(calc((-100% / 5) * 2));
   }
 }

@@ -5,8 +5,9 @@ import { FaPlay } from 'react-icons/fa';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { AiOutlineDownload } from 'react-icons/ai';
 import Button from '../../UI/Button';
-import ImageWithFallback from '@/UI/ImageWithFallback';
 import { Film } from '@/interfaces/Film';
+import dynamic from 'next/dynamic';
+const ReactPlayer = dynamic(() => import('react-player/youtube'), { ssr: false });
 
 type PlayerProps = {
   film: Film;
@@ -15,8 +16,14 @@ type PlayerProps = {
 const Player: React.FC<PlayerProps> = ({ film }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.player}>
-        <ImageWithFallback src={film.poster} fill alt="trailer_poster" className={styles.poster} />
+      <div className="player-wrapper">
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=TODt_q-_4C4"
+          muted
+          playing
+          controls
+          className="react-player"
+        />
       </div>
       <div className={styles.buttons}>
         <Button icon={<FaPlay />} primaryText="Трейлер" />

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import css from './Comment.module.scss';
 import Avatar from '../Avatar';
 import LikesCounter from '../LikesCounter';
@@ -10,7 +10,6 @@ const Comment: React.FC<Review> = ({ id, title, text, rating, children, level = 
   const [showFullComment, setShowFullComment] = useState(false);
   const [replying, setReplying] = useState(false);
   const [replyText, setReplyText] = useState('');
-  const wrapperRef = useRef(null);
   const paddingLeft = level * 36;
   const maxCommentLength = 180;
 
@@ -18,15 +17,15 @@ const Comment: React.FC<Review> = ({ id, title, text, rating, children, level = 
     setShowFullComment(!showFullComment);
   };
 
-  const toggleReply = () => {
+  const toggleReply = (): void => {
     setReplying(!replying);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void  => {
     setReplyText(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     setReplyText('');
     setReplying(false);
     children?.push({

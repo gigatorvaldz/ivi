@@ -10,6 +10,9 @@
     position: relative;
     display: flex;
     align-items: flex-end;
+    @include maxQ(tablet-s) {
+      padding: 1.5rem;
+    }
     .slideInfo {
       z-index: 1;
       display: flex;
@@ -18,10 +21,19 @@
       .title {
         height: auto;
         margin-bottom: 2rem;
+        @include maxQ(tablet-s) {
+          margin-bottom: .5rem;
+        }
       }
       p {
         font-size: 1.5rem;
         margin-bottom: 2.4rem;
+        @include maxQ(tablet-s) {
+          margin-bottom: 0;
+        }
+        @media (max-width: 700px) {
+          display: none;
+        }
       }
       .buttonBlock {
         @include maxQ(tablet-s) {
@@ -39,6 +51,10 @@
     border-radius: 2.6rem;
     pointer-events: none;
     z-index: 0;
+    object-fit: cover;
+    @media (max-width: 1360px) {
+      height: 37vw;
+    }
   }
   .fade {
     position: absolute;
