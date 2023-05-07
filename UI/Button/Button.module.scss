@@ -30,6 +30,9 @@
 
 .textOnly {
   padding: 9px 42px;
+  @include maxQ(tablet-ps) {
+    padding: 9px 11px;
+  }
 }
 
 .textOnlyAccent {

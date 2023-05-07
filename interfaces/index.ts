@@ -31,7 +31,7 @@ export interface Poster {
   extra?: string;
 }
 
-export type HeaderItem = {
+export interface HeaderItem {
   title: string;
   dropdown: React.ReactNode;
   href: string;

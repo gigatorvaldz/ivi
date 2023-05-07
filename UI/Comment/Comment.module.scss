@@ -19,6 +19,9 @@
         font-weight: 700;
         overflow: hidden;
         text-overflow: ellipsis;
+        @include maxQ(tablet-s) {
+          margin-right: 2px;
+        }
       }
       time {
         white-space: nowrap;
@@ -54,7 +57,7 @@
       .replyForm {
         margin-top: 12px;
         display: flex;
-        gap: 12px;
+        gap: 6px;
       }
     }
   }

@@ -21,7 +21,7 @@ const Comment: React.FC<Review> = ({ id, title, text, rating, children, level = 
     setReplying(!replying);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void  => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setReplyText(e.target.value);
   };
 
@@ -70,11 +70,7 @@ const Comment: React.FC<Review> = ({ id, title, text, rating, children, level = 
           </div>
           {replying && (
             <div className={css.replyForm}>
-              <Input
-                value={replyText}
-                onChange={handleChange}
-                placeholder='Ответить'
-              />
+              <Input value={replyText} onChange={handleChange} placeholder="Ответить" />
               <Button primaryText="Ответить" onClickHandler={() => handleSubmit()} />
             </div>
           )}

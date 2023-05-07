@@ -53,7 +53,10 @@
     z-index: 0;
     object-fit: cover;
     @media (max-width: 1360px) {
-      height: 37vw;
+      height: 40vw;
+    }
+    @include maxQ(tablet-ps) {
+      height: 50vw;
     }
   }
   .fade {

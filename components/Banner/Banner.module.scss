@@ -7,7 +7,10 @@
   overflow: hidden;
   user-select: none;
   @media (max-width: 1360px) {
-    height: 37vw;    
+    height: 40vw;    
+  }
+  @include maxQ(tablet-ps) {
+    height: 50vw;
   }
   .carouselInitialized {
     display: flex;
@@ -46,7 +49,7 @@
       margin-right: auto;
       width: 1216px;
       @media (max-width: 1360px) {
-        width: 80%;
+        width: 90%;
       }
       .carouselContainer {
         height: 100%;

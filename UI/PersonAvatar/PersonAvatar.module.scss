@@ -33,6 +33,10 @@
 .avatarContainerLarge {
   width: 12.8rem;
   height: 12.8rem;
+  @media (max-width: 600px) {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
 }
 
 .avatar {
