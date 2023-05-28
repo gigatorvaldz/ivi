@@ -9,6 +9,7 @@ import styles from './Galery.module.scss';
 import classNames from 'classnames';
 import { BsChevronCompactRight } from 'react-icons/bs';
 import { StaticImageData } from 'next/image';
+import { useTranslation } from 'next-i18next';
 
 type GaleryProps = {
   title: string;
@@ -25,21 +26,23 @@ const Galery: React.FC<GaleryProps> = ({
   isTitleLink = true,
   arrowsBottomOffset = 0,
   titleImage,
-  initialVisibleCards
+  initialVisibleCards,
 }) => {
+  const { t } = useTranslation('mainPage');
+
   return (
     <section className={styles.galerySection}>
       <div className="wrapper">
         <div className={styles.container}>
           <div className={styles.titleSection}>
-            {titleImage && <Image src={titleImage} alt='titleImage' />}
-            {!isTitleLink && <h2 className={styles.heading}>{title}</h2>}
+            {titleImage && <Image src={titleImage} alt="titleImage" />}
+            {!isTitleLink && <h2 className={styles.heading}>{t(title)}</h2>}
             {isTitleLink && (
               <Link
                 href={`/${getEnumKeyByEnumValue(Routes, title)}`}
                 className={classNames(styles.heading, styles.link)}
               >
-                {title}
+                {t(title)}
                 <BsChevronCompactRight className={styles.iconArrow} />
               </Link>
             )}

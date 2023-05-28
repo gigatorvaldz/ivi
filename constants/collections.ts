@@ -7,11 +7,11 @@ import image6 from '/assets/mainPage/collections/image6.png';
 import image7 from '/assets/mainPage/collections/image7.png';
 
 export const collections = [
-  { image: image1, title: 'Лучшее романтическое кино', href: '/123' },
-  { image: image2, title: 'Самое время для аниме', href: '/123' },
-  { image: image3, title: 'Лучшие комедии к 1 апреля', href: '/123' },
-  { image: image4, title: 'Эталон детективных сериалов', href: '/123' },
-  { image: image5, title: 'Лучшие криминальные сериалы', href: '/123' },
-  { image: image6, title: 'Топ фэнтези-сериалов', href: '/123' },
-  { image: image7, title: 'Мелодрамы', href: '/123' },
+  { image: image1, title: 'firstCollection', href: '/123' },
+  { image: image2, title: 'secondCollection', href: '/123' },
+  { image: image3, title: 'thirdCollection', href: '/123' },
+  { image: image4, title: 'fourthCollection', href: '/123' },
+  { image: image5, title: 'fifthCollection', href: '/123' },
+  { image: image6, title: 'sixthCollection', href: '/123' },
+  { image: image7, title: 'seventhCollection', href: '/123' },
 ];

@@ -10,25 +10,28 @@ import Stores from '@/UI/Stores';
 import SupportService from '@/UI/SupportService';
 import { stores } from '@/constants/stores';
 import { socials } from '@/constants/socials';
+import { useTranslation } from 'next-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation('footer');
+
   return (
     <footer className={css.container}>
       <div className={css.content}>
         <div className={css.footerTop}>
           <div className={css.column}>
-            <span className={css.title}>О нас</span>
+            <span className={css.title}>{t('aboutUs')}</span>
             <List items={LINKS[0]} />
           </div>
           <div className={css.column}>
-            <span className={css.title}>Разделы</span>
+            <span className={css.title}>{t('sections')}</span>
             <List items={LINKS[1]} />
             <div className={css.certificateLink}>
-              <Link href="https://www.ivi.ru/cert">Активация сертификата</Link>
+              <Link href="https://www.ivi.ru/cert">{t('certificate')}</Link>
             </div>
           </div>
           <div className={css.column}>
-            <span className={css.title}>Служба поддержки</span>
+            <span className={css.title}>{t('support')}</span>
             <SupportService />
           </div>
           <div className={css.column}>
@@ -37,7 +40,7 @@ const Footer: React.FC = () => {
                 <div className={css.widgetIcon}>
                   <Image src={noAds} alt="noAds" width={56} height={56} />
                 </div>
-                <p className={css.widgetText}>Смотрите фильмы, сериалы и мультфильмы без рекламы</p>
+                <p className={css.widgetText}>{t('watch')}</p>
               </Link>
             </div>
           </div>
@@ -46,8 +49,8 @@ const Footer: React.FC = () => {
           <div className={css.columnWide}>
             <Stores items={stores} />
             <div className={css.copyrights}>
-              <span>© 2023 OOO «Иви.ру»</span>
-              <span>HBO ® and related service marks are the property of Home Box Office, Inc</span>
+              <span>{t('copyrightsTop')}</span>
+              <span>{t('copyrightsBottom')}</span>
             </div>
           </div>
           <div className={css.columnWide}>

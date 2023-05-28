@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './DescriptionBlock.module.scss';
 import classNames from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 type DescriptionBlockProps = {
   title?: string;
@@ -16,12 +17,13 @@ const DescriptionBlock: React.FC<DescriptionBlockProps> = ({
   isMainPage = false,
 }) => {
   const [isHidden, setIsHidden] = useState(true);
+  const { t } = useTranslation(['mainPage', 'common']);
 
   return (
     <div className={styles.description}>
       {title && (
         <h1 className={!isMainPage ? styles.descriptionTitle : styles.descriptionSubTitle}>
-          {title}
+          {t(title)}
         </h1>
       )}
       <div
@@ -30,12 +32,12 @@ const DescriptionBlock: React.FC<DescriptionBlockProps> = ({
             [styles.hidden]: isHidden,
             [styles.mainPageParagraph]: isMainPage,
           },
-          styles.descriptionContent
+          styles.descriptionContent,
         )}
       >
         {content.map((paragraph, index) => (
           <p key={index} className={styles.paragraph}>
-            {paragraph}
+            {t(paragraph)}
           </p>
         ))}
         {children}
@@ -44,7 +46,7 @@ const DescriptionBlock: React.FC<DescriptionBlockProps> = ({
         className={styles.toggleDesciption}
         onClick={() => setIsHidden((prevState) => !prevState)}
       >
-        {isHidden ? 'Развернуть' : 'Свернуть'}
+        {isHidden ? t('expand') : t('collapse')}
       </span>
     </div>
   );

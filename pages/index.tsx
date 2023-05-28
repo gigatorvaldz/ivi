@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import css from '/styles/Home.module.scss';
 import Banner from '@/components/Banner';
 import { bannerSlides } from '@/constants/bannerSlides';
@@ -17,6 +17,8 @@ import gift from '/assets/mainPage/gift.svg';
 import { collections } from '@/constants/collections';
 import CollectionItem from '@/UI/CollectionItem';
 import Layout from '@/components/Layout';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 const Home: NextPage = () => {
   return (
@@ -41,8 +43,8 @@ const Home: NextPage = () => {
             <div className="wrapper">
               <TeaserList
                 items={[
-                  { text: '30 дней подписки за 1 ₽', icon: lightning },
-                  { text: 'Активировать сертификат', icon: gift },
+                  { text: 'subFor30Days', icon: lightning },
+                  { text: 'certificate', icon: gift },
                 ]}
               />
             </div>
@@ -50,7 +52,7 @@ const Home: NextPage = () => {
           <Galery
             initialVisibleCards={4}
             isTitleLink={false}
-            title="Подборки"
+            title="collectionHead"
             slides={collections.map((e, index) => (
               <CollectionItem key={index} title={e.title} image={e.image} href={e.href} />
             ))}
@@ -58,7 +60,7 @@ const Home: NextPage = () => {
           <Galery
             initialVisibleCards={5}
             titleImage={titleBadge}
-            title="за неделю"
+            title="duringTheWeek"
             slides={topTenCards.map((e, index) => (
               <TopTenCard
                 key={index}
@@ -73,13 +75,13 @@ const Home: NextPage = () => {
             <div className="wrapper">
               <DescriptionBlock
                 isMainPage
-                title="Онлайн-кинотеатр Иви: фильмы в хорошем качестве всегда приносят настоящее удовольствие"
+                title="headInfo"
                 content={description}
               />
             </div>
           </section>
-          <Galery title="Добрые мультфильмы" slides={FilmCardArray} />
-          <Galery title="Драмы" slides={FilmCardArray} />
+          <Galery title="kindCartoons" slides={FilmCardArray} />
+          <Galery title="drama" slides={FilmCardArray} />
         </main>
       </Layout>
     </>
@@ -87,3 +89,13 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale ?? 'ru')),
+    },
+  };
+};

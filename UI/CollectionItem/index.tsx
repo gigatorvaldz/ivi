@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './CollectionItem.module.scss';
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 
 interface ICollectionItem {
   image: StaticImageData;
@@ -10,10 +10,12 @@ interface ICollectionItem {
 }
 
 const CollectionItem: React.FC<ICollectionItem> = ({ image, title, href }) => {
+  const { t } = useTranslation('mainPage');
+
   return (
     <div className={css.container}>
       <Image src={image} alt="collectionImage" />
-      <span>{title}</span>
+      <span>{t(title)}</span>
     </div>
   );
 };
