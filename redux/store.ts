@@ -7,14 +7,20 @@ import {
 } from '@reduxjs/toolkit';
 import filmListReducer from './features/filmList/filmList';
 import { createWrapper } from 'next-redux-wrapper';
+import authReducer from './features/authReducer';
 
 const rootReducer = combineReducers({
   filmList: filmListReducer,
+  authReducer: authReducer
 });
 
 export function setupStore() {
   return configureStore({
     reducer: rootReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
   });
 }
 

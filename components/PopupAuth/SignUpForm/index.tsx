@@ -1,16 +1,20 @@
 import React from 'react';
 import css from './SignUpForm.module.scss';
-import { useForm } from 'react-hook-form';
+import { Control, FieldValue, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import AuthInput from '../AuthInput';
 import AuthErrorMessage from '../AuthErrorMessage';
 import AuthPrivacy from '../AuthPrivacy';
 import Button from '@/UI/Button';
+import { useAppDispatch } from '@/redux/hooks';
+import { loginUser, registerUser } from '@/redux/features/authReducer';
+import { RegistrationRequest } from '@/interfaces/Auth';
 
 const SignUpForm: React.FC = () => {
-  const onSubmit = (data: object) => {
-    console.log(JSON.stringify(data));
-    reset();
-  };
+  const dispatch = useAppDispatch();
+
+  interface RegistrationForm extends RegistrationRequest {
+    retryPassword: string;
+  }
 
   const {
     handleSubmit,
@@ -18,18 +22,75 @@ const SignUpForm: React.FC = () => {
     control,
     watch,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<RegistrationForm>({
     mode: 'all',
   });
+
+  const onSubmit: SubmitHandler<RegistrationRequest> = (data: RegistrationRequest) => {
+    data.age = Number(data.age);
+    dispatch(registerUser(data));
+    reset();
+  };
 
   let password = watch('password');
 
   return (
     <form action="#" className={css.loginform} onSubmit={handleSubmit(onSubmit)}>
       <AuthInput
-        control={control}
-        placeholder={"Введите e-mail"}
-        name="login"
+        control={control as unknown as Control<FieldValues>}
+        placeholder={'Введите имя'}
+        name="first_name"
+        rules={{
+          required: 'Не указано имя.',
+        }}
+      />
+      <AuthInput
+        control={control as unknown as Control<FieldValues>}
+        placeholder={'Введите фамилию'}
+        name="second_name"
+        rules={{
+          required: 'Не указана фамилия.',
+        }}
+      />
+      <AuthInput
+        control={control as unknown as Control<FieldValues>}
+        placeholder={'Введите телефон'}
+        name="phone"
+        type="tel"
+        rules={{
+          required: 'Не указан телефон.',
+          minLength: {
+            value: 11,
+            message: 'Телефон должен быть в 11 символов.',
+          },
+          maxLength: {
+            value: 11,
+            message: 'Телефон должен быть в 11 символов.',
+          },
+        }}
+      />
+      <AuthInput
+        control={control as unknown as Control<FieldValues>}
+        placeholder={'Введите возраст'}
+        name="age"
+        type="number"
+        rules={{
+          required: 'Не указан возраст.',
+        }}
+      />
+      <AuthInput
+        control={control as unknown as Control<FieldValues>}
+        placeholder={'Введите страну'}
+        name="country"
+        rules={{
+          required: 'Не указана страна.',
+        }}
+      />
+      <AuthInput
+        control={control as unknown as Control<FieldValues>}
+        placeholder={'Введите e-mail'}
+        name="email"
+        type="email"
         rules={{
           required: 'Не указан e-mail.',
           pattern: {
@@ -40,21 +101,23 @@ const SignUpForm: React.FC = () => {
         }}
       />
       <AuthInput
-        control={control}
+        control={control as unknown as Control<FieldValues>}
         name="password"
+        type="password"
         rules={{
           required: 'Не указан пароль',
           minLength: {
             value: 6,
-            message: "Пароль должен состоять не меньше чем из 6 символов."
+            message: 'Пароль должен состоять не меньше чем из 6 символов.',
           },
         }}
         placeholder={'Придумайте пароль'}
       />
       <AuthInput
-        control={control}
+        control={control as unknown as Control<FieldValues>}
         placeholder={'Повторите пароль'}
         name="retryPassword"
+        type="password"
         rules={{
           required: 'Не указано подтверждение пароля.',
           validate: (value: string) => {
@@ -71,7 +134,7 @@ const SignUpForm: React.FC = () => {
       </div>
       <AuthPrivacy />
       <aside className={css.errors}>
-        <AuthErrorMessage isVisible={Boolean(errors.login)} message={`${errors.login?.message}`} />
+        <AuthErrorMessage isVisible={Boolean(errors.email)} message={`${errors.email?.message}`} />
         <AuthErrorMessage
           isVisible={Boolean(errors.password)}
           message={`${errors.password?.message}`}
@@ -79,6 +142,10 @@ const SignUpForm: React.FC = () => {
         <AuthErrorMessage
           isVisible={Boolean(errors.retryPassword)}
           message={`${errors.retryPassword?.message}`}
+        />
+        <AuthErrorMessage
+          isVisible={Boolean(errors.phone)}
+          message={`${errors.phone?.message}`}
         />
       </aside>
     </form>

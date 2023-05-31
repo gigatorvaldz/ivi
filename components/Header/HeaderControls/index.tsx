@@ -3,6 +3,7 @@ import css from './HeaderControls.module.scss';
 import { HeaderControlsItem } from '@/interfaces';
 import Link from 'next/link';
 import { useURLQuery } from '@/hooks/useURLQuery';
+import { useAppSelector } from '@/redux/hooks';
 
 interface HeaderControlsI {
   items: Array<HeaderControlsItem>;
@@ -14,6 +15,8 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
   setCurrentDropDown,
 }: HeaderControlsI) => {
   const { toggleQuery } = useURLQuery();
+
+  const isAuth = useAppSelector(state => state.authReducer.isAuth)
 
   return (
     <div className={css.container}>
@@ -31,6 +34,9 @@ const HeaderControls: React.FC<HeaderControlsI> = ({
           )}
         </div>
       ))}
+      <div>
+            {isAuth ? <h1>Вы авторизованы!</h1> : <h1>Вы не авторизованы!</h1>}
+      </div>
     </div>
   );
 };

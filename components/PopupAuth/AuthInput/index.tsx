@@ -7,10 +7,11 @@ interface AuthInputI {
   name: string;
   rules: object;
   control: Control;
+  type?: string;
   placeholder: string;
 }
 
-const AuthInput: React.FC<AuthInputI> = ({ name, control, rules, placeholder }) => {
+const AuthInput: React.FC<AuthInputI> = ({ name, control, rules, placeholder, type = 'text' }) => {
   return (
     <div className={css.input}>
       <Controller
@@ -18,8 +19,9 @@ const AuthInput: React.FC<AuthInputI> = ({ name, control, rules, placeholder }) 
         name={name}
         defaultValue={''}
         rules={rules}
-        render={({ field: { onChange, value }, formState: {errors} }) => (
+        render={({ field: { onChange, value }, formState: { errors } }) => (
           <Input
+            type={type}
             value={value}
             onChange={onChange}
             placeholder={placeholder}

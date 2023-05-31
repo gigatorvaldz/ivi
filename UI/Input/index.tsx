@@ -8,21 +8,29 @@ export interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   invalid?: boolean;
+  type?: string;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, aside, onChange, value, invalid }) => {
+const Input: React.FC<InputProps> = ({
+  placeholder,
+  aside,
+  onChange,
+  value,
+  invalid,
+  type = 'text',
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div
       className={classNames(
         { [styles.active]: value || isFocused, [styles.invalid]: invalid },
-        styles.form
+        styles.form,
       )}
     >
       <label className={styles.label}>
         <input
-          type="text"
+          type={type}
           value={value}
           className={styles.searchBar}
           onFocus={() => setIsFocused(true)}
