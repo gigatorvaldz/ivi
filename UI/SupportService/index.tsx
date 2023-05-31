@@ -6,6 +6,7 @@ import { FiMail } from 'react-icons/fi';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { useClickOutside } from '../../hooks/useClickOutside';
+import { useTranslation } from 'next-i18next';
 
 interface ISupportService {
   isMobile?: boolean;
@@ -14,19 +15,19 @@ interface ISupportService {
 const SupportService: React.FC<ISupportService> = ({ isMobile = false }) => {
   const [visibleNumber, setVisibleNumber] = useState<boolean>(false);
   const numberRef = useRef(null);
-
+  const { t } = useTranslation('footer');
   useClickOutside(numberRef, setVisibleNumber);
 
   return (
     <>
       <div className={classNames({ [css.descriptionMobile]: isMobile }, css.description)}>
-        <span>Мы всегда готовы вам помочь.</span>
-        <span>Наши операторы онлайн 24/7</span>
+        <span>{t('supportInfoTop')}</span>
+        <span>{t('supportInfoBottom')}</span>
       </div>
       <div className={classNames({ [css.supportMobile]: isMobile }, css.support)}>
         <div className={css.wideButton}>
           <Link href="/profile">
-            <Button isHundredPercentsWidth={true} primaryText="Написать в чате" />
+            <Button isHundredPercentsWidth={true} primaryText={t('chat')} />
           </Link>
         </div>
         <div className={classNames({ [css.supportButtonsMobile]: isMobile }, css.supportButtons)}>
@@ -43,13 +44,13 @@ const SupportService: React.FC<ISupportService> = ({ isMobile = false }) => {
             className={classNames({ [css.showed]: visibleNumber }, css.phoneItem)}
           >
             <span className={css.phoneNumber}>8 800 234-49-23</span>
-            <span className={css.phoneFree}>Бесплатно по России</span>
+            <span className={css.phoneFree}>{t('freeCall')}</span>
           </Link>
         </div>
       </div>
       <div className={css.questions}>
         <Link href="https://ask.ivi.ru/">ask.ivi.ru</Link>
-        <span>Ответы на вопросы</span>
+        <span>{t('faq')}</span>
       </div>
     </>
   );

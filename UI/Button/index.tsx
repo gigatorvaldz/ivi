@@ -6,8 +6,8 @@ export type ButtonStylingT = 'primary' | 'accent' | 'lighter';
 
 interface IButton {
   onClickHandler?: () => void;
-  primaryText?: string;
-  preamble?: string;
+  primaryText?: string | null;
+  preamble?: string | null;
   icon?: ReactNode;
   styling?: ButtonStylingT;
   disabled?: boolean;

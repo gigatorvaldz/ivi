@@ -6,25 +6,29 @@ import { IoCloseOutline } from 'react-icons/io5';
 import { GiFilmProjector } from 'react-icons/gi';
 import SearchInput from '@/UI/SearchInput';
 import { useURLQuery } from '@/hooks/useURLQuery';
+import { useTranslation } from 'next-i18next';
 
 const PopupSearch: React.FC = () => {
+  const { t } = useTranslation('popups');
   const [inputValue, setInputValue] = useState<string>('');
-  const {currentQuery, toggleQuery} = useURLQuery();
+  const { currentQuery, toggleQuery } = useURLQuery();
 
   useEffect(() => {
-    return(() => {setInputValue('')})
-  }, [currentQuery])
+    return () => {
+      setInputValue('');
+    };
+  }, [currentQuery]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setInputValue(e.target.value);
   };
 
-  const links = [
-    { title: 'Премьеры фильмов', link: '/123' },
-    { title: 'Новинки подписки', link: '/123' },
-    { title: 'Сериалы Amediateka', link: '/123' },
-    { title: 'Высокий рейтинг', link: '/123' },
+  const searchVariants = [
+    'premieres',
+    'subscriptionNews',
+    'amediateka',
+    'highRating',
   ];
 
   const mockData = [
@@ -55,7 +59,7 @@ const PopupSearch: React.FC = () => {
   ];
 
   const searchResult = mockData.filter((e) =>
-    e.title.toLowerCase().includes(inputValue.toLowerCase())
+    e.title.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   const getTitleParts = (str: string): string[] => {
@@ -68,12 +72,12 @@ const PopupSearch: React.FC = () => {
         <IoCloseOutline className={css.closePopup} onClick={() => toggleQuery('?search')} />
         <div className={css.content}>
           <div className={css.searchInput}>
-            <h1>Поиск</h1>
+            <h1>{t('search')}</h1>
             <SearchInput
               setValue={setInputValue}
               value={inputValue}
               onChange={handleInput}
-              placeholder="Фильмы, персоны, жанры"
+              placeholder={t('searchInput')}
             />
           </div>
           <div
@@ -96,11 +100,11 @@ const PopupSearch: React.FC = () => {
                     </div>
                   </Link>
                 ))
-              : links.map((e) => (
-                  <div key={e.title}>
-                    <Link href={e.link}>
-                      <span className={css.link}>{e.title}</span>
-                    </Link>
+              : searchVariants.map((e, index) => (
+                  <div key={index}>
+                    <span className={css.searchVariant} onClick={() => console.log('')}>
+                      {t(e)}
+                    </span>
                   </div>
                 ))}
           </div>
