@@ -1,24 +1,31 @@
 import React from 'react';
 import css from './SignInForm.module.scss';
 import Button from '@/UI/Button';
-import { useForm } from 'react-hook-form';
+import { Control, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import AuthInput from '../AuthInput';
 import AuthErrorMessage from '../AuthErrorMessage';
+import { useAppDispatch } from '@/redux/hooks';
+import { loginUser } from '@/redux/features/authReducer';
+import { AuthRequest } from '@/interfaces/Auth';
 
 const SignInForm: React.FC = () => {
-  const onSubmit = (data: object) => {
-    console.log(JSON.stringify(data));
-    reset();
-  };
+  const dispatch = useAppDispatch();
 
   const {
     handleSubmit,
     reset,
     control,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<AuthRequest>({
     mode: 'all',
   });
+
+  
+  const onSubmit: SubmitHandler<AuthRequest> = (data: AuthRequest) => {
+    dispatch(loginUser(data));
+    reset();
+  };
+  
 
   return (
     <form action="#" className={css.loginform} onSubmit={handleSubmit(onSubmit)}>
@@ -32,13 +39,13 @@ const SignInForm: React.FC = () => {
             message: 'Неправильно указан e-mail.',
           },
         }}
-        control={control}
+        control={(control as unknown) as Control<FieldValues>}
         placeholder="Введите e-mail"
       />
       <AuthInput
         name="password"
         rules={{ required: 'Не указан пароль' }}
-        control={control}
+        control={(control as unknown) as Control<FieldValues>}
         placeholder="Введите пароль"
       />
       <div className={css.submit}>

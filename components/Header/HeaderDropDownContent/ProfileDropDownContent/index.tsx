@@ -18,6 +18,8 @@ import { IoDiamondOutline } from 'react-icons/io5';
 import { TbDeviceTvOld } from 'react-icons/tb';
 import PopupAuth from '@/components/PopupAuth';
 import Portal from '@/components/Portal';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { logoutUser } from '@/redux/features/authReducer';
 
 const controlsItems: Array<ListItem> = [
   { title: 'Настройки', href: '/profile/settings' },
@@ -28,15 +30,23 @@ const controlsItems: Array<ListItem> = [
 ];
 
 const ProfileDropDownContent: React.FC = () => {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [isAuthing, setIsAuthing] = useState<boolean>(false);
   const [authType, setAuthType] = useState<'registration' | 'login'>('registration');
+
+  const dispatch = useAppDispatch();
 
   const onAuthButtonClickHandle = (type: 'registration' | 'login') => {
     return () => {
       setAuthType(type);
-      setIsAuth(true);
+      setIsAuthing(true);
     };
   };
+
+  const onLogoutClickHandle = () => {
+    dispatch(logoutUser());
+  };
+
+  const isAuth = useAppSelector((state) => state.authReducer.isAuth);
 
   return (
     <div className={css.container}>
@@ -69,19 +79,27 @@ const ProfileDropDownContent: React.FC = () => {
       </div>
       <div className={css.controls}>
         <div className={css.auth}>
-          <Button
-            onClickHandler={onAuthButtonClickHandle('login')}
-            primaryText="Войти"
-            styling="accent"
-          />
-          <Button
-            onClickHandler={onAuthButtonClickHandle('registration')}
-            primaryText="Зарегистрироваться"
-            styling="accent"
-          />
-          {isAuth && (
+          {isAuth ? (
+            <>
+              <Button onClickHandler={onLogoutClickHandle} primaryText="Выйти" styling="accent" />
+            </>
+          ) : (
+            <>
+              <Button
+                onClickHandler={onAuthButtonClickHandle('login')}
+                primaryText="Войти"
+                styling="accent"
+              />
+              <Button
+                onClickHandler={onAuthButtonClickHandle('registration')}
+                primaryText="Зарегистрироваться"
+                styling="accent"
+              />
+            </>
+          )}
+          {isAuthing && (
             <Portal>
-              <PopupAuth setIsVisible={setIsAuth} type={authType} />
+              <PopupAuth setIsVisible={setIsAuthing} type={authType} />
             </Portal>
           )}
         </div>
