@@ -9,7 +9,7 @@ export interface ActionFilmCardI {
   film: Film;
 }
 
-const ActionFilmCard: React.FC<ActionFilmCardI> = ({ film }) => {
+const ActionFilmCard: React.FC<ActionFilmCardI> = ({film}) => {
   return (
     <Link href={`/moovies/${film.name}`} className={css.container}>
       <div className={css.mainimage}>

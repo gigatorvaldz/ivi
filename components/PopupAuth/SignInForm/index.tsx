@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './SignInForm.module.scss';
 import Button from '@/UI/Button';
 import { Control, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
@@ -7,9 +7,13 @@ import AuthErrorMessage from '../AuthErrorMessage';
 import { useAppDispatch } from '@/redux/hooks';
 import { loginUser } from '@/redux/features/authReducer';
 import { AuthRequest } from '@/interfaces/Auth';
+import { useRouter } from 'next/router';
 
 const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const [isAuthError, setIsAuthError] = useState(false);
 
   const {
     handleSubmit,
@@ -20,15 +24,22 @@ const SignInForm: React.FC = () => {
     mode: 'all',
   });
 
-  
-  const onSubmit: SubmitHandler<AuthRequest> = (data: AuthRequest) => {
-    dispatch(loginUser(data));
-    reset();
+  const onSubmit: SubmitHandler<AuthRequest> = async (data: AuthRequest) => {
+    const dispathResponse = await dispatch(loginUser(data));
+    if (dispathResponse.meta.requestStatus === 'fulfilled') {
+      router.back();
+    } else {
+      reset();
+      setIsAuthError(true)
+    }
   };
-  
+
+  const onFormFocus = () => {
+    setIsAuthError(false)
+  }
 
   return (
-    <form action="#" className={css.loginform} onSubmit={handleSubmit(onSubmit)}>
+    <form action="#" className={css.loginform} onSubmit={handleSubmit(onSubmit)} onFocus={onFormFocus}>
       <AuthInput
         name="email"
         rules={{
@@ -39,13 +50,13 @@ const SignInForm: React.FC = () => {
             message: 'Неправильно указан e-mail.',
           },
         }}
-        control={(control as unknown) as Control<FieldValues>}
+        control={control as unknown as Control<FieldValues>}
         placeholder="Введите e-mail"
       />
       <AuthInput
         name="password"
         rules={{ required: 'Не указан пароль' }}
-        control={(control as unknown) as Control<FieldValues>}
+        control={control as unknown as Control<FieldValues>}
         placeholder="Введите пароль"
       />
       <div className={css.submit}>
@@ -56,6 +67,10 @@ const SignInForm: React.FC = () => {
         <AuthErrorMessage
           isVisible={Boolean(errors.password)}
           message={`${errors.password?.message}`}
+        />
+        <AuthErrorMessage
+          isVisible={isAuthError}
+          message={`Неправильно введены данные.`}
         />
       </aside>
     </form>
