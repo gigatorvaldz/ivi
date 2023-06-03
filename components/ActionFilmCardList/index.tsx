@@ -1,16 +1,17 @@
 import React from 'react';
 import css from './ActionFilmCardList.module.scss';
-import ActionFilmCard, { ActionFilmCardI } from '@/UI/ActionFilmCard';
+import ActionFilmCard from '@/UI/ActionFilmCard';
+import { Film } from '@/interfaces/Film';
 
 interface ActionFilmCardListI {
-  items: ActionFilmCardI[];
+  items: Film[];
 }
 
 const ActionFilmCardList: React.FC<ActionFilmCardListI> = ({ items }) => {
   return (
     <div className={css.container}>
       {items.map((el) => (
-        <ActionFilmCard film={el.film} />
+        <ActionFilmCard key={el.id} film={el} />
       ))}
     </div>
   );

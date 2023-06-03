@@ -19,6 +19,7 @@ const nextConfig = {
         port: '',
       },
     ],
+    domains: ['st.kp.yandex.net'],
   },
   i18n
 };

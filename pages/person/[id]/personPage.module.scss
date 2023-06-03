@@ -21,13 +21,17 @@
     .personcard {
         .avatarcontainer {
             position: relative;
-            width: 8.8rem;
-            height: 8.8rem;
+            width: 12rem;
+            height: 12rem;
             object-fit: cover;
 
             border-radius: 15px;
             overflow: hidden;
             margin-bottom: 15px;
+
+            & > img {
+                object-fit: cover;
+            }
         }
 
         .title {
