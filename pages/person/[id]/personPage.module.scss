@@ -101,6 +101,13 @@
             }
         }
     }
+
+    .errorMessage{
+        font-size: 24px;
+        text-align: center;
+        width: 100%;
+        padding-top: 50px;
+    }
 }
 
 @include maxQ("tablet-s") {
@@ -130,3 +137,4 @@
         }
     }
 }
+

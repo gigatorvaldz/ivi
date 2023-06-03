@@ -10,20 +10,22 @@ import Link from 'next/link';
 import ActionFilmCardList from '@/components/ActionFilmCardList';
 import { Person } from '@/interfaces/Person';
 
-
 interface PersonPageI {
   person?: Person;
   error?: boolean;
 }
 
-const PersonPage: NextPage<PersonPageI> = ({ person }) => {
-  if (!person) {
+const PersonPage: NextPage<PersonPageI> = ({ person, error = false }) => {
+  if (!person || error) {
     return (
-        <Layout>
-          <div className={css.container}>
-            <h1>Person is not found</h1>
+      <Layout>
+        <div className={css.container}>
+          <div className={css.backarrow}>
+            <BackArrow toCategory={false} redirectTo="Назад" />
           </div>
-        </Layout>
+          <h1 className={css.errorMessage}>Person is not found</h1>
+        </div>
+      </Layout>
     );
   } else {
     return (
@@ -31,7 +33,7 @@ const PersonPage: NextPage<PersonPageI> = ({ person }) => {
         <Layout>
           <div className={css.container}>
             <div className={css.backarrow}>
-              <BackArrow redirectTo="Назад" />
+              <BackArrow toCategory={false} redirectTo="Назад" />
             </div>
 
             <section className={classNames(css.pagesection, css.personcard)}>
@@ -50,7 +52,7 @@ const PersonPage: NextPage<PersonPageI> = ({ person }) => {
                 <ul className={css.anchorlinklist}>
                   <li className={css.anchorlink}>
                     <Link passHref replace href="#filmography">
-                      {person.films.length} фильмов
+                    Фильмов: {person.films.length}
                     </Link>
                   </li>
                 </ul>
@@ -61,7 +63,7 @@ const PersonPage: NextPage<PersonPageI> = ({ person }) => {
               <div className={css.pagewrapper}>
                 <div className={css.title}>
                   <h2>Полная фильмография</h2>
-                  <span>{person.films.length} фильмов</span>
+                  <span>Фильмов: {person.films.length}</span>
                 </div>
 
                 <div className={css.controls}>
@@ -82,20 +84,30 @@ const PersonPage: NextPage<PersonPageI> = ({ person }) => {
 export const getServerSideProps: GetServerSideProps<PersonPageI> = async (context) => {
   if (context.params) {
     const id = context.params.id;
-    const response = await fetch(`http://localhost:3000/api/person/${id}`);
-    const data = await response.json();
-    if (data && id) {
+    try {
+      const response = await fetch(`http://localhost:3000/api/person/${id}`);
+      const data = await response.json();
+      if (data && id) {
+        return {
+          props: {
+            person: data,
+            id: id,
+          },
+        };
+      }
+    } catch (error) {
       return {
         props: {
-          person: data,
-          id: id,
+          error: true,
         },
       };
     }
   }
 
   return {
-    props: { error: true },
+    props: {
+      error: true,
+    },
   };
 };
 
