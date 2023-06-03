@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '../Modal';
 import css from './PopupAuth.module.scss';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import { IoCloseOutline } from 'react-icons/io5';
 import Message from '@/UI/Message';
 import SignUpForm from './SignUpForm';
@@ -9,13 +9,14 @@ import SignInForm from './SignInForm';
 
 interface PopupAuthI {
   type: 'registration' | 'login';
-  setIsVisible: (param: boolean) => void
 }
 
-const PopupAuth: React.FC<PopupAuthI> = ({ setIsVisible, type }) => {
+const PopupAuth: React.FC<PopupAuthI> = ({ type }) => {
+
+  const router = useRouter();
 
   const closeButtonHandle = () => {
-    setIsVisible(false);
+    router.back();
   };
 
   return (

@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './SignUpForm.module.scss';
-import { Control, FieldValue, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { Control, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import AuthInput from '../AuthInput';
 import AuthErrorMessage from '../AuthErrorMessage';
 import AuthPrivacy from '../AuthPrivacy';
 import Button from '@/UI/Button';
 import { useAppDispatch } from '@/redux/hooks';
-import { loginUser, registerUser } from '@/redux/features/authReducer';
+import { registerUser } from '@/redux/features/authReducer';
 import { RegistrationRequest } from '@/interfaces/Auth';
+import { useRouter } from 'next/router';
 
 const SignUpForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const [authError, setAuthError] = useState('');
 
   interface RegistrationForm extends RegistrationRequest {
     retryPassword: string;
@@ -18,7 +22,6 @@ const SignUpForm: React.FC = () => {
 
   const {
     handleSubmit,
-    reset,
     control,
     watch,
     formState: { errors, isValid },
@@ -26,10 +29,16 @@ const SignUpForm: React.FC = () => {
     mode: 'all',
   });
 
-  const onSubmit: SubmitHandler<RegistrationRequest> = (data: RegistrationRequest) => {
+  const onSubmit: SubmitHandler<RegistrationRequest> = async (data: RegistrationRequest) => {
     data.age = Number(data.age);
-    dispatch(registerUser(data));
-    reset();
+    const dispatchData = await dispatch(registerUser(data));
+    const status = dispatchData.meta.requestStatus;
+    
+    if (status === 'rejected') {
+      setAuthError(dispatchData.payload.message);
+    } else {
+      router.back();
+    }
   };
 
   let password = watch('password');
@@ -143,10 +152,8 @@ const SignUpForm: React.FC = () => {
           isVisible={Boolean(errors.retryPassword)}
           message={`${errors.retryPassword?.message}`}
         />
-        <AuthErrorMessage
-          isVisible={Boolean(errors.phone)}
-          message={`${errors.phone?.message}`}
-        />
+        <AuthErrorMessage isVisible={Boolean(errors.phone)} message={`${errors.phone?.message}`} />
+        <AuthErrorMessage isVisible={authError.length > 0} message={authError} />
       </aside>
     </form>
   );

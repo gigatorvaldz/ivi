@@ -20,6 +20,7 @@ import PopupAuth from '@/components/PopupAuth';
 import Portal from '@/components/Portal';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { logoutUser } from '@/redux/features/authReducer';
+import Link from 'next/link';
 
 const controlsItems: Array<ListItem> = [
   { title: 'Настройки', href: '/profile/settings' },
@@ -30,17 +31,7 @@ const controlsItems: Array<ListItem> = [
 ];
 
 const ProfileDropDownContent: React.FC = () => {
-  const [isAuthing, setIsAuthing] = useState<boolean>(false);
-  const [authType, setAuthType] = useState<'registration' | 'login'>('registration');
-
   const dispatch = useAppDispatch();
-
-  const onAuthButtonClickHandle = (type: 'registration' | 'login') => {
-    return () => {
-      setAuthType(type);
-      setIsAuthing(true);
-    };
-  };
 
   const onLogoutClickHandle = () => {
     dispatch(logoutUser());
@@ -85,22 +76,13 @@ const ProfileDropDownContent: React.FC = () => {
             </>
           ) : (
             <>
-              <Button
-                onClickHandler={onAuthButtonClickHandle('login')}
-                primaryText="Войти"
-                styling="accent"
-              />
-              <Button
-                onClickHandler={onAuthButtonClickHandle('registration')}
-                primaryText="Зарегистрироваться"
-                styling="accent"
-              />
+              <Link href="/auth/login">
+                <Button primaryText="Войти" styling="accent" />
+              </Link>
+              <Link href="/auth/registration">
+                <Button primaryText="Зарегистрироваться" styling="accent" />
+              </Link>
             </>
-          )}
-          {isAuthing && (
-            <Portal>
-              <PopupAuth setIsVisible={setIsAuthing} type={authType} />
-            </Portal>
           )}
         </div>
         <List items={controlsItems} />

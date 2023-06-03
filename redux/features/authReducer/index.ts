@@ -48,7 +48,6 @@ export const registerUser = createAsyncThunk(
             const data = JSON.parse(JSON.stringify(response.data))
 
             dispatch(loginUser(registrationData))
-
             return data;
         } catch (error) {
             return rejectWithValue(error);
